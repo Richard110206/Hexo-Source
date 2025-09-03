@@ -9,25 +9,29 @@ description: This article systematically examines the evolution of object detect
 
  
  # From OpenCV to YOLOv5: Object Detection from Theory to Practice
-{% note primary %}**摘要**：本文系统性地研究了目标检测技术从传统方法到深度学习的演进过程，重点对比分析了 ***OpenCV级联分类器*** 与 ***YOLOv5*** 的核心原理、技术特点及适用场景。通过深入研究***Haar特征*** 与 ***卷积神经网络*** 的特征提取机制，揭示了两种方法在检测精度、计算效率等方面的本质差异。在实践层面，详细探讨了使用***Labelme***进行***数据标注***的方法论，以及如何利用 ***Roboflow*** 等平台获取和优化训练数据集。基于上述理论研究，我们将YOLOv5模型部署至 ***树莓派嵌入式平台*** ，实现了垃圾分类目标检测系统的工程化应用。本研究不仅梳理了目标检测技术的发展脉络，更通过完整的 ***"理论-数据-训练-部署"*** 闭环验证了深度学习人工智能在资源受限设备上的实用价值。{% endnote %}
+{% note primary %}**摘要**：本文系统性地研究了目标检测技术从传统方法到深度学习的演进过程，重点对比分析了 **OpenCV级联分类器** 与 **YOLOv5** 的核心原理、技术特点及适用场景。通过深入研究**Haar特征** 与 **卷积神经网络** 的特征提取机制，揭示了两种方法在检测精度、计算效率等方面的本质差异。在实践层面，详细探讨了使用**Labelme**进行**数据标注**的方法论，以及如何利用 **Roboflow** 等平台获取和优化训练数据集。基于上述理论研究，我们将YOLOv5模型部署至 **树莓派嵌入式平台** ，实现了垃圾分类目标检测系统的工程化应用。本研究不仅梳理了目标检测技术的发展脉络，更通过完整的 **"理论-数据-训练-部署"** 闭环验证了深度学习人工智能在资源受限设备上的实用价值。{% endnote %}
 
 
-{% note primary %}**关键词**：***OpenCV；YOLOv5；目标检测；树莓派***{% endnote %}
+{% note primary %}
+**关键词**：**OpenCV；YOLOv5；目标检测；树莓派**
+{% endnote %}
 
-{% note primary %}**引言**：每天清晨，当我们拿起智能手机解锁时，人脸识别功能会瞬间完成身份验证；走进机场安检区，摄像头会自动标记旅客的面部位置；甚至社交软件中的“美颜滤镜”，也需要先精准定位五官。这些看似简单的功能，其实背后都依赖于图像处理的目标检测技术！{% endnote %}
+{% note primary %}
+**引言**：每天清晨，当我们拿起智能手机解锁时，人脸识别功能会瞬间完成身份验证；走进机场安检区，摄像头会自动标记旅客的面部位置；甚至社交软件中的“美颜滤镜”，也需要先精准定位五官。这些看似简单的功能，其实背后都依赖于图像处理的目标检测技术！
+{% endnote %}
 
 &emsp;&emsp;而在早期，这类技术并非基于复杂的深度学习，而是通过OpenCV的级联检测器（如Haar级联）实现的。
 
 ### 一、OpenCV中Python 环境搭建
 &emsp;&emsp;Python 环境搭建是实现目标检测的前提基础，而其环境也并不复杂，仅仅是在Python解释器的基础上添加诸如numpy、matplotlib等库即可。
 
-![图1 OpenCV环境搭建所需要的软件包示例](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%871.png)
+![图1 OpenCV环境搭建所需要的软件包示例](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%871.png)
 
 ### 二、OpenCV的级联分类器
 &emsp;&emsp;Haar分类器是一种基于机器学习的目标检测算法，它使用Haar特征描述图像中的目标。Haar特征是基于图像亮度的局部差异计算得出的，可以用来描述目标的边缘、角落和线条等特征。
 &emsp;&emsp;将一系列简单的分类器按照一定的顺序级联到一起就构成了级联分类器，使用级联分类器的程序可以通过一系列简单的判断来对样本进行识别。OpenCV提供一些已经训练好的级联分类器，有人脸检测、身形检测、车牌检测等，如下图所示。想要实现哪一种图像检测，在程序启动时加载对应的级联分类器即可。
 
-![图2 OpenCV自带的级联分类器XML文件](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%872.png)
+![图2 OpenCV自带的级联分类器XML文件](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%872.png)
 
 ```python
 import cv2
@@ -54,7 +58,7 @@ cv2.destroyAllWindows()
 ### 三、调用级联分类器实现检测
 &emsp;&emsp;作为传统机器视觉的AI方法，人脸级联分类器采用提取眼睛区域（上暗下亮）、鼻梁区域（两侧暗中间亮）、嘴巴区域（上唇暗下唇亮）、面部轮廓（与背景的明暗对比）等多个特征的方法进行检测，效果图如下图所示。
 
-![图4 使用OpenCV人脸级联分类器进行人脸检测效果图](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%873.png)
+![图4 使用OpenCV人脸级联分类器进行人脸检测效果图](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%873.png)
 
 &emsp;&emsp;尽管Haar级联在早期表现出色，但是随着场景扩展，传统方法OpenCV图像处理的弊端逐渐开始显现，级联的方法遇到了瓶颈，其局限性在复杂场景中暴露无遗：
 (1)光照敏感：强光下人脸过曝时，特征对比度消失，导致漏检。
@@ -70,52 +74,52 @@ Haar级联的失败案例：背光导致检测失败：树叶被误检测为人�
 
 ### 五、YOLOv5的运行
 
-![图 5 PC成功调用GPU进行YOLOv5 目标检测](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%875.png)
+![图 5 PC成功调用GPU进行YOLOv5 目标检测](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%875.png)
 
-![图 6 YOLOv5 默认图像的处理结果（1）](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%876.png)
+![图 6 YOLOv5 默认图像的处理结果（1）](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%876.png)
 
-![图 7 YOLOv5 默认图像的处理结果（2）](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%877.png)
+![图 7 YOLOv5 默认图像的处理结果（2）](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%877.png)
 
 &emsp;&emsp;从OpenCV的“人工经验”到YOLOv5的“数据智能”，目标检测技术实现了质的飞跃。然而，YOLOv5的强大性能离不开高质量的数据支撑，但是现实生活中我们的需求是多样化的，此时我们不满足于仅仅使用YOLOv5默认的数据集进行目标检测，这时我们将深入探讨如何构建专属数据集：
 ### 六、用labelme进行数据集的标注[4]
 
-![图 8 使用labelme手动进行数据集标注](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%878.png)
+![图 8 使用labelme手动进行数据集标注](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%878.png)
 
 &emsp;&emsp;Labelme确实能够适应特定需求进行数据集的划分了，但是一次的训练需要成百上千张图片，每做一次数据集就需要手动划分这么多，显然效率较低，难以大规模推广使用，于是我们可以通过下载网络平台上的各种标注好数据集进行训练实验。
 ### 七、用roboflow下载数据集[5]
 
-![图 9 在Roboflow中寻找合适的数据集](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%879.png)
+![图 9 在Roboflow中寻找合适的数据集](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%879.png)
 
 ### 八、对数据集进行训练和测试
 
-![图 10 对数据集进行训练](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8710.png)
+![图 10 对数据集进行训练](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8710.png)
 
-![图 11 获取训练好的特征权重文件](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8711.png)
+![图 11 获取训练好的特征权重文件](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8711.png)
 
-![在图 12 训练所得混淆矩阵](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8712.png)
+![在图 12 训练所得混淆矩阵](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8712.png)
 
 &emsp;&emsp;列代表预测的类别，行代表实际的类别。其对角线上的值表示预测正确的数量比例，非对角线元素则是预测错误的部分。混淆矩阵的对角线值越高越好，这表明许多预测是正确的。
 
-![图13 训练所得labels](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8713.png)
+![图13 训练所得labels](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8713.png)
 
-![图14 训练所得准确率与置信度](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8714.png)
+![图14 训练所得准确率与置信度](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8714.png)
 
-![图15 训练所得](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8715.png)
+![图15 训练所得](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8715.png)
 
-![图16 个人“手势”数据集测试（1）](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8716.png)
+![图16 个人“手势”数据集测试（1）](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8716.png)
 
-![图17 个人“手势”数据集测试（2）](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8717.png)
+![图17 个人“手势”数据集测试（2）](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8717.png)
 
 &emsp;&emsp;为了将目标检测技术从理论转化为实际应用，我们决定将YOLOv5模型部署到嵌入式设备中，打造具有实用价值的智能终端。考虑到深度学习算法对计算性能的较高要求，传统的C51、STM32等单片机难以满足运算需求，因此我们选择了性能更为强大的树莓派作为硬件平台，以确保模型能够高效稳定地运行。这一方案不仅提升了系统的实时处理能力，也为后续的功能扩展提供了充足的计算资源保障。
 
 ### 九、部署至树莓派装置进行实战检测
 &emsp;&emsp;在系统实现过程中，我们针对树莓派的硬件特性进行了适配性开发。由于树莓派采用CSI摄像头接口，其图像采集方式与PC端的USB摄像头存在差异，为此我们专门优化了图像采集模块的代码架构。同时，通过设计高效的通信协议，实现了树莓派与主控芯片STM32的协同工作。
 
-![图18 在树莓派中配置anaconda](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8718.png)
+![图18 在树莓派中配置anaconda](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8718.png)
 
-![图19 在树莓派中配置vscode](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8719.png)
+![图19 在树莓派中配置vscode](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8719.png)
 
-![图20 对树莓派进行调试](https://raw.githubusercontent.com/Richard110206/blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8720.png)
+![图20 对树莓派进行调试](https://raw.githubusercontent.com/Richard110206/Blog-image/main/article/From-OpenCV-to-YOLOv5-Object-Detection-from-Theory-to-Practice/%E5%9B%BE%E7%89%8720.png)
 
 &emsp;&emsp;历经反复的调试，最终完成了基于YOLOv5的智能垃圾分类系统，在自主构建的数据集支持下，能够准确识别多种垃圾类型，并通过机械执行实现自动分类压缩回收，充分展现了人工智能深度学习技术的实用价值！
 

@@ -327,14 +327,46 @@ int main() {
 
 用法示例     | 作用 | 注意事项
 -------- | ------- | -------- | 
-`str.find()` | 查找字符或子串|返回首次出现字符的位置（size_t）
+`str.find()` | 查找字符或子串|返回首次出现字符的位置（`size_t`）
 `str.substr()` | 提取字符串|参数1：起始位置；参数2：长度（可选） 
 `str.size()`| 获取字符串长度|返回字符数量（size_t）
 `str.empty()` | 判断是否为空|返回值bool类型
 `str.front()` | 获取首字符|返回char引用
 `str.back()`| 获取末尾字符|返回char引用
 
- 
+- s + 'a'：在原字符串 s 的**末尾添加**字符 'a'；
+- 'a' + s：在原字符串 s 的**开头添加**字符 'a'。
+
+[Leetcode 67.二进制求和](https://leetcode.cn/problems/add-binary?envType=problem-list-v2&envId=string)
+
+这里使用**模拟竖式**的方法进行计算，对于位数不相等的两个数，我们使用以上方法对其**在前面补零**，使得两个数的位数相等。
+ ```cpp
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        int al=a.size(),bl=b.size();
+        while(al<bl){
+            a='0'+a;
+            al++;
+        }
+        while(al>bl){
+            b='0'+b;
+            bl++;
+        }
+        int forward=0;
+        for(int i=al-1;i>=0;i--){
+            int temp=a[i]+b[i]-'0'-'0'+forward;
+            forward=temp/2;
+            a[i]=temp%2+'0';
+        }
+        if(forward>0){
+            a='1'+a;
+        }
+        return a;
+    }
+};
+```
+
 ## F题：迷宫问题
 {%fold into @ F题：迷宫问题 %}
 ### 题目描述

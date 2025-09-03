@@ -29,6 +29,7 @@ description: Brief Self-Introduction and the Motivation Behind Deploying My Blog
 
 
 &emsp;&emsp;在CSDN的简单试水中，我收获了莫大的自信，遂趁着期末周刚结束，全身心地投入到Github个人博客的创建中来！
+
 ![截止2025年7月13日CSDN状态图](https://github.com/Richard110206/Blog-image/blob/main/article/General/About%20Me%20and%20My%20Blog/About-Me-and-My-Blog.png?raw=true)
 
 
