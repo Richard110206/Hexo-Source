@@ -381,8 +381,8 @@ navbar:
         { key: '主题博客', link: 'https://hexo.fluid-dev.com/' },
         { key: '配置指南', link: 'https://hexo.fluid-dev.com/docs/guide/' },
         { key: '图标用法', link: 'https://hexo.fluid-dev.com/docs/icon/' },
-        { key: '精进日记', link: 'https://richard110206.github.io/2025/07/14/other/life-musings/' },
-        { key: '生活杂谈', link: 'https://richard110206.github.io/2025/08/13/other/Casual-Chronicles/' }
+        { key: '精进日记', link: 'https://richard110206.github.io/2025/07/14/Other/life-musings/' },
+        { key: '生活杂谈', link: 'https://richard110206.github.io/2025/08/13/Other/Casual-Chronicles/' }
       ]
     }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
