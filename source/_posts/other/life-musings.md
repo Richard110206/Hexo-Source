@@ -260,3 +260,4 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
 - 9.3
   -  程序设计综合实践取消，观看大阅兵
   -  博客：将blog-img-article进行文件归类整理，提升未来图片管理效率
+  -  Github：新建仓库"Hexo-Source"，将博客源码进行迁移，便于mac/windows切换撰写博客
