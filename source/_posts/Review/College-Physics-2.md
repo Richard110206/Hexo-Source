@@ -36,4 +36,21 @@ $$\overline{\varepsilon} = \frac{1}{2} m_0 \overline{v^2} = \frac{3}{2} kT$$
 $$\sqrt{\overline{v^2}} = \sqrt{\frac{3kT}{m_0}} = \sqrt{\frac{3RT}{M}}$$
 
 
+每个分子的平均动能：
+$$\overline{E_k} = \frac{i}{2}kT$$
+
+其中：$k = \frac{R}{N_A}$
+
+单原子分子有三个自由度$$\overline{E_k} = \frac{3}{2}kT$$
+
+双原子分子有五个自由度
+$$\overline{E_k} = \frac{5}{2}kT$$
+
+多原子分子有六个自由度
+
+$$\overline{E_k} = 3kT$$
+
+理想气体内能：
+$$E= \frac{m}{M}\frac{i}{2}RT $$
+
 
