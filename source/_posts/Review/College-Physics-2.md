@@ -35,7 +35,7 @@ $$\overline{\varepsilon} = \frac{1}{2} m_0 \overline{v^2} = \frac{3}{2} kT$$
 所以，**方均根速率**：
 $$\sqrt{\overline{v^2}} = \sqrt{\frac{3kT}{m_0}} = \sqrt{\frac{3RT}{M}}$$
 
-
+### 能量均分定理、内能
 每个分子的**平均动能**：
 $$\overline{E_k} = \frac{i}{2}kT$$
 
@@ -61,6 +61,7 @@ $$\overline{E_k} = 3kT$$
 理想气体内能：
 $$E= \frac{m}{M}\frac{i}{2}RT $$
 
+### 麦克斯韦速率分布
 速率分布曲线**归一化**处理：
 $$\int_{0}^{\infty} f(v)  dv = 1$$
 
@@ -69,3 +70,5 @@ $$\overline{\nu} = \int_{0}^{\nu_o} vf(v)  dv$$
 
 **方均根速率**：
 $$\overline{\nu^2} = \int_{0}^{\infty} v^2 f(\nu)  d\nu$$
+
+### 分子碰撞与自由程
