@@ -65,10 +65,21 @@ $$E= \frac{m}{M}\frac{i}{2}RT $$
 速率分布曲线**归一化**处理：
 $$\int_{0}^{\infty} f(v)  dv = 1$$
 
-**平均速率**：
-$$\overline{\nu} = \int_{0}^{\nu_o} vf(v)  dv$$
+#### 平均速率
+$$\overline{\nu} = \int_{0}^{\nu_o} vf(v)  dv=1.60\sqrt{\frac{RT}{M}}$$
 
-**方均根速率**：
+#### 方均根速率
 $$\overline{\nu^2} = \int_{0}^{\infty} v^2 f(\nu)  d\nu$$
 
+$$\sqrt{\overline{\nu^2}}=1.73\sqrt{\frac{RT}{M}}$$
+
+#### 最概然速率
+$$v_p=1.41\sqrt{\frac{RT}{M}}$$
+
 ### 分子碰撞与自由程
+
+#### 平均碰撞频率
+$$\overline{Z}=\sqrt{2} \pi d^2 \overline{\nu} n$$
+
+#### 平均自由程
+$$\overline{\lambda} = \frac{\overline{v}}{\overline{Z}} = \frac{1}{\sqrt{2} \pi d^2 n}$$
