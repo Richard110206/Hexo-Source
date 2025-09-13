@@ -204,6 +204,29 @@ public:
     }
 };
 ```
+### 方法二：迭代（本质是常规解法）
+```cpp
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode *prehead=new ListNode(-1);
+        ListNode *pre=prehead;
+        while(list1!=nullptr && list2!=nullptr){
+            if(list1->val<=list2->val){
+                pre->next=list1;
+                list1=list1->next;
+            }
+            else {
+                pre->next=list2;
+                list2=list2->next;
+            }
+            pre=pre->next;
+        }
+        pre->next=list1==nullptr?list2:list1;
+        return prehead->next;
+    }
+};
+```
 
 ## Leetcode 53. 最大子数组和
 [原题链接](https://leetcode.cn/problems/maximum-subarray)

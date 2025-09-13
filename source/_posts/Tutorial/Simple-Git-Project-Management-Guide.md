@@ -111,6 +111,8 @@ git clone https://github.com/用户名/仓库名.git
 
 ![关键操作图解](https://xflops.sjtu.edu.cn/hpc-start-guide/primer/attachments/20241106195404.png)
 
+***
+
 ### 快照
 `VCS` 通过一系列快照跟踪文件夹及其内容的更改，其中每个快照都封装了顶级目录中文件/文件夹的完整状态，其还维护元数据，例如每个快照的创建者、与每个快照相关的消息等等。
 
@@ -142,6 +144,8 @@ o <-- o <-- o <-- o
               --- o <-- o
   ```
 这里意味着并行开发项目的两个功能，并进行合并，创建了一个包含两个功能的快照，`Git`会自行合并处理两个快照，若出现冲突无法解决时，则需要人工进行调整！
+***
+### 分支
 - `git branch`可以将分支名列表显示，同时可以确认当前所在的分支
 ```bash
 $ git branch
@@ -167,7 +171,7 @@ $ git branch
 * feature-A
   main
 ```
-这时再来查看我们的分支，就会发现我们正处在`feature-A`分支下，但我们在正常开发、执行`git add`命令并进行`commit`时，代码就会提交至`feature-A`分支，我们称为“培育分支”，这样我们就能在不相互影响的情况下同时进行多个功能的开发！
+这时再来查看我们的分支，就会发现我们正处在`feature-A`分支下，但我们在正常开发、执行`git add`命令并进行`commit`时，代码就会提交至`feature-A`分支，我们称为“**培育分支**”，这样我们就能在不相互影响的情况下同时进行多个功能的开发！
 
 - `git merge`可以**将分支合并**，如上文`feature-A`是典型的**特性分支**，能集中实现单一特性，且除此之外不进行任何作业，在日常开发中往往会创建数个特性分支，同时在保留一个可以随时发布软件的稳定分支。通常使用`main`作为**主干分支**（也就是特性分支的原点和合并的终点）。
 首先切换到`main`分支：
@@ -180,9 +184,49 @@ $ git merge --no-ff feature-A
 ```
 
 - `git log --graph`**以图表形式查看分支合并历史**
-- `git reset`**回溯历史版本**，我们只要提供目标时间点的哈希值，就可以完全恢复至稿时间点的状态。
+- 
+***
+
+### 回溯历史版本
+当我们在开发时遇到：
+- 尝试新功能但效果不好，想回到之前状态
+- 发布后发现有严重问题难以修复，需要回滚到上一个版本
+- 找回被删除的文件或代码
+- 合并分支时冲突出错
+
+这时我们就可以考虑**回溯版本**！
+
+先获取想要**回滚到的那个版本的 commit hash**：
+```bash
+git log --oneline
+```
+`--oneline`参数可以将提交历史以简洁的一行进行显示，便于查找哈希值
+
+
+```bash
+Legion@LAPTOP-THUPDMQ0 MINGW64 /e/Hexo-backup (main)
+$ git log --oneline
+5a9dcd9 (HEAD -> main, origin/main) test
+53397ae feat
+54d31f5 feat
+808d171 feat
+79e81c0 feat
+e485ebb feat
+8836ac9 修改文件名
+400f3e4 增加life-musings内容
+08de0b5 添加.gitignore忽略DS_Store文件
+13f5287 Initial commit of hexo source files
+```
+
+
+`git reset`**回溯历史版本**，我们只要**提供目标时间点的哈希值**，就可以完全恢复至当时该时间点的状态。
+
 ```bash
 git reset --hard <hash>
+```
+回溯完，强制**推送至远程仓库**：
+```bash
+git push -f origin main
 ```
   
 {% note warning %}如果我上线测试时突然发现了一个`bug`，而我不知道他是他是何时产生的应该怎么办呢？{%endnote%}
