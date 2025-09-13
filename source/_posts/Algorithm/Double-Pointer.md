@@ -208,6 +208,18 @@ public:
   - 移动右指针`right++`**扩展窗口**，移动左指针`left++`**缩小窗口**，直到满足条件。
   - 在收缩过程中**更新满足条件的最优解**
 
+基本模版：
+```cpp
+//外层循环扩展右边界，内层循环扩展左边界
+for (int l = 0, r = 0 ; r < n ; r++) {
+	//当前考虑的元素
+	while (l <= r && check()) {//区间[left,right]不符合题意
+        //扩展左边界
+    }
+    //区间[left,right]符合题意，统计相关信息
+}
+```
+
 ***
 
 [Leetcode 76. 最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring)
@@ -251,6 +263,34 @@ public:
         }
 
         return ansL == -1 ? string() : s.substr(ansL, len);
+    }
+};
+```
+
+[Leetcode 3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters)
+
+#### 滑动窗口+哈希表
+维持两个指针`right``left`，两指针之间代表**不重复子序列**，当`left++`时，会发现终止点`right`的**索引是递增的**，通过滚动数组记录最大值与当前值进行比较，用哈希表记录已在子序列中的字符。
+
+```cpp
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_set<char> map;
+        int n=s.length();
+        int right=-1;
+        int ans=0;
+        for(int i=0;i<n;i++){
+            if(i!=0){
+            map.erase(s[i-1]);
+            }
+            while(right<n-1 && !map.count(s[right+1])){
+                map.insert(s[right+1]);
+                right++;
+            }
+            ans=max(ans,right-i+1);
+        }
+        return ans;
     }
 };
 ```

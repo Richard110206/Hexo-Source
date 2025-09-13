@@ -292,4 +292,5 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
 - 9.13
   - 四史：87 顺利通过，主要是第几次会议混淆记不清楚
   - Python：初涉Matplotlib
+  - leetcode：刷了昨天的[每日一题](https://leetcode.cn/problems/vowels-game-in-a-string?envType=daily-question&envId=2025-09-12)，感觉有点子抽象:grinning:
 
