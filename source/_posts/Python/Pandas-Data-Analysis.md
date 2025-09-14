@@ -15,7 +15,7 @@ pip install pandas
 {%endnote%}
 
 ### Series对象
-Series对象是pandas中可存储多种类型的一维数组，由数据与索引组成。
+Series对象是pandas中可**存储多种类型的一维数组**，由**数据**与**索引**组成。
 #### 默认索引为0
 ```python
 import pandas as pd
@@ -69,7 +69,7 @@ print(s1.values)
 Index(['a', 'b', 'c', 'd', 'e'], dtype='object')
 [1 2 3 4 5]
 ```
-
+***
 
 ### DataFrame对象
 ```python
@@ -164,10 +164,6 @@ print(df.tail())
 ```
 - `usecols=['孕妇代码','年龄']` 导入**指定列名**的数据
 
-### 导入 .csv 文件
-### 导入 .txt文件
-### 导入HTML网页
-
 ## 数据清洗
 ### 缺失值处理
 #### 查找缺失值
@@ -244,7 +240,7 @@ print(df.isnull())
 1081  False  False  False  False  ...      True  False  False   False
 ```
 {%endfold%}
-
+***
 #### 删除缺失值
 `dropna()`方法可以删除缺失值，默认情况下，删除所有行中**有缺失值的行**：
 ```python
@@ -263,6 +259,7 @@ print(df)
 [126 rows x 31 columns]
 ```
 {%endfold%}
+***
 #### 填充缺失值
 ### 重复值处理
 #### 判断重复值
@@ -293,6 +290,7 @@ print(df)
 4       False
 ```
 {%endfold%}
+***
 #### 删除重复值
 `drop_duplicates()`方法可以删除重复值，默认情况下，删除所有行中**有重复值的行**：
 ```python
@@ -344,3 +342,63 @@ df=df.drop_duplicates('孕妇代码',keep='last')
 
 ### 异常值处理
 #### 箱型线法
+箱型线法是基于数据的**四分位数**构建 “箱体” 和 “须”，通过设定合理范围识别异常值，超过**设定的上限或下限**都可以被认定为异常值，具有**不依赖数据分布**、**对极端值鲁棒**的特点。
+```python
+import pandas as pd
+# 读取数据
+df = pd.read_excel('附件.xlsx', '男胎检测数据')
+# 1. 计算Q1、Q3、IQR和上下限（同步骤1）
+Q1 = df['体重'].quantile(0.25) # 下四分位数
+Q3 = df['体重'].quantile(0.75) # 上四分位数
+IQR = Q3 - Q1 # 四分位距
+lower_bound = Q1 - 1.5 * IQR # 下异常值下限
+upper_bound = Q3 + 1.5 * IQR # 上异常值上限
+# 2. 筛选异常值（低于下限 或 高于上限）
+outliers_lower = df[df['体重'] < lower_bound]  # 下异常值
+outliers_upper = df[df['体重'] > upper_bound]  # 上异常值
+all_outliers = pd.concat([outliers_lower, outliers_upper])  # 所有异常值
+```
+#### 删除异常值
+```python
+import pandas as pd
+
+df = pd.read_excel('附件.xlsx', '男胎检测数据')
+Q1 = df['体重'].quantile(0.25)
+Q3 = df['体重'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+# 筛选正常数据（排除异常值）
+df_cleaned = df[(df['体重'] >= lower_bound) & (df['体重'] <= upper_bound)]
+```
+#### 填充异常值
+```python
+import pandas as pd
+df = pd.read_excel('附件.xlsx', '男胎检测数据')
+Q1 = df['体重'].quantile(0.25)
+Q3 = df['体重'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+# 计算填充值（用体重列的中位数）
+weight_median = df['体重'].median()
+# 用中位数填充下异常值（体重 < 下限）
+df.loc[df['体重'] < lower_bound, '体重'] = weight_median
+# 用中位数填充上异常值（体重 > 上限）
+df.loc[df['体重'] > upper_bound, '体重'] = weight_median
+```
+#### 盖帽处理
+```python
+import pandas as pd
+df = pd.read_excel('附件.xlsx', '男胎检测数据')
+Q1 = df['体重'].quantile(0.25)
+Q3 = df['体重'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+# 下异常值替换为下限
+df.loc[df['体重'] < lower_bound, '体重'] = lower_bound
+# 上异常值替换为上限
+df.loc[df['体重'] > upper_bound, '体重'] = upper_bound
+```
