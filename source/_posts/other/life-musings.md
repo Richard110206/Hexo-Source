@@ -293,4 +293,11 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
   - 四史：87 顺利通过，主要是第几次会议混淆记不清楚
   - Python：初涉Matplotlib
   - leetcode：刷了昨天的[每日一题](https://leetcode.cn/problems/vowels-game-in-a-string?envType=daily-question&envId=2025-09-12)，感觉有点子抽象:grinning:
-
+- 9.14
+  - Python：pandas数据分析入门
+  - 物理实验：完成实验数据处理收尾工作
+  - 惊喜得知之前互联网+还有个校三:grinning:
+- 9.15
+  - 数电：基本逻辑门电路（二极管、三极管），电路图突然就看不太懂了
+  - 物理实验：高阻直流电势差计的应用，步骤多但跟着PPT做即可，数据少处理简单
+  - 概率论：随机变量密度函数、分布函数
