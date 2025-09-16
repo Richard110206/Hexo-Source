@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "github-calendar": "^2.3.4",
-    "hexo": "^7.3.0",
+    "hexo": "^8.0.0",
     "hexo-deployer-git": "^4.0.0",
     "hexo-filter-github-emojis": "^3.0.5",
     "hexo-generator-archive": "^2.0.0",
