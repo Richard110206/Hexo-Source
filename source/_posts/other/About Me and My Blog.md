@@ -5,7 +5,7 @@ tags: [Motivation]
 sticky: 100
 index_img: https://raw.githubusercontent.com/Richard110206/blog-image/main/cover/About%20Me%20and%20My%20Blog.png
 category_bar: true
-description: Brief Self-Introduction and the Motivation Behind Deploying My Blog!!!
+description: This blog provides a brief self-introduction and explains the motivation behind deploying the blog. And some useful tools for setting up a blog will also be mentioned!
 ---
 
 ## Before The Blog

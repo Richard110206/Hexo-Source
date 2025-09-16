@@ -1,8 +1,11 @@
 ---
 title: 'Pandas: Data Analysis'
 date: 2025-09-13 13:01:56
-tags:
-archive: true
+tags: [Python, Pandas]
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/Pandas.png?raw=true
+category: Python
+category_bar: true
+description: The document introduces the fundamental methods of data analysis using the pandas library, covering key operations such as reading Excel files and processing data within them.
 ---
 
 {%note info%}

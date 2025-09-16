@@ -1,0 +1,970 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/images/cover/c35d915a-f8ee-46b6-aa42-36eece9aff64.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Li Qinxuan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数制与编码 整数十进制转换：除X倒取余法 十进制整数 N 可表示为 X 进制的幂次和形式： $$N &#x3D; a_{n} \times X^n + a_{n-1} \times X^{n-1} + … + a_{1} \times X^1 + a_{0} \times X^0$$通过 “除 X 取余”，可依次求出最低位，再 “倒取余” 得到最终结果。 小数十进制转换：乘X顺取整法 十进制小数 M（0&amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Digital Circuits and Logic Design">
+<meta property="og:url" content="http://example.com/2025/09/04/Review/Digital-Circuits-and-Logic-Design/index.html">
+<meta property="og:site_name" content="Welcome To Li Qinxuan&#39;s Blog！">
+<meta property="og:description" content="数制与编码 整数十进制转换：除X倒取余法 十进制整数 N 可表示为 X 进制的幂次和形式： $$N &#x3D; a_{n} \times X^n + a_{n-1} \times X^{n-1} + … + a_{1} \times X^1 + a_{0} \times X^0$$通过 “除 X 取余”，可依次求出最低位，再 “倒取余” 得到最终结果。 小数十进制转换：乘X顺取整法 十进制小数 M（0&amp;l">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/circuitsymboltable1.png?raw=true">
+<meta property="og:image" content="https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/circuitsymboltable2.png?raw=true">
+<meta property="article:published_time" content="2025-09-04T04:58:09.000Z">
+<meta property="article:modified_time" content="2025-09-16T13:19:21.096Z">
+<meta property="article:author" content="Li Qinxuan">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/circuitsymboltable1.png?raw=true">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Digital Circuits and Logic Design - Welcome To Li Qinxuan&#39;s Blog！</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/_data/styles.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LQX&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://richard110206.github.io/2025/06/04/other/About%20Me%20and%20My%20Blog/" target="_self">
+                <i class="iconfont icon-addrcard"></i>
+                <span>Introduction</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                <span>Else</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/" target="_self">
+                    
+                    <span>主题博客</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/docs/guide/" target="_self">
+                    
+                    <span>配置指南</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/docs/icon/" target="_self">
+                    
+                    <span>图标用法</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://richard110206.github.io/2025/07/14/other/life-musings/" target="_self">
+                    
+                    <span>精进日记</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://richard110206.github.io/2025/08/13/other/Casual-Chronicles/" target="_self">
+                    
+                    <span>生活杂谈</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/banner_img/background.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Digital Circuits and Logic Design"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-09-04 12:58" pubdate>
+          September 4, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Digital Circuits and Logic Design</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="数制与编码">数制与编码</h2>
+<h3 id="整数十进制转换：除X倒取余法">整数十进制转换：除X倒取余法</h3>
+<p>十进制整数 N 可表示为 X 进制的幂次和形式：<br>
+$$N = a_{n} \times X^n + a_{n-1} \times X^{n-1} + … + a_{1} \times X^1 + a_{0} \times X^0$$通过 “除 X 取余”，可依次求出最低位，再 “倒取余” 得到最终结果。</p>
+<h3 id="小数十进制转换：乘X顺取整法">小数十进制转换：乘X顺取整法</h3>
+<p>十进制小数 M（0&lt;M&lt;1）可表示为 X 进制的负幂次和形式：<br>
+$$M = b_{-1} \times X^{-1} + b_{-2} \times X^{-2} + … + b_{-k} \times X^{-k} + …$$通过 “乘 X 取整”，可依次求出小数点后第一位，再 “顺取整” 得到 X 进制小数。</p>
+<h3 id="原码">原码</h3>
+<p>在最高位补0或1表示正负，0为正，1为负。</p>
+<h3 id="反码">反码</h3>
+<ul>
+<li>对于正数，反码与原码相同</li>
+<li>对于负数，反码为原码<strong>除符号位外按位取反</strong></li>
+</ul>
+<div class="note note-info">
+            <p>在反码表示法中，0的表示方法不是唯一的</p>
+          </div>
+<p>反码表示法的优点是在进行加减运算时<strong>不需要判断两数的符号是否相同</strong>，只要先求出两数的反码然后相加即可（<strong>符号位也参与运算</strong>，当符号位产生进位时，需要<strong>循环进位</strong>，即把符号位的进位加到和的最低位上去），比原码运算要简单的多。</p>
+<h3 id="补码">补码</h3>
+<ul>
+<li>对于正数，补码与原码相同</li>
+<li>对于负数，补码为原码<strong>除符号位外按位取反</strong>，再在<strong>最低位加一</strong>（<strong>补码+1</strong>）</li>
+</ul>
+<div class="note note-info">
+            <p>补码的补码是原码</p>
+          </div>
+<p>补码进行运算时，符号位参与运算，而且<strong>符号位的进位会丢弃</strong>（区别于反码）</p>
+<h2 id="逻辑代数基础">逻辑代数基础</h2>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/icmaxwell/p/17374702.html">相关电路符号图</a></p>
+<h3 id="三种基本逻辑运算：">三种基本逻辑运算：</h3>
+<ol>
+<li>与：串联<code>·</code></li>
+</ol>
+<figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>·<span class="hljs-number">0</span>=<span class="hljs-number">0</span><br><span class="hljs-attribute">0</span>·<span class="hljs-number">1</span>=<span class="hljs-number">0</span><br><span class="hljs-attribute">1</span>·<span class="hljs-number">0</span>=<span class="hljs-number">0</span><br><span class="hljs-attribute">1</span>·<span class="hljs-number">1</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></tbody></table></figure>
+<ol start="2">
+<li>或：并联<code>+</code></li>
+</ol>
+<figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>+<span class="hljs-number">0</span>=<span class="hljs-number">0</span><br><span class="hljs-attribute">0</span>+<span class="hljs-number">1</span>=<span class="hljs-number">0</span><br><span class="hljs-attribute">1</span>+<span class="hljs-number">0</span>=<span class="hljs-number">0</span><br><span class="hljs-attribute">1</span>=<span class="hljs-number">1</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></tbody></table></figure>
+<ol start="3">
+<li>非：取反<code>-</code></li>
+</ol>
+<figure class="highlight dns"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dns"><span class="hljs-keyword">A</span>·<span class="hljs-keyword">A</span>=<span class="hljs-keyword">A</span><br><span class="hljs-keyword">A</span>+<span class="hljs-keyword">A</span>=<span class="hljs-keyword">A</span><br></code></pre></td></tr></tbody></table></figure>
+<h3 id="复合逻辑运算">复合逻辑运算</h3>
+<ol>
+<li>与非：$F=\overline{A·B·C}$</li>
+<li>或非: $F=\overline{A+B+C}$</li>
+<li>与或非：$F=\overline{AB+CD}$</li>
+<li>异或：$ F=A\oplus B =\overline{A}B+A\overline{B}$ <strong>相异为 1，相同为 0</strong></li>
+<li>同或：$ F=A\odot B=AB+\overline{A}\overline{B}$  <strong>相同为 1，相异为 0</strong></li>
+</ol>
+<p><img src="https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/circuitsymboltable1.png?raw=true" srcset="/img/loading.gif" lazyload alt="基本逻辑门电路图形符号1"><br>
+<img src="https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/circuitsymboltable2.png?raw=true" srcset="/img/loading.gif" lazyload alt="基本逻辑门电路图形符号2"></p>
+<h3 id="逻辑函数表示方法的相互转换">逻辑函数表示方法的相互转换</h3>
+<ol>
+<li>真值表法</li>
+<li>表达式法</li>
+<li>逻辑图法</li>
+<li>波形图</li>
+</ol>
+<ul>
+<li>真值表▶️▶️逻辑式</li>
+</ul>
+<ol>
+<li>从真值表中<strong>找出使得F=1的那些变量取值</strong></li>
+<li>把每一组变量取值写成对应的乘积项, <strong>0 --&gt; 1，1不变</strong></li>
+<li>将<strong>乘积相加</strong>得到逻辑式</li>
+</ol>
+<h3 id="波形图">波形图</h3>
+<ol>
+<li>输入波形要<strong>穷举所用可能的输入</strong></li>
+<li>输出波形与输入波形<strong>一一对应</strong></li>
+</ol>
+<h3 id="反演规则">反演规则</h3>
+<p>求反函数</p>
+<ol>
+<li><strong>长非号不变</strong></li>
+<li>运算的<strong>优先顺序不变</strong>（<strong>要加括号</strong>）</li>
+</ol>
+<ul>
+<li>摩根定律<br>
+$$\overline{A + B} = \overline{A} \cdot \overline{B}$$</li>
+</ul>
+<p>$$\overline{A \cdot B} = \overline{A} + \overline{B}$$</p>
+<ul>
+<li>吸收律<br>
+$$A + A \cdot B = A$$</li>
+</ul>
+<p>$$A \cdot (A + B) = A$$</p>
+<p>$$A + \overline{A} \cdot B = A + B$$</p>
+<p>$$A \cdot (\overline{A} + B) = A \cdot B$$</p>
+<ul>
+<li>包含律<br>
+$$A \cdot B + \overline{A} \cdot C + B \cdot C = A \cdot B + \overline{A} \cdot C$$</li>
+</ul>
+<p>$$(A + B) \cdot (\overline{A} + C) \cdot (B + C) = (A + B) \cdot (\overline{A} + C)$$</p>
+<ul>
+<li>尾部变换<br>
+$$A \cdot \overline{B} = A \cdot \overline{A \cdot B}$$</li>
+</ul>
+<p>$$A \cdot \overline{A \cdot B} = A \cdot (\overline{A} + \overline{B}) = A \cdot \overline{A} + A \cdot \overline{B} = A \cdot \overline{B}$$</p>
+<p>常用的化简方法</p>
+<ol>
+<li>并项法$$AB+A\overline{B}=A$$</li>
+<li>吸收法$$A+AB=A$$</li>
+<li>消去法$$A+\overline{A}B=A+B$$</li>
+</ol>
+<p>$m_0$下标编号规则：原变量取1，反变量取0</p>
+<p>n变量的最小项有n个相邻项：<br>
+相邻项：只有一个变量不同，一对相邻项可以消去一个变量</p>
+<h3 id="卡诺图">卡诺图</h3>
+<p>卡诺图表示按照格雷码（任意两个相邻的编码，仅有 1 位二进制数不同）进行标识，使得相邻变量的组合中只有一个变量不同。<br>
+卡诺图排列顺序：00-&gt;01-&gt;11-&gt;10</p>
+<h4 id="卡诺图的绘制：">卡诺图的绘制：</h4>
+<ul>
+<li>最小项在方格中填1</li>
+<li>最大项在方格中填0</li>
+</ul>
+<h4 id="卡诺图的化简">卡诺图的化简</h4>
+<p>卡诺圈内小方格数N必须是$2^n$，相邻两个小方格中只有一个变量不同，可以合并为一项，消去一个互非的变量。</p>
+<ol>
+<li>卡诺圈<strong>越大越好</strong></li>
+<li>卡诺圈<strong>越少越好</strong></li>
+<li>每一个卡诺圈都<strong>要有新的成分</strong></li>
+<li><strong>先圈大圈，后圈小圈</strong></li>
+</ol>
+<h2 id="基本逻辑门电路">基本逻辑门电路</h2>
+<div class="note note-info">
+            <p>刚开始学习<strong>基本逻辑门电路</strong>的时候会有点疑惑：为什么这里的电路与高中的电路如此不同，<strong>不是闭合的电路</strong>，<strong>没有了电源正负极符号</strong>，取而代之的是一个个冰冷的出入线头？</p>
+          </div>
+<p>事实上，这与我们学习的目标有关！</p>
+<ul>
+<li>高中物理电路更关注的是<strong>能量的流动和转换</strong>。通过<strong>欧姆定律</strong>研究电压、电流、电阻之间的关系。因此需要画出完整的回路，包括电源、负载和导线。</li>
+<li>而数字逻辑门电路在高中的基础上更进一步，关注的是<strong>信息的处理和传递</strong>。为了简洁只画核心的 “<strong>信号输入 / 输出部分</strong>”，不关心电流具体多少，只关心 “输入 / 输出电压<strong>对应逻辑 0 还是 1</strong>”（高电平还是低电平）</li>
+</ul>
+<div class="note note-danger">
+            <p>高电平和低电平都是一种状态，一种状态<strong>对应一个范围值</strong>，而不是一个固定值</p>
+          </div>
+<h3 id="三极管">三极管</h3>
+<p>（NPN，PNP）</p>
+<ul>
+<li>集电极</li>
+<li>发射极</li>
+<li>基极<br>
+相当于一个开关，当<strong>给基极接入电源</strong>（支路）$&gt;0.7V$，晶体管接通（相当于闭合的开关），电路处于<strong>导通</strong>状态，先是遵循$i_C=\beta{i_B}$的线性变化，增加到一定值不在增加，由<strong>放大状态进入饱和状态</strong>。<br>
+进入饱和状态的主路压降很低（硅管$\approx0.3V$）</li>
+</ul>
+
+    <div class="fold">
+      <div class="fold-title fold-into collapsed" data-toggle="collapse" href="#collapse-3734f6ee" role="button" aria-expanded="false" aria-controls="collapse-3734f6ee">
+        <div class="fold-arrow">▶</div>为何要多此一举？制作一个控制开关的开关？
+      </div>
+      <div class="fold-collapse collapse" id="collapse-3734f6ee">
+        <div class="fold-content">
+          <p>相当于一个放大器，可以使用<strong>小电流控制大电流</strong></p>
+        </div>
+      </div>
+    </div>
+<h3 id="MOS管">MOS管</h3>
+<ul>
+<li>栅极（G极）</li>
+<li>源极（S极）</li>
+<li>漏极（D极）<br>
+与三极管类似，相当于一个开关，给<strong>栅极加上电压</strong>，D极和S极会<strong>形成通路</strong>。</li>
+</ul>
+
+    <div class="fold">
+      <div class="fold-title fold-into collapsed" data-toggle="collapse" href="#collapse-a8d25186" role="button" aria-expanded="false" aria-controls="collapse-a8d25186">
+        <div class="fold-arrow">▶</div>都是用通过第三方控制主电路的开关，三极管和MOS管有什么区别呢？
+      </div>
+      <div class="fold-collapse collapse" id="collapse-a8d25186">
+        <div class="fold-content">
+          <ul><li>显然，三极管通过电流控制，而MOS管通过电压控制。由于MOS管的<strong>绝缘层</strong>导致电阻极大（上亿欧姆），支路电流很小几乎为零，耗电很少；而三极管基极要<strong>持续提供电流</strong>，耗电相对较大。</li></ul>
+        </div>
+      </div>
+    </div>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Digital Circuits and Logic Design</div>
+      <div>http://example.com/2025/09/04/Review/Digital-Circuits-and-Logic-Design/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Li Qinxuan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 4, 2025</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Updated on</div>
+          <div>September 16, 2025</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/09/10/Leetcode-Collection/Leetcode-Mistake-Collection-2/" title="Leetcode Mistake Collection 2">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Leetcode Mistake Collection 2</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/04/Review/Probability-Theory/" title="Probability Theory">
+                        <span class="hidden-mobile">Probability Theory</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"OGCRi4cotr0KPl7RSThRHEBJ-gzGzoHsz","appKey":"fYsoDcUYqzS4whhS2JzSEcBG","path":"window.location.pathname","placeholder":"欢迎留言~（支持 Markdown）","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://ogcri4co.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
