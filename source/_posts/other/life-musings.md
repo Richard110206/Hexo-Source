@@ -279,7 +279,7 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
   - 大物（线上）：气体分子不同温度下速率分布
   - 毛中特：毛泽东思想 && 毛泽东“的”思想 毛泽东思想的历史地位、活的灵魂
 - 9.10
-  - CSP:课程简介，须刷leetcode，课设项目
+  - CSP：课程简介，须刷leetcode，课设项目
 - 9.11
   - 数电：卡诺图化简
   - 概率论：二项分布，伯努利实验、
@@ -287,7 +287,7 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
   - 毛中特：“半殖民地”、“半封建”的价值评判
 - 9.12
   - 大物：热学章节 等压等容等温变化
-  - leetcode 每日一题：再涉动态规划，对状态转移方程有点感觉了
+  - leetcode：每日一题，再涉动态规划，对状态转移方程有点感觉了
   - 博客：mac/windows 切换更新出 bug 似乎是mac的gitignore全局配置文件，导致无法部署（标签无法识别），无奈进行回滚，git果然还得是在慢慢debug的时候才能“精通”
 - 9.13
   - 四史：87 顺利通过，主要是第几次会议混淆记不清楚
@@ -303,3 +303,21 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
   - 概率论：随机变量密度函数、分布函数
   - 博客：完善笔记，修改之前博客中latex公式错误
 - 9.16
+  - 大物：等温、等容、等压、绝热情况下的内能、做功变化
+  - 毛中特：国民党反动派是否反封建？
+  - leetcode：[每日一题](https://leetcode.cn/problems/replace-non-coprime-numbers-in-array?envType=daily-question&envId=2025-09-16) hard 望而却步，实际上也较为简单，莫有畏难情绪啊！
+  - 博客：更新C++17新特性（GCD、LCM）
+- 9.17
+  - CSP：复习二叉树数据结构
+  - 物理实验：光的衍射，被手贱的自己背刺了，单缝做完了才发现接线没接紧，接触不良，我说怎么读数这么奇怪，跳来跳去的，还以为是我自己手抖的问题嘞，第一次实验超时才完成！:cry:
+- 9.18
+  - 数电：TTL、OC、三态听不懂哩，不学模电，电子元件都看不懂学个damn
+  - 概率论：正态分布
+  - leetcode：[每日一题](https://leetcode.cn/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps?envType=daily-question&envId=2025-09-18)用c写不直接似了:grinning:
+  - 毛中特：新民主主义革命 九 · 一八  勿忘国耻 “是侵略者耻还是被侵略者耻辱”
+- 9.19
+  - 大物：卡诺循环
+  - 物理实验：光的偏振特性研究
+- 9.20
+  - 完成数电慕课作业
+  - 想给hexo博客添加一个建立网站的，结果发现插件无法下载，似乎只能手搓html文件

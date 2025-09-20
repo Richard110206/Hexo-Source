@@ -83,3 +83,18 @@ $$\overline{Z}=\sqrt{2} \pi d^2 \overline{\nu} n$$
 
 #### 平均自由程
 $$\overline{\lambda} = \frac{\overline{v}}{\overline{Z}} = \frac{1}{\sqrt{2} \pi d^2 n}$$
+
+
+| 过程   | 特征| 过程方程  | 吸放热量 | 对外做功 | 内能增量 |
+| ------ | ---------- | -------------- | -------------- | --------- | --------------- |
+| 等容  | $V=$常量| $\frac{p}{T}=$常量                | $\frac{m}{M}C_v(T_2 - T_1)$ <br>$\frac{m}{M}\frac{i}{2}R(T_2 - T_1)$ |$0$| $\frac{m}{M}\frac{i}{2}R(T_2 - T_1)$ |
+| 等压   |$p=$常量| $\frac{V}{T}=$常量 | $\frac{m}{M}C_p(T_2 - T_1)$ <br> $\frac{m}{M}\frac{i + 2}{2}R(T_2 - T_1)$ | $p(V_2 - V_1)$ <br> $\frac{m}{M}R(T_2 - T_1)$  | $\frac{m}{M}\frac{i}{2}R(T_2 - T_1)$ |
+| 等温   |$T=$常量| $pV=$常量 | $\frac{m}{M}RT\ln\frac{V_2}{V_1}$ <br> $\frac{m}{M}RT\ln\frac{P_1}{P_2}$   | $\frac{m}{M}RT\ln\frac{V_2}{V_1}$ <br> $\frac{m}{M}RT\ln\frac{P_1}{P_2}$ | $0$ |
+| 绝热   |$Q=0$|$pV^\gamma=$常量 <br> $V^{\gamma - 1}T=$常量 <br> $p^{\gamma - 1}T^{-\gamma}=$常量 |$0$|$-\frac{m}{M}\frac{i}{2}R(T_2 - T_1)$ | $\frac{m}{M}\frac{i}{2}R(T_2 - T_1)$ |
+
+
+$C_{v,m}$ 1mol气体在体积不变的情况下，温度改变1k所吸收或者放出的热量
+
+$C_{p,m}=C_{v,m}+R$ 1mol气体升高1k，在等压过程中比等容过程多吸收8.31J能量
+
+$C_{p,m}=\frac{i}{2}R+R$

@@ -203,3 +203,64 @@ int main() {
 }
 ```
 
+### 最大公约数、最小公倍数
+C++17 新增了 `<numeric>` 头文件，其中包含了 `gcd` 和 `lcm` 函数，用于计算最大公约数和最小公倍数。
+
+- `gcd`：计算**最大公约数**
+- `lcm`：计算**最小公倍数**
+```cpp
+#include <iostream>
+#include <numeric>
+using namespace std;
+int main() {
+	int a = 8, b = 12;
+	int g = gcd(a, b);
+	int l = lcm(a, b);
+	cout << g << endl;
+	cout << l << endl;
+	return 0;
+}
+```
+```
+4
+24
+```
+这里考虑到CSP考试中可能只支持C++11，这里再进行一次手动实现：
+#### 最大公约数从大到小循环
+```cpp
+int gcd(int a, int b) {
+    for (int i = min(a, b); i >= 1; i--) { 
+        if (a % i == 0 && b % i == 0) {
+            return i;  
+        }
+    }
+    return 1;  
+```
+#### 最大公约数欧几里得算法（辗转相除法）
+- **迭代**实现
+```cpp
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+```
+- **递归**实现
+```cpp
+int gcd(int a, int b) {
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+```
+#### 最小公倍数
+通常求得最大公约数后通过**公式**实现：
+$$ LCM(a, b) = \frac{(a × b)}{GCD(a, b)}$$
+```cpp
+int lcm(int a, int b) {
+    return (a / gcd(a, b)) * b;
+}
+```

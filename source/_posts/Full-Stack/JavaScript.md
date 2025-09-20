@@ -3,7 +3,7 @@ title: JavaScript Tutorial
 date: 2025-09-01 21:23:14
 index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/JavaScript.png?raw=true
 tags: [JavaScript]
-category: Full-Stack
+category: Full Stack
 category_bar: true
 description: Mastering the basic syntax of JavaScript, laying the groundwork for subsequent Node.js backend development!
 ---
