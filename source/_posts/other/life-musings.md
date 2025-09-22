@@ -313,7 +313,7 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
 - 9.18
   - 数电：TTL、OC、三态听不懂哩，不学模电，电子元件都看不懂学个damn
   - 概率论：正态分布
-  - leetcode：[每日一题](https://leetcode.cn/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps?envType=daily-question&envId=2025-09-18)用c写不直接似了:grinning:
+  - leetcode：[每日一题](https://leetcode.cn/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps?envType=daily-question&envId=2025-09-18) 用c写不直接似了:grinning:
   - 毛中特：新民主主义革命 九 · 一八  勿忘国耻 “是侵略者耻还是被侵略者耻辱”
 - 9.19
   - 大物：卡诺循环
@@ -321,3 +321,15 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
 - 9.20
   - 完成数电慕课作业
   - 想给hexo博客添加一个建立网站的，结果发现插件无法下载，似乎只能手搓html文件
+  - 依然配环境一下午:cry: Qt启动！
+- 9.21
+  -  下午配置CMake环境，完成CMake学习和博客撰写
+  ![Mac配置CMake环境](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/CMake-Environment.png?raw=true)
+  - 物理实验报告预习
+- 9.22
+  - 数电：组合逻辑电路
+  - 物理实验：数字电表改装（接线多，但教程清楚）
+  - 概率论：二维随机变量
+  - 网球：依然下雨:grinning:唯一天气好的那节课被用来讲故事了:grinning:
+  - leetcode：每日一题第一次尝试写题解
+  - 完成积极分子思想汇报
