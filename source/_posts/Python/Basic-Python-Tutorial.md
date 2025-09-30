@@ -2,12 +2,14 @@
 title: Basic Python Tutorial
 date: 2025-09-13 10:45:52
 tags:
+category: Python
+category_bar: true
 archive: true
 ---
 最近决心入门Python，之前仅仅高中的底子显然不够看，遂再来进行学习！
 
-## 数据结构
-### 列表
+## 一、数据结构
+### （一）列表
 可以存储**任意类型**的数据，**动态改变大小**，类似于CPP中的`vector`，用方括号`[]`表示，元素之间用逗号隔开。
 
 ```python
@@ -39,14 +41,14 @@ del my_list[0]
 ```
 
 
-### 元组
+### （二）元组
 元组与列表类似，但是元组是**不可变的**，用圆括号`()`表示，元素之间用逗号隔开。
 ```python
 my_tuple=(1,1.2,'hello')
 ```
 
 
-### 字典
+### （三）字典
 字典`dict`，字典中的元素是**键值对**，类似与CPP中的`unordered_map`，用花括号`{}`表示，键-值对之间用**冒号**分隔，元素之间用**逗号**分隔
 ```python
 my_dict={'name':'richard','age':18,'city':'Nanjing'}
@@ -56,7 +58,7 @@ print(my_dict['city']) # 输出键为'city'的值：Nanjing
 ```
 
 
-### 集合
+### （四）集合
 集合`set`，集合中的元素是**不重复且无序**的，用花括号`{}`表示，元素之间用逗号隔开。
 ```python
 my_set={1,2,3,4,5,5,5}
@@ -71,12 +73,12 @@ my_set.add(6)
 ```python
 my_set.remove(1)
 ```
-### 字符串
+### （五）字符串
 字符串`str`，用引号`''`或`""`表示，引号中的内容就是字符串的内容。
 ```python
 my_string='hello world'
 ```
-## 序列
+## 二、序列
 序列可以帮助我们方便的存储和访问多个元素：
 ### 索引(index)
 索引`index`，索引用于访问序列中的元素，索引从0开始。
@@ -90,7 +92,7 @@ print(my_string[-1]) # 输出最后一个字符：d
 ### 切片(slice)
 获取序列中的子序列，用**冒号**分隔，**左闭右开**，通用格式为：
 
-$$[start:end]、[start:end:step]$$
+$$[start:end] 、 [start: end:step]$$
 - **start**表示起始索引，默认为0
 - **end**表示结束索引，默认为序列长度
 - **step**表示**步长**，默认为1
@@ -141,7 +143,7 @@ my_list=[3,1,5,2,4]
 my_list.sort()
 print(my_list) # 输出排序后的列表：[1, 2, 3, 4, 5]
 ```
-## 程序控制语句
+## 三、程序控制语句
 ### 条件语句
 ```python
 if condition:

@@ -26,5 +26,16 @@ Error: Spawn failed
 
 在CSDN找到相应问题文档，才成功解决！[git报错ssh: connect to host github.com port 22: Connection timed out](https://blog.csdn.net/nightwishh/article/details/99647545?fromshare=blogdetail&sharetype=blogdetail&sharerId=99647545&sharerefer=PC&sharesource=m0_53058983&sharefrom=from_link)
 
+&emsp;&emsp;一直想购置服务器玩玩，正巧项目队需要搭建电商软件平台，又看到百度云服务器1折优惠，遂火速入手，虽与想象计划中的高性能服务器天差地别，但是还是满足了一个小心愿，第一次连上服务器的激动溢于言表！
+
+### Mac连接
+直接在终端输入以下命令：
+```bash
+ssh +ip地址
+```
+
+### Windows连接
+安装MobaXterm进行连接
+
 ## HTTPS
 ## SSH

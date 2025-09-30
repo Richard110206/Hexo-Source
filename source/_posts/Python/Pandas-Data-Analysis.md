@@ -17,7 +17,7 @@ pip install pandas
 {%endfold%}
 {%endnote%}
 
-### Series对象
+### 一、Series对象
 Series对象是pandas中可**存储多种类型的一维数组**，由**数据**与**索引**组成。
 #### 默认索引为0
 ```python
@@ -74,7 +74,7 @@ Index(['a', 'b', 'c', 'd', 'e'], dtype='object')
 ```
 ***
 
-### DataFrame对象
+### 二、DataFrame对象
 ```python
 pandas.DataFrame(data,index,columns)
 # 分别对应数据 行索引 列索引
@@ -107,7 +107,7 @@ print(df)
 2  120  145  135  24-3班
 ```
 
-## 导入外部数据
+## 三、导入外部数据
 ### 导入 .xls 和 .xlsx 文件
 ```python
 pandas.read_excel(file_path,sheet_name)
@@ -167,8 +167,8 @@ print(df.tail())
 ```
 - `usecols=['孕妇代码','年龄']` 导入**指定列名**的数据
 
-## 数据清洗
-### 缺失值处理
+## 四、数据清洗
+### （一）缺失值处理
 #### 查找缺失值
 ```python
 import pandas as pd
@@ -264,7 +264,7 @@ print(df)
 {%endfold%}
 ***
 #### 填充缺失值
-### 重复值处理
+### （二）重复值处理
 #### 判断重复值
 `duplicated()`方法可以判断数据是否重复，若没有传入参数，则默认会按照所有列的组合来判断重复值，即如果两行的所有列的值完全相同，则判定为重复行，返回 True
 
@@ -343,7 +343,7 @@ df=df.drop_duplicates('孕妇代码',keep='last')
 ```
 {%endfold%}
 
-### 异常值处理
+### （三）异常值处理
 #### 箱型线法
 箱型线法是基于数据的**四分位数**构建 “箱体” 和 “须”，通过设定合理范围识别异常值，超过**设定的上限或下限**都可以被认定为异常值，具有**不依赖数据分布**、**对极端值鲁棒**的特点。
 ```python
