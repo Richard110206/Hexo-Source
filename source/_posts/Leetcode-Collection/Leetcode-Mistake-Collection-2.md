@@ -274,3 +274,93 @@ public:
     }
 };
 ```
+
+## Leetcode 739.每日温度
+[原题链接](https://leetcode.cn/problems/daily-temperatures)
+{%fold into @Time Error Version :x: %}
+双重循环暴力搜索时间复杂度为$O(n^2)$，会超时。
+```cpp
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n=temperatures.size();
+        vector<int> ans;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                if(temperatures[i]<temperatures[j]){
+                    ans.push_back(j-i);
+                    break;
+                }
+                if(j==n-1){
+                ans.push_back(0);
+                }
+            }
+        }
+        ans.push_back(0);
+        return ans;
+    }
+};
+```
+{%endfold%}
+### 方法一：暴力 2.0
+&emsp;&emsp;考虑到正向暴力解法中，每个天数都需要**遍历其后面的所有数字**，时间复杂度过高；而题给温度在$[30,100]$范围内，我们不妨维护一个数组`posttem`初始化为`INT_MAX`，对数组从后向前遍历，在遍历过程中更新**每个温度出现的最早索引**。
+
+&emsp;&emsp;反向遍历温度列表。对于每个元素`temperatures[i]`，在数组`posttem`中找到从`temperatures[i] + 1`到`100`中每个温度第一次出现的下标，将其中的最小下标记为`warmer`，则`warmer`为下一次温度比当天高的下标。如果`warmer`不为无穷大，则`warmer - i`即为下一次温度比当天高的等待天数，最后更新令`posttem[temperatures[i]] = i`。
+
+```cpp
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n=temperatures.size();
+        vector <int> posttem(101,INT_MAX);
+        vector <int> ans(n);
+        for(int i=n-1;i>=0;i--){
+            int warmer=INT_MAX;
+            for(int j=temperatures[i]+1;j<=100;j++){
+                warmer=min(warmer,posttem[j]);
+            }
+            if(warmer!=INT_MAX){
+                ans[i]=warmer-i;
+            }
+            posttem[temperatures[i]]=i;
+        }
+        return ans;
+    }
+};
+```
+### 方法二：单调栈 
+```cpp
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n=temperatures.size();
+        stack <int> st;
+        vector <int> ans(n);
+        for(int i=0;i<n;i++){
+            while(!st.empty()&&temperatures[i]>temperatures[st.top()]){
+                int pre=st.top();
+                ans[pre]=i-pre;
+                st.pop();
+            }
+            st.push(i);
+        }
+        return ans;
+    }
+};
+```
+
+### 补充：单调栈
+
+{%note info%}
+&emsp;&emsp;单调栈是一种在普通栈的基础上增加了 “**维护单调性**” 的核心规则的**特殊栈结构**——在元素入栈时，通过弹出栈顶不满足单调性的元素，**确保栈内元素始终有序**。
+{%endnote%}
+
+&emsp;&emsp;例如，在本题中，我们需要找到每个元素的下一个更大元素，即对于每个元素`temperatures[i]`，找到第一个比它大的元素`temperatures[j]`，其中`i < j`。我们维护一个**存储下标的单调栈**，从栈底到栈顶的下标对应的温度列表中的温度依次递减。如果一个下标在单调栈里，则表示尚未找到下一次温度更高的下标。正向遍历温度列表：
+
+- 对于每个元素`temperatures[i]`，如果栈为空，则直接将`i`进栈，
+- 如果栈不为空，则比较栈顶元素`pre`对应的温度`temperatures[pre]`和当前温度`temperatures[i]`，
+   
+   - 如果`temperatures[i]>temperatures[pre]`，则将`pre`移除，并将`pre`对应的等待天数赋为`i - pre`，重复上述操作直到栈为空或者栈顶元素对应的温度大于等于当前温度，然后将`i`进栈。
+
+#### 适用场景：
+- 寻找每个元素的 **“下一个更小/大元素”** [LeetCode 42.接雨水](https://leetcode.cn/problems/trapping-rain-water)

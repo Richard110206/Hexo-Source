@@ -1,8 +1,11 @@
 ---
-title: From Server Purchase to Website Launch
+title: ICP Filing
 date: 2025-09-27 11:33:27
-tags:
-archive: true
+tags: [Server, Website Launch,ICP filing]
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/ICP%20filing.png?raw=true
+category: Tutorial
+category_bar: true
+description: This article details the entire process from purchasing a server to successfully completing the filing, including server selection, domain name purchase, filing procedures, and precautions.
 ---
 
 
@@ -20,8 +23,14 @@ archive: true
 2. 在域名注册商处**域名实名认证**，过程很快，但系统进行**数据同步**需要差不多两个工作日
 3. **发起 ICP 备案**（主体 + 域名 + 服务器绑定）：此过程最为繁琐，在服务器提供商的备案系统操作（约一个工作日），需要上传域名证书、打印并签署互联网信息服务负责人责任告知书、互联网信息服务负责人真实性承诺书
 4. 收到短信 24h 内进行 “**短信核验**”
-5. 收到备案号 30天 内进行**公安备案**
+5. 收到备案号 30天 内进行**公安备案**（月两个工作日）
 
+在**页脚版权处**添加公安备案编号图案及公安备案号和ICP备案号，如下所示：
+```text
+© 2025 农粮运输装置竞赛展示平台|
+  <img src="http://sighingfield.tech/wp-content/uploads/2025/10/备案图标.png" alt="备案图标" style="width: 16px;height: 16px;vertical-align: middle;margin-right: 4px" /> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32010402002278" rel="noreferrer" target="_blank">苏公网安备32010402002278号</a>
+ <a href="https://beian.miit.gov.cn/">苏ICP备2025210964号-1 </a>
+ ```
 {%note danger %}
 未成功备案获取备案号前，域名不可进行**解析**，进行网站部署！
 {%endnote%}

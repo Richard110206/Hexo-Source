@@ -345,6 +345,7 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
 - 9.26
   - 大物：机械振动
   - 折腾一周终于ICP备案成功，本想直接将公网ip进行替换，较为困难，遂重装系统1h全流程速通，并于23点成功上线！[农粮运输装置电商平台](http://sighingfield.tech/)，域名目前进入公安备案阶段！经过这一周的折腾，计划梳理一下思路，未来写一篇博客记录全流程！
+  ![网站首页展示](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/web%20showcase.png?raw=true)
 - 9.27
   - 进行`sighingfield.fun`域名备案，并提前上线！目前服务器已搭建两个网站，目前配置绰绰有余（一个占用10%左右内存）！
 - 9.28
@@ -358,3 +359,7 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
   - 机器学习入门
 - 10.1
   - leetcode：换瓶盖都要做不来了:cry:
+  - 有些 bug 出现的莫名其妙，解决的也莫名其妙，flowercloud 突然失效，正好快到期了就进行了续费，更新了clash verge，又更换节点之后又好了，这次似乎还修复了开着代理关机后网络无法连接的问题，好评！
+- 10.2
+  - 今天才发现 .tech 的公安部备案通过了，效率相当之高（约莫两个工作日），遂在网页进行添加，并且为 .fun 进行公安部备案！
+  - 这是出 Sora2，开始自立门户了嘛，不集成在ChatGPT里面了。
