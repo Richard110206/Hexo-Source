@@ -370,14 +370,12 @@ public:
 ### 题目描述
 给定 $n$ 个整数 $ a_1, a_2, \cdots, a_n $，求它们两两相乘再相加的和，即
 $S = a_1 \cdot a_2 + a_1 \cdot a_3 + \cdots + a_1 \cdot a_n + a_2 \cdot a_3 + a_2 \cdot a_4 + \cdots + a_2 \cdot a_n + \cdots + a_{n - 2} \cdot a_{n - 1} + a_{n - 2} \cdot a_n + a_{n - 1} \cdot a_n$
-
 ### 输入
 
 输入的第一行包含一个整数 $n$。
 第二行包含 $n$ 个整数 $ a_1, a_2, \cdots, a_n $。
 
 ### 输出
-
 输出一个整数 $S$，表示所求的和。请使用合适的数据类型进行运算。
 
 ### 样例输入
@@ -391,57 +389,110 @@ $S = a_1 \cdot a_2 + a_1 \cdot a_3 + \cdots + a_1 \cdot a_n + a_2 \cdot a_3 + a_
 ```
 {%endfold%}
 
-{%fold into@Wrong Version}
-
-直接使用两重循环暴力求解，显然会超时
-```cpp
-#include <iostream>
-#include <vector>
-#include <cmath>
-using namespace std;
-int main(){
-    int n;
-    cin>>n;
-    long long sum=0;
-    vector<int> vec;
-    for(int i=0;i<n;i++) {
-        int a;
-        cin>>a;
-        vec.push_back(a);
-    }
-    for (int i=0;i<n;i++) {
-        for (int j=i+1;j<n;j++) {
-            sum+=vec[i]*vec[j];
-        }
-    }
-    cout<<sum;
-    return 0;
-}
-```
-{%endfold%}
-
 #### 利用数学公式进行优化
 $(a_1 + a_2 + \cdots + a_n)^2 $
 $= a_1^2 + a_2^2 + \cdots + a_n^2 + 2\left(a_1a_2 + a_1a_3 + \cdots + a_{n-1}a_n\right)$
+
+
+## Leetcode 209. 长度最小的子数组
+[原题链接](https://leetcode.cn/problems/minimum-size-subarray-sum)
+
+### 方法一：前缀和+二分查找
+
+&emsp;&emsp;我们额外创建一个数组 `sums` 用于存储数组 `nums` 的前缀和，其中 `sums[i]` 表示从 `nums[0]` 到 `nums[i−1]` 的元素和。得到前缀和之后，对于每个开始下标 `i`，可通过二分查找得到大于或等于 `i` 的最小下标 `bound`，使得 `sums[bound]−sums[i−1]≥s`，并更新子数组的最小长度（此时子数组的长度是 `bound−(i−1)`）。
+
+{%note danger%}
+因为这道题保证了数组中每个元素都为正，所以**前缀和一定是递增的**，这一点保证了二分的正确性。如果题目没有说明数组中每个元素都为正，这里就不能使用二分来查找这个位置了。
+{%endnote%}
+
 ```cpp
-#include <iostream>
-#include <vector>
-#include <cmath>
-using namespace std;
-int main(){
-    int n;
-    cin>>n;
-    vector<int> vec;
-    long long sum=0;
-    long long squ=0;
-    for(int i=0;i<n;i++){
-        int a;
-        cin>>a;
-        sum+=a;
-        squ+=pow(a,2);
-        vec.push_back(a);
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int n=nums.size();
+        int ans=INT_MAX;
+        vector<int> sums(n+1);
+        for(int i=1;i<n+1;i++){
+            sums[i]=nums[i-1]+sums[i-1];
+        }
+        for(int i=1;i<n+1;i++){
+        int search=target+sums[i-1];
+        auto bound=lower_bound(sums.begin(),sums.end(),search);
+        if(bound!=sums.end()){
+            ans=min(ans,static_cast<int>((bound - sums.begin()) - (i - 1)));
+           }
+        }
+        return ans==INT_MAX?0:ans;
     }
-    cout<<(pow(sum,2)-squ)/2<<endl;
-    return 0;
-}
+};
+```
+#### 函数
+`lower_bound`函数是`<algorithm>`头文件中的一个函数，用于在**有序数组**中查找（**二分查找**）第一个**大于等于**指定值的元素的迭代器。
+- 找到第一个**大于等于**目标值 `search` 的元素的位置（迭代器）。
+- 如果序列中所有元素都小于 `search`，则返回**末尾迭代器**（如 sums.end()）
+
+`lower_bound(first, last, value)`
+- first：序列的**起始迭代器**
+- last：序列的**结束迭代器**
+- value：要查找的**目标值**
+
+相关的同源函数：
+- `upper_bound` **大于（无等于）目标值**的第一个元素的迭代器
+- `equal_bound` **等于目标值**的第一个元素的迭代器
+
+若是降序排列的则需要**手动传入比较器**：
+```cpp
+// 降序序列中查找
+auto it = lower_bound(begin, end, value, greater<int>());
+```
+
+### 补充：前缀和
+&emsp;&emsp;前缀和指的是数组中从第一个元素到当前元素之间所有元素的累加和。具体来说，给定一个数组`nums`，它的前缀和数组`prefix`定义为：`prefix[i]=nums[0]+nums[1]+…+nums[i-1]`，通过前缀和我们可以轻松计算任意连续子区间的和，如`prefix[i]-prefix[j]`。
+{%fold into@前缀和练习%}
+[原题链接](https://leetcode.cn/problems/taking-maximum-energy-from-the-mystic-dungeon?envType=daily-question&envId=2025-10-10)
+
+由于末尾的`n-k`为循环终点，必会被取到，因而采用逆序遍历的“前缀和”
+```cpp
+class Solution {
+public:
+    int maximumEnergy(vector<int>& energy, int k) {
+        int n=energy.size(),ans=INT_MIN;
+        int sum;
+        for(int i=n-k;i<n;i++){
+            sum=0;
+            for(int j=i;j>=0;j-=k){
+                sum+=energy[j];
+                ans=max(ans,sum);
+            }
+        }
+        return ans;
+    }
+};
+```
+{%endfold%}
+### 方法二：滑动窗口
+&emsp;&emsp;我们使用两个指针 `start` 和 `end` 表示当前子数组的开始位置和结束位置，`sum` 表示当前子数组的和。初始时，`start` 和 `end` 都指向数组的第一个元素，`sum` 为 0。
+- 当`sum < target`时，将 `end` 向后移动一位，`sum`加上`nums[end]`
+- 当`sum >= target`时，将 `start` 向后移动一位，`sum`减去`nums[start]`，并更新最短子数组
+&emsp;&emsp;
+```cpp
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int n=nums.size();
+        int start=0,end=0;
+        int sum=0;
+        int ans=INT_MAX;
+        while(end<n){
+            sum+=nums[end];
+            while(sum>=target){
+                ans=min(ans,end-start+1);
+                sum-=nums[start];
+                start++;
+            }
+            end++;
+        }
+        return ans==INT_MAX?0:ans;
+    }
+};
 ```
