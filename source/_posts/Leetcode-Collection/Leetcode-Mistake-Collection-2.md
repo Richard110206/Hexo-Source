@@ -364,3 +364,84 @@ public:
 
 #### 适用场景：
 - 寻找每个元素的 **“下一个更小/大元素”** [LeetCode 42.接雨水](https://leetcode.cn/problems/trapping-rain-water)
+
+
+{%fold into@十一集训预选赛 A 求和%}
+### 题目描述
+给定 $n$ 个整数 $ a_1, a_2, \cdots, a_n $，求它们两两相乘再相加的和，即
+$S = a_1 \cdot a_2 + a_1 \cdot a_3 + \cdots + a_1 \cdot a_n + a_2 \cdot a_3 + a_2 \cdot a_4 + \cdots + a_2 \cdot a_n + \cdots + a_{n - 2} \cdot a_{n - 1} + a_{n - 2} \cdot a_n + a_{n - 1} \cdot a_n$
+
+### 输入
+
+输入的第一行包含一个整数 $n$。
+第二行包含 $n$ 个整数 $ a_1, a_2, \cdots, a_n $。
+
+### 输出
+
+输出一个整数 $S$，表示所求的和。请使用合适的数据类型进行运算。
+
+### 样例输入
+```
+4
+1 3 6 9
+```
+### 样例输出
+```
+117
+```
+{%endfold%}
+
+{%fold into@Wrong Version}
+
+直接使用两重循环暴力求解，显然会超时
+```cpp
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    long long sum=0;
+    vector<int> vec;
+    for(int i=0;i<n;i++) {
+        int a;
+        cin>>a;
+        vec.push_back(a);
+    }
+    for (int i=0;i<n;i++) {
+        for (int j=i+1;j<n;j++) {
+            sum+=vec[i]*vec[j];
+        }
+    }
+    cout<<sum;
+    return 0;
+}
+```
+{%endfold%}
+
+#### 利用数学公式进行优化
+$(a_1 + a_2 + \cdots + a_n)^2 $
+$= a_1^2 + a_2^2 + \cdots + a_n^2 + 2\left(a_1a_2 + a_1a_3 + \cdots + a_{n-1}a_n\right)$
+```cpp
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int> vec;
+    long long sum=0;
+    long long squ=0;
+    for(int i=0;i<n;i++){
+        int a;
+        cin>>a;
+        sum+=a;
+        squ+=pow(a,2);
+        vec.push_back(a);
+    }
+    cout<<(pow(sum,2)-squ)/2<<endl;
+    return 0;
+}
+```
