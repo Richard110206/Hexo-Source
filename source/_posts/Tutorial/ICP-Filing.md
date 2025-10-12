@@ -79,3 +79,5 @@ description: This article details the entire process from purchasing a server to
 {%endfold%}
 
 在域名注册商控制台进行解析即可，解析到服务器IP地址，即可进行访问！
+
+为保障网络访问的安全性，可在域名注册商处签发SSL证书（2min），将网站升级为HTTPS协议，然后在1Panel面板手动导入`key``pem`文件！

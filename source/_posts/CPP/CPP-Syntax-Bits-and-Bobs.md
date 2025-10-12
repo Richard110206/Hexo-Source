@@ -264,4 +264,44 @@ int lcm(int a, int b) {
     return (a / gcd(a, b)) * b;
 }
 ```
-## (V)
+## map容器
+
+- `map`容器：内部**有序**（默认为升序）存储键值对
+```cpp
+map<int,int> ans;
+```
+手动转换为降序
+```cpp
+map<int,int,greater<int>> ans;
+```
+{%fold into@Leetcode 506.相对名次%}
+[原题链接](https://leetcode.cn/problems/relative-ranks?envType=problem-list-v2&envId=heap-priority-queue)
+```cpp
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& score) {
+        int n=score.size();
+        vector<string> ans(n);
+        map<int,int,greater<int>> order;
+        for(int i=0;i<n;i++){
+            order[score[i]]=i;
+        }
+        auto it=order.begin();
+        for(int i=0;i<n;i++){
+            if(i==0){
+                ans[(*it).second]="Gold Medal";
+            }
+            else if(i==1){
+                ans[(*it).second]="Silver Medal";
+            }
+            else if(i==2){
+                ans[(*it).second]="Bronze Medal";
+            }
+            else  ans[(*it).second]=to_string(i+1);
+            it++;
+        }
+        return ans;
+    }
+};
+```
+{%endfold%}
