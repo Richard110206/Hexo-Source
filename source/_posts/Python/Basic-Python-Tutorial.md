@@ -657,3 +657,98 @@ Enter the time in seconds: 4500
 01:14:57
 01:14:56
 ```
+{%fold into@什么时候使用 if__name__=="__main__": ？%}
+当我们在看一些开源项目时，经常能看到在结尾有一段“神秘代码”：
+```python
+if __name__ == "__main__":
+    main()
+```
+或许会疑惑：没有这个其他代码也可以正常执行，为什么要有这一段代码呢？那么不妨先让我们看看`__name__`输出是什么：
+```python
+if __name__=="__main__":
+    print(__name__)
+# 输出： __main__
+```
+当我们在其他文件中引用这个文件时：
+```python
+# test_1.py
+    print(__name__)
+```
+
+```python
+# main.py
+import test_1
+
+if __name__=="__main__":
+    print(__name__)
+# 输出： 
+# test_1
+# __main__
+```
+这说明`__name__`在不同的地方是不一样的，当我们在当前文件中运行时，`__name__`为`__main__`，而当我们在其他文件中引用时，`__name__`为包名和模块名（`__name__` 是 Python 解释器自带的「内置变量」（不需要我们手动定义」），它的作用是「标识当前模块的运行状态）。
+
+当我们导入一个模块时，可能我们只是想调用里面的函数，而不是运行模块中的代码。
+
+```python
+# calculator.py
+def add(a,b):
+    return a+b
+
+def sub(a,b):
+    return a-b
+
+print("This is a simple calculator")
+num1=int(input("Enter the first number: "))
+num2=int(input("Enter the second number: "))
+print(f"The sum of {num1} and {num2} is {add(num1,num2)}")
+print(f"The difference of {num1} and {num2} is {sub(num1,num2)}")
+```
+
+```python
+# program.py
+import calculator
+
+num1=10
+num2=20
+
+print("Using the calculator module")
+print(f"The sum of {num1} and {num2} is {calculator.add(num1,num2)}")
+print(f"The difference of {num1} and {num2} is {calculator.sub(num1,num2)}")
+```
+让我们看看结果何如：
+```text
+This is a simple calculator
+Enter the first number: 2
+Enter the second number: 2
+The sum of 2 and 2 is 4
+The difference of 2 and 2 is 0
+Using the calculator module
+The sum of 10 and 20 is 30
+The difference of 10 and 20 is -10
+```
+可以看到我们明明只想要调用`calculator`模块中的`add`和`sub`函数，但是程序中却执行了`calculator`模块中的所有代码，包括打印提示信息和获取用户输入。这时，`if __name__ == '__main__':`就起作用了！
+
+让我们对`calculator.py`稍作修改：
+```python
+def add(a,b):
+    return a+b
+
+def sub(a,b):
+    return a-b
+
+if __name__=="__main__":
+    print("This is a simple calculator")
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    print(f"The sum of {num1} and {num2} is {add(num1, num2)}")
+    print(f"The difference of {num1} and {num2} is {sub(num1, num2)}")
+```
+
+运行结果如下：
+```text
+Using the calculator module
+The sum of 10 and 20 is 30
+The difference of 10 and 20 is -10
+```
+
+{%endfold%}

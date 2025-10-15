@@ -86,7 +86,7 @@ $$\overline{\lambda} = \frac{\overline{v}}{\overline{Z}} = \frac{1}{\sqrt{2} \pi
 
 
 | 过程   | 特征| 过程方程  | 吸放热量 | 对外做功 | 内能增量 |
-| ------ | ---------- | -------------- | -------------- | --------- | --------------- |
+|:----------:|:----------:|:----------:|:----------:|:---------:|:----------:|
 | 等容  | $V=$常量| $\frac{p}{T}=$常量                | $\frac{m}{M}C_v(T_2 - T_1)$ <br>$\frac{m}{M}\frac{i}{2}R(T_2 - T_1)$ |$0$| $\frac{m}{M}\frac{i}{2}R(T_2 - T_1)$ |
 | 等压   |$p=$常量| $\frac{V}{T}=$常量 | $\frac{m}{M}C_p(T_2 - T_1)$ <br> $\frac{m}{M}\frac{i + 2}{2}R(T_2 - T_1)$ | $p(V_2 - V_1)$ <br> $\frac{m}{M}R(T_2 - T_1)$  | $\frac{m}{M}\frac{i}{2}R(T_2 - T_1)$ |
 | 等温   |$T=$常量| $pV=$常量 | $\frac{m}{M}RT\ln\frac{V_2}{V_1}$ <br> $\frac{m}{M}RT\ln\frac{P_1}{P_2}$   | $\frac{m}{M}RT\ln\frac{V_2}{V_1}$ <br> $\frac{m}{M}RT\ln\frac{P_1}{P_2}$ | $0$ |
@@ -98,3 +98,36 @@ $C_{v,m}$ 1mol气体在体积不变的情况下，温度改变1k所吸收或者�
 $C_{p,m}=C_{v,m}+R$ 1mol气体升高1k，在等压过程中比等容过程多吸收8.31J能量
 
 $C_{p,m}=\frac{i}{2}R+R$
+
+
+### 简谐振动
+线性回复力：物体所受到的合外力大小总是与物体离开平衡距离的位移大小成正比且大小相反（用于证明为简谐振动）
+
+$$\frac{d^2x}{dt} + \omega^2 x = 0$$
+
+有：
+
+$$\omega=\sqrt{\frac{k}{m}}$$
+（注意对弹簧“串并联”情况下的 $k$进行分析）
+### 简谐振动的能量
+总能量：
+
+$$E=\frac{1}{2}kA^2$$
+$$E = E_k + E_p = \frac{1}{2}mv^2 + \frac{1}{2}kx^2$$
+
+### 简谐振动的合成
+$$x_1=A_1cos(\omega t+ \phi_1)$$
+$$x_2=A_2cos(\omega t+ \phi_2)$$
+合位移为两个位移的代数和：（若题目中一个为$sin$需要化成$cos$的形式）
+$$x=x_1+x_2=A_1cos(\omega t+ \phi_1)+A_2cos(\omega t+ \phi_2)$$
+
+我们将其化为：
+$$x=Acos(\omega t+ \phi)$$
+
+计算出结果：
+$$A = \sqrt{A_1^2 + A_2^2 + 2A_1A_2 \cos(\phi_1 - \phi_2)}$$
+
+$$tan(\phi _0)=\frac{A_1sin(\phi_1)+A_2sin(\phi_2)}{A_1cos(\phi_1)+A_2cos(\phi_2)}$$
+
+若是求表达式，最后 $\phi _0$ 用反三角函数进行简化：
+$$\phi _0=arctan(tan(\phi _0))$$

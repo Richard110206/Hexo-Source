@@ -383,3 +383,17 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
   - 三创赛：根据文件完善网页的项目介绍板块
   - VPN：没招了，挂 VPN 大陆网站就无法访问了，我说怎么搞的WordPress这么慢，这还要来回切换崩溃了要
 - 10.12
+  - 完成第一个简单的爬虫项目
+  - 重写了 Python 入门教程，计划明天补充 OOP 的内容
+- 10.13
+  - 数电：比较器
+  - 概率论：方差
+  - 网球：依然下雨 :cloud_with_rain:
+  - 发现 win 自带截图快捷键失效，`Fn`+`win`进行解锁（疑似是切换为 mac 模式）意外收获：QQ登录情况下`CTRL`+`ALT`+`A`实现截图
+  - `markdown`不支持单元格合并，好在支持行内HTML，通过`div`容器实现自适应和滑动条效果
+```html
+    div {
+            width: 100%;
+            overflow: auto;
+        }
+ ```

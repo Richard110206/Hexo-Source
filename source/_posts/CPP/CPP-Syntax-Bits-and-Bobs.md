@@ -305,3 +305,34 @@ public:
 };
 ```
 {%endfold%}
+
+### 排序字符串
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+int main() {
+	string str = "badfikhfgoia";
+	sort(str.begin(), str.end());
+	cout << str << endl;
+	return 0;
+}
+```
+判断两个字符串是否为字母异位词，效果与下面函数相同：
+```cpp
+ bool compare(string str1,string str2){
+        vector<int> freq(26);
+        for(char ch:str1){
+            freq[ch-'a']++;
+        }
+        for(char ch:str2){
+            freq[ch-'a']--;
+        }
+        for(int i=0;i<26;i++){
+            if(freq[i]!=0) return false;
+        }
+        return true;
+    }
+}
+```
