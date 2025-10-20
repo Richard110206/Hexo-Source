@@ -752,3 +752,141 @@ The difference of 10 and 20 is -10
 ```
 
 {%endfold%}
+
+### Class Variables
+```python
+class Car:
+    def __init__(self,model,year,color,for_sale):
+        # 相当于c++中的构造函数
+        # 当我们实例化一个对象时，这段代码总会运行
+        self.model=model
+        self.year=year
+        self.color=color
+        self.for_sale=for_sale
+
+
+car1=Car("Mustang",2024,"red",False)
+car2=Car("Corvette",2025,"blue",True)
+
+print(car1.model)
+print(car1.year)
+print(car1.color)
+print(car1.for_sale)
+```
+
+我们还可以将类单独放在一个文件中，使用模块化的方法导入到主程序中：
+```python
+class Car:
+
+    cars_owner="Richard"
+    cars_num=0
+    # 所有成员共有的成员变量 
+    # 被所有创造的实例所共享
+    # 可以通过类名或者对象名来访问
+    # Car.cars_owner 或者 car1.cars_owner 前者更加推荐
+    def __init__(self,model,year,color,for_sale):
+        self.model=model
+        self.year=year
+        self.color=color
+        self.for_sale=for_sale
+        Car.cars_num+=1
+```
+
+```python
+# main.py
+from car import Car
+
+car1=Car("Mustang",2024,"red",False)
+car2=Car("Corvette",2025,"blue",True)
+
+print(Car.cars_num)
+```
+
+### Inheritance
+```python
+class Animal:
+    def __init__(self,name):
+        self.name=name
+        self.is_alive=True
+
+    def eat(self):
+        print(f"{self.name} is eating!")
+
+    def sleep(self):
+        print(f"{self.name} is sleeping!")
+
+class Dog(Animal):
+    def speak(self):
+    print("WOOF!")
+
+class Cat(Animal):
+    def speak(self):
+        print("MEOW!")
+
+class Mouse(Animal):
+    print("SOUEEK!")
+
+dog=Dog("Scooby")
+cat=Cat("Garfield")
+mouse=Mouse("Mickey")
+
+print(dog.is_alive)
+```
+
+### Abstract
+```python
+from abc import ABC,abstractmethod
+
+class Vehicle(ABC):
+
+    @abstractmethod
+    def go(self):
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+class Car(Vehicle):
+
+    def go(self):
+        print("You drive the car")
+
+    def stop(self):
+        print("You stop the car")
+
+class Motorcycle(Vehicle):
+
+    def go(self):
+        print("You drive the motorcycle")
+
+    def stop(self):
+        print("You stop the motorcycle")
+
+car=Car()
+motorcycle=Motorcycle()
+```
+
+### SuperFunction
+```python
+class Shape:
+    def __init__(self,color,is_filled):
+        self.color=color
+        self.is_filled=is_filled
+
+    def describe(self):
+        print(f"It's {self.color} and {'filled' if self.is_filled else 'not filled'}.")
+
+class Circle(Shape):
+    def __init__(self,color,is_filled,radius):
+        super().__init__(color,is_filled)
+        # 调用父类的构造函数进行初始化属性
+        self.radius=radius
+
+    def describe(self):
+        super().describe()
+        print(f"It's a corcle with an area of {3.14*self.radius*self.radius} cm^2.")
+
+circle=Circle(color="red",is_filled=True,radius=5)
+circle.describe()
+```

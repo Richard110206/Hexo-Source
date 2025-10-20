@@ -397,3 +397,27 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
             overflow: auto;
         }
  ```
+- 10.14
+  - 跟着Bro Code学习 PyQt5
+  - 上传大物的笔记，才发现 $\cos$ 要打成`\cos`的形式，否则会被识别为其他字母
+- 10.15
+  - 根据昨天的PyQt5项目，完成笔记，并补充学习 OOP in Python
+  - 小米奖学金自己吓自己:smile:
+- 10.16
+  - 数电：时序电路
+  - 概率论：大数定律
+  - 继续 OOP in Python
+- 10.17
+  - 物理实验：迈克耳孙干涉仪，数据抄完走人了:grinning:
+  - 用 ollama 本地部署大模型，faspapi 进行调用
+  - 入门 docker
+- 10.18 
+  - 完成 ollama 部分的博客撰写
+  - 刷leetcode
+- 10.19
+  - leetcode 周赛，AI辅助下才极限AC三题
+  - 二级域名，仿佛发现新大陆
+- 10.20
+  - 数电：触发器
+  - 概率论：完成二、三章作业
+  - 完成`奖学金`部分知识库 demo

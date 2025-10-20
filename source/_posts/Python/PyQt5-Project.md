@@ -2,6 +2,7 @@
 title: PyQt5 Project
 date: 2025-10-15 15:37:27
 tags:
+archive: true
 ---
 
 &emsp;&emsp;经过过去一年的学习，踩过的无数的坑告诉我单单学习语法是远远不够的，看似知识点面面俱到，实则之间功能的使用难以串联起来，且一段时间后便会大幅遗忘，所以现在我打算以项目驱动的方式进行学习，在完成简单项目的过程中对代码进行梳理和学习！
@@ -9,10 +10,10 @@ tags:
 ##### This is my first trial,it's time for pyqt5,let's go!
 
 ## PyQt5
-后面我会先附上项目完整代码，再对代码进行逐行的梳理和解析！
+后面会先附上项目完整代码，再对代码进行**逐行的梳理和解析**！
 
 ### Labels
-Reference：[Python PyQt5 LABELS are easy! 🏷️](https://www.youtube.com/watch?v=nFLADhwXjW4)
+[Python PyQt5 LABELS are easy! 🏷️](https://www.youtube.com/watch?v=nFLADhwXjW4)
 ```python
 import sys
 from PyQt5.QtWidgets import QApplication,QMainWindow,QLabel
@@ -63,6 +64,7 @@ import sys
 ```
  导入`sys`模块，可以理解为这是 Python 与它自身运行环境以及操作系统之间的一个桥梁。
 
+{%note info%}
 #### 1.与命令行交互
 - `sys.argv` 是一个列表，包含了命令行参数。
   - `sys.argv[0]` 是脚本的名称。
@@ -127,7 +129,7 @@ elif str=='linux':
 else:
     print(f"这是在{str}上运行的程序")
 ```
-
+{%endnote%}
 ```python
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
 ```
@@ -150,7 +152,7 @@ from PyQt5.QtGui import QFont
 ```python
 class MainWindow(QMainWindow):
 ```
-定义`MainWindow`类，继承自`QMainWindow`，表示程序的主窗口。通过继承，我们可以复用QMainWindow的所有功能（如窗口大小调整、标题设置等），并添加自定义逻辑。
+定义`MainWindow`类，继承自`QMainWindow`，表示程序的主窗口。通过继承，我们可以复用`QMainWindow`的所有功能（如窗口大小调整、标题设置等），并添加自定义逻辑。
 ```python
     def __init__(self):
         super().__init__()
@@ -168,14 +170,14 @@ self.setGeometry(300, 300, 400, 300)
 ```
 `setGeometry(x, y, width, height)`：设置窗口的位置和大小。
 
-参数含义：
+**参数含义：**
 - `x` 和 `y` 分别表示窗口左上角相对于屏幕的坐标(坐标原点在屏幕左上角，向右为 x 轴正方向，向下为 y 轴正方向)
 - `width` 和 `height` 分别表示窗口的宽度和高度
 
 ```python
 label = QLabel("Hello", self)
 ```
-创建QLabel实例，显示文本，并指定父组件为self（即当前MainWindow窗口）。
+创建`QLabel`实例，显示文本，并指定父组件为`self`（即当前`MainWindow`窗口）。
 ```python
 label.setFont(QFont("Arial", 40))
 ```
@@ -258,8 +260,9 @@ label.setScaledContents(True)
 - `setScaledContents(bool)`：设置图像是否自适应标签大小。
   - `True`：图像会自动缩放以填满整个标签（可能改变宽高比）。
   - `False`（默认）：图像按原始大小显示，若超过标签尺寸则被截断。
+
 ### Layout
-Reference:[Python PyQt5 LAYOUT MANAGERS are easy! 🧲](https://www.youtube.com/watch?v=ml-mBl77h6Q)
+[Python PyQt5 LAYOUT MANAGERS are easy! 🧲](https://www.youtube.com/watch?v=ml-mBl77h6Q)
 ```python
 import sys
 from PyQt5.QtWidgets import (QApplication,QMainWindow,QLabel,QWidget,QVBoxLayout,QHBoxLayout,QGridLayout)
@@ -296,7 +299,7 @@ class MainWindow(QMainWindow):
 
         central_widget.setLayout(vbox)
         """
-
+        # 5 个标签垂直排列，宽度默认填满窗口，高度平均分配
         """
         hbox=QHBoxLayout()
 
@@ -308,6 +311,7 @@ class MainWindow(QMainWindow):
 
         central_widget.setLayout(hbox)
         """
+        # 5 个标签水平排列，高度默认填满窗口，宽度平均分配。
 
         grid=QGridLayout()
 
@@ -316,7 +320,7 @@ class MainWindow(QMainWindow):
         grid.addWidget(label3,1,0)
         grid.addWidget(label4,1,1)
         grid.addWidget(label5,1,2)
-
+        # 组件按行列坐标排列，形成类似表格的结构：
         central_widget.setLayout(grid)
 
 def main():
@@ -329,6 +333,14 @@ if __name__=="__main__":
     main()
 ```
 
+```python
+from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QGridLayout
+```
+
+- `QVBoxLayout`：**垂直**布局，组件按从上到下的顺序排列。
+- `QHBoxLayout`：**水平**布局，组件按从左到右的顺序排列。
+- `QGridLayout`：**网格**布局，组件按行列坐标定位，类似表格。
+
 ### Button
 [Python PyQt5 BUTTONS are easy! 🛎️](https://www.youtube.com/watch?v=9pl55MxZlG4)
 ```python
@@ -340,6 +352,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setGeometry(700, 300, 500, 500)
         self.button=QPushButton("Click me!",self)
+        # 创建QPushButton实例，父组件为self（即主窗口）
         self.label=QLabel("Hello",self)
         self.initUI()
 
@@ -355,8 +368,8 @@ class MainWindow(QMainWindow):
     def on_click(self):
         """
         print("Button clicked")
-        self.button.setText("Clicked")
-        self.button.setDisabled(True)
+        self.button.setText("Clicked")  # 修改按钮文本，反馈点击状态
+        self.button.setDisabled(True)  # 禁用按钮（变为灰色，无法再次点击）
         """
         self.label.setText("Goodbye")
 
@@ -369,6 +382,16 @@ def main():
 if __name__=="__main__":
     main()
 ```
+
+```python
+self.button.clicked.connect(self.on_click)
+```
+- `clicked`：`QPushButton`的核心信号，当按钮被点击时触发（无需传递状态参数，只需响应点击动作）。
+- `connect`：将信号绑定到自定义槽函数`on_click`，实现点击后的逻辑处理
+
+
+
+
 ### Checkbox
 [Python PyQt5 CHECKBOXES are easy! ✅](https://www.youtube.com/watch?v=VgnUB_vzR9I)
 ```python
@@ -391,7 +414,6 @@ class MainWindow(QMainWindow):
         # 确定默认是否为选中状态
         self.checkbox.stateChanged.connect(self.checkbox_changed)
 
-
     def checkbox_changed(self,state):
         # print(state)
         # if state==2:
@@ -399,8 +421,6 @@ class MainWindow(QMainWindow):
             print("You like food")
         else:
             print("You don't like food")
-
-
 
 def main():
     app=QApplication(sys.argv)
@@ -471,4 +491,35 @@ def main():
 
 if __name__ == '__main__':
     main()
+```
+
+- `QRadioButton`：单选按钮组件，用于从多个选项中选择唯一一项（与复选框的多选项不同），常见于互斥选项场景（如支付方式、性别选择）。
+- `QButtonGroup`：按钮组组件，用于管理一组单选按钮，实现 "互斥选择"（同一组内只能有一个按钮被选中），简化分组逻辑。
+
+### Signal and Slot
+- **信号（`Signal`）**：组件在特定事件发生时发出的 “通知”，是事件的 “触发器”。比如按钮被点击（`clicked`）、复选框状态变化（`stateChanged`）、单选按钮选中切换（`toggled`）等，都是组件自带的信号。
+- **槽（`Slot`）**：用于接收信号并执行具体逻辑的函数，是事件的 “处理器”，如自定义函数（如`on_click`）。
+
+#### 1. 准备组件（创建信号源和处理对象）
+先创建产生信号的组件（如按钮QPushButton）和需要被处理的对象（如标签QLabel），确保组件被正确初始化。
+```python
+# 1. 创建信号源（按钮，点击时发信号）
+self.button = QPushButton("点击修改文本", self)
+# 2. 创建处理对象（标签，文本需被修改）
+self.label = QLabel("初始文本", self)
+```
+
+#### 2. 定义槽函数（编写信号触发后的逻辑）
+自定义一个**函数**，用于**处理信号触发后的具体操作**（如修改标签文本、打印日志等）。槽函数的参数需与信号传递的参数匹配（可选，部分信号无参数）。
+```python
+# 自定义槽函数：接收信号后修改标签文本
+def on_button_click(self):
+    self.label.setText("按钮被点击啦！")
+```
+
+#### 3. 绑定信号与槽（建立关联）
+通过组件的`connect()`方法，将 “信号” 与 “槽函数” 绑定，完成 “事件→响应” 的关联。**`语法：信号源.信号.connect(槽函数)`**
+```python
+# 将按钮的"clicked"信号，绑定到自定义槽函数on_button_click
+self.button.clicked.connect(self.on_button_click)
 ```

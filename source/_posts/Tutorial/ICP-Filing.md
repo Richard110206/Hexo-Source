@@ -79,5 +79,17 @@ description: This article details the entire process from purchasing a server to
 {%endfold%}
 
 在域名注册商控制台进行解析即可，解析到服务器IP地址，即可进行访问！
-
+{%note info%}
+#### 使用二级域名搭建多个网站
+**DNS解析配置（在域名注册商处操作）** 
+为 domain-a.com 设置二级域名 app.domain-a.com
+操作步骤（以阿里云/腾讯云等常见控制台为例）：
+- 登录你的域名注册商管理后台。
+- 找到域名解析管理页面。
+- 选择你要解析的域名（例如 domain-a.com），点击“添加记录”。
+  - 记录类型：选择 A。
+  - 主机记录：填写你的二级域名前缀。比如想要 app.domain-a.com，这里就填 app。
+  - 记录值：填写你的服务器公网IP地址 111.222.333.444。
+  - TTL：默认即可（通常10分钟）。
+{%endnote%}
 为保障网络访问的安全性，可在域名注册商处签发SSL证书（2min），将网站升级为HTTPS协议，然后在1Panel面板手动导入`key``pem`文件！
