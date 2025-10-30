@@ -257,7 +257,7 @@ $=m_0+m_4+m_5$
 上拉电阻：接在输出端和正电源 (Vcc) 之间的电阻，将不确定的信号 “拉” 到高电平，提供一个稳定的高电平输出。二极管与门。
 下拉电阻：接在输出端和地 (GND) 之间的电阻，将不确定的信号 “拉” 到低电平，提供一个稳定的低电平输出。二极管或门。
 
-## 四、逻辑电路
+## 四、组合逻辑电路
 |组合逻辑电路|	时序逻辑电路|
 |:---:|:---:|
 |输出只与当前的输入有关，与电路过去的工作状态无关|输出与电路过去的工作状态有关|
@@ -689,10 +689,222 @@ $$Y_0=I_1+I_3+I_5+I_7$$
 ### 显示译码器 
 #### 七段字符显示器
 四位二进制数（0000-1001）
+
+### 数据选择器
 多输入多输出 有效（高低电平均可）
 
+<div style="width: 100%; overflow: auto;">
+    <table style="width: 100%;">
+    <tr>
+      <th style="text-align: center;">A</th>
+      <th style="text-align: center;">D₁</th>
+      <th style="text-align: center;">D₀</th>
+      <th style="text-align: center;">Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">1</td>
+        </tr>
+    </table>
+</div>
+
+二选一：
+$$ Y=D_0 A'+D_1A$$
+四选一：
+$$ Y = S\left( D_0 (\overline{A_1} \overline{A_0}) + D_1 (\overline{A_1} A_0) + D_2 (A_1 \overline{A_0}) + D_3 (A_1 A_0) \right)$$
+$ S $: 控制输入端（若低电平有效可直接接地）
+
+#### 三人表决器
+- 一般问题：多数同意为通过
+- 重要问题：全部同意为通过
+
+- 输入变量：P(1号)、 Q（2号）、R（3号）、T（问题类型）
+- 输出变量：Z（表决结果）
+
+- 数据选择器：多输入，单输出
+- 数据分配器：单输入，多输出
+二者功能相反，互为可逆过程
+
+### 加法器
+- 半加器：两个一位二进制数相加，不考虑进位
+- 全加器：两个一位二进制数相加，考虑进位
+  - 输入变量：A（加数）,B（加数）,CI（从低位的进位输入）
+  - 输出变量：S（和）, CO（向高位的进位输出）
+
+#### 多位串行加法器
+依次将进位加法器的进位输出端CO接到高位全加器的进位输出端CI就可以构成多位串行加法器。
+![多位串行加法器示意图](https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/adder.png?raw=true)
+- 缺点：低位运算结束产生进位后，高位才能开始全加运算，运算速度较慢。 
+- 优点：计算结构较为简单
+
+#### 超前进位加法器
+通过逻辑电路事先知道每一位的进位输出信号，而无需从最低位开始向高位逐位传递进位信号。
+- 优点：每一位的进位输入基本上同时知道，运算速度快。
+- 缺点：计算结构较为复杂，随着数位增加，电路复杂程度急剧上升。
 一位数值比较器
 
+## 五、集成触发器
+[时序逻辑电路总结【一】触发器](https://blog.csdn.net/m0_63028174/article/details/128995698?ops_request_misc=%257B%2522request%255Fid%2522%253A%252241ccdfc61df19f77f26d4cdb84276985%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=41ccdfc61df19f77f26d4cdb84276985&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-128995698-null-null.142^v102^pc_search_result_base2&utm_term=RS%E8%A7%A6%E5%8F%91%E5%99%A8&spm=1018.2226.3001.4187)
+触发器：具有记忆功能（引入了**反馈机制**）的基本逻辑单元，输出状态**不止与现时的的输入**有关，还**与原来的输入**有关。
+- 有外触发器：状态改变
+- 触发信号撤除：维持状态不变
+### (I) RS触发器
+- 输入信号：$\overline{R_D}$（复位端，低电平有效）、$\overline{S_D}$（置位端，低电平有效）
+- 输出信号：$Qⁿ$（现态，触发器当前状态）、$Q^{n+1}$（次态，触发后新状态）
+<table>
+  <thead>
+    <tr>
+      <th>$\overline{R_D}$</th>
+      <th>$\overline{S_D}$</th>
+      <th>$Q^{n+1}$</th>
+      <th>$\overline{Q^{n+1}}$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$1$</td>
+      <td>$1$</td>
+      <td colspan="2" style="text-align: center;">不变</td>
+    </tr>
+    <tr>
+      <td>$0$</td>
+      <td>$1$</td>
+      <td>$0$</td>
+      <td>$1$</td>
+    </tr>
+    <tr>
+      <td>$1$</td>
+      <td>$0$</td>
+      <td>$1$</td>
+      <td>$0$</td>
+    </tr>
+    <tr>
+      <td>$0$</td>
+      <td>$0$</td>
+      <td colspan="2" style="text-align: center;">不定</td>
+    </tr>
+  </tbody>
+</table>
+
+约束条件：$\overline{R_D}+\overline{S_D}=1$（此时两个输出端不再满足互补关系，是禁止出现的输入项）
+
+绘制卡诺图（自变量：$\overline{R_D}$、$\overline{S_D}$、$Qⁿ$；因变量：$Q^{n+1}$）（不定项可当做1处理）。
+| $\overline{R_D}\overline{S_D}$\$Qⁿ$ | 0（$Qⁿ=0$） | 1（$Qⁿ=1$） |
+| :----------------------------------: | :----------: | :----------: |
+| 00（$\overline{R_D}=0,\overline{S_D}=0$） | 1（不定按1） | 1（不定按1） |
+| 01（$\overline{R_D}=0,\overline{S_D}=1$） | 0           | 0           |
+| 11（$\overline{R_D}=1,\overline{S_D}=1$） | 0           | 1           |
+| 10（$\overline{R_D}=1,\overline{S_D}=0$） | 1           | 1           |
+
+写出表达式：$Q^{n+1} = \overline{R_D}Q^{n}+S_{D}$
+
+同步触发器：在基本RS触发器基础上增加**CP时钟控制端**，实现“时钟同步触发”
+- 当$CP=0$时：时钟无效，无论$\overline{R_D}$、$\overline{S_D}$状态如何，触发器保持原有状态（$Q^{n+1}=Qⁿ$）。
+- 当$CP=1$时：时钟有效，触发器功能与基本RS触发器完全相同，即次态由$\overline{R_D}$、$\overline{S_D}$和$Qⁿ$共同决定，需满足约束条件$\overline{R_D} + \overline{S_D} = 1$。
+
+
+异步置位、同步复位的RS触发器：异步端（$\overline{R_D}$、$\overline{S_D}$）的优先级高于CP时钟，常用于电路上电初始化或紧急置位/复位场景。
+- **异步置位（$\overline{S_D}$）**：只要$\overline{S_D}$加低电平，无需等待CP时钟，触发器立刻置1（$Q=1$），不受CP和其他输入信号控制。
+- **异步复位（$\overline{R_D}$）**：只要$\overline{R_D}$加低电平，无需等待CP时钟，触发器立刻置0（$Q=0$），不受CP和其他输入信号控制。
+
+### (II) 钟控JK触发器
+钟控JK触发器是在同步RS触发器基础上改进而来，通过将输出端$Q$和$\overline{Q}$反馈到输入端，**彻底解决了RS触发器的“不定态”问题**，是应用更广泛的时钟控制触发器。
+
+- 输入信号：$J$（置位控制端）、$K$（复位控制端）、$CP$（时钟控制端，高电平有效）
+- 输出信号：$Qⁿ$（现态）、$Q^{n+1}$（次态）
+- 反馈机制：$J$端与$\overline{Q}$相连，$K$端与$Q$相连，确保输入组合始终合法。
+
+| $CP$ | $J$ | $K$ | $Q^{n+1}$ | 功能说明               |
+| :---: | :---: | :---: | :--------: | :---------------------: |
+| 0    | ×  | ×  | $Qⁿ$      | 保持（时钟无效，记忆原状态） |
+| 1    | 0  | 0  | $Qⁿ$      | 保持（输入无置位/复位指令） |
+| 1    | 0  | 1  | 0         | 复位（置0，$K$端有效）    |
+| 1    | 1  | 0  | 1         | 置位（置1，$J$端有效）    |
+| 1    | 1  | 1  | $\overline{Qⁿ}$ | 翻转（输出状态与原状态相反） |
+
+根据特性表推导，钟控JK触发器（高电平有效）的次态表达式为：  
+$Q^{n+1} = J\overline{Qⁿ} + \overline{K}Qⁿ$（$CP=1$时有效，$CP=0$时$Q^{n+1}=Qⁿ$）  
+该表达式无约束条件，因反馈机制已排除不定态。
+
+### (III) 边沿触发器
+边沿触发器是对钟控触发器的进一步优化，**仅在时钟信号（CP）的上升沿（↑）或下降沿（↓）瞬间触发**，CP电平稳定期间（高/低电平）输入信号变化不影响输出，彻底解决了“空翻”问题。
+
+- **边沿JK触发器**：
+  - 输入输出：与钟控JK触发器一致（$J$、$K$、$CP$、$Qⁿ$、$Q^{n+1}$）。
+  - 特性表：仅触发时机变为“CP边沿”，功能逻辑与钟控JK触发器相同（保持、置0、置1、翻转）。
+  - 次态表达式：$Q^{n+1} = J\overline{Qⁿ} + \overline{K}Qⁿ$（仅CP↑或CP↓时有效）。
+  - 符号标识：CP端旁标注“↑”（上升沿）或“↓”（下降沿），区分触发类型。
+  
+- **边沿D触发器**：
+  - 输入输出：$D$（数据输入端）、$CP$（边沿触发）、$Qⁿ$（现态）、$Q^{n+1}$（次态）。
+  - 特性表：
+
+| $CP$ | $D$ | $Q^{n+1}$ | 功能说明               |
+| :--- | :--- | :-------- | :--------------------- |
+| ×（非边沿） | ×  | $Qⁿ$      | 保持（非触发时刻）     |
+| ↑/↓（边沿） | 0  | 0         | 置0（$D=0$时边沿触发） |
+| ↑/↓（边沿） | 1  | 1         | 置1（$D=1$时边沿触发） |
+
+- 次态表达式：$Q^{n+1} = D$（仅CP边沿时有效），逻辑简单，常用于数据锁存、移位寄存器。
+- 无空翻：仅边沿触发，CP电平稳定期输入变化不影响输出，适合高频数字电路。
+- 抗干扰强：对CP电平波动和输入噪声不敏感，电路稳定性高。
+- 典型应用：计数器、定时器、数据存储器、数字通信中的信号同步电路。
+
+
+## 六、时序逻辑电路
+- 同步：
+- 异步：
+TTL标准电源电压为5V
+自启动能力：电路在通电后，即便初始状态处于无效状态（非设计预期的工作状态），也能在时钟或输入信号的作用下，自动进入有效工作状态循环的能力。
+
+- 160/162:偶数，十进制计数器
+- 161/163:奇数，二/十六进制计数器
 
 两片3/8译码器组合为4/16译码器
 一个芯片工作，通过使能端禁止另一个芯片工作，一个连接高电平有效，一个低电平有效
