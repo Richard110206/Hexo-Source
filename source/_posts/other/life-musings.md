@@ -417,6 +417,14 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
 - 10.19
   - leetcode 周赛，AI辅助下才极限AC三题
   - 二级域名，仿佛发现新大陆
+```bash
+# 1. 将WordPress目录的所有者改为PHP-FPM进程用户（1panel）
+chown -R 1panel:1panel /opt/1panel/apps/openresty/openresty/www/sites/you_domain  /index
+
+# 2. 设置正确的目录和文件权限
+find /opt/1panel/apps/openresty/openresty/www/sites/you_domain/index -type d -exec chmod 755 {} \;
+find /opt/1panel/apps/openresty/openresty/www/sites/you_domain/index -type f -exec chmod 644 {} \;
+```
 - 10.20
   - 数电：触发器
   - 概率论：完成二、三章作业
@@ -424,5 +432,38 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
 - 10.21
   - 计组：开！计算机体系概论
   - 大物：驻波
-  - 用 mac 搭建 yolov11，一边上课一边搭，下课正好也完成了（想起之前yolov5搭了三四天删了又反复重装的惨痛经历，一时分不清是我的水平提高了还是 mac更卓越呢？）后面计划更新 anaconda 的使用
-  - “神思杯”：代码都搞好了说环境不行，没有算力了！确实是“谁能玩明白这平台就赢了一半了”
+  - 用 mac 搭建 yolov11，一边上课一边搭，下课正好也完成了
+  - “神思杯”：代码都搞好了说环境不行，没有算力了！确实是“谁能玩明白这平台就赢了一半了”（想起之前yolov5搭了三四天删了又反复重装的惨痛经历，一时分不清是我的水平提高了还是 mac更卓越呢？）后面计划更新 anaconda 的使用
+```bash
+pytorch            pytorch/osx-64::pytorch-2.2.2-py3.10_0 
+
+Preparing transaction: done                                                     
+Verifying transaction: done                                                     
+Executing transaction: done  
+```
+- 10.22
+  - 搭建博客 RAG ！实现智能问答！但是基于本地大模型进行部署的，效果似乎不尽如人意...
+- 10.23
+  - 毛中特：后半节课极限速通汇报PPT:grinning:
+  - 貌似是第一次调用 API，打开了潘多拉的魔盒一般~~,但是写的前后端代码无法实现交互，不知原因，后面有时间继续调试，得多看看视频摄取一点知识，现在对计算机网络的了解还是太少了...
+- 10.24
+  - 本想直接进行域名转移，但是似乎有点难，只好手动进行修改
+  - 2核2G还是有点吃力，上传张图片整个服务器就卡没了！
+- 10.25
+  - 忙活一下午申请软著，完善相关文档，希望能一次通过！
+- 10.26
+  - 初次尝试面试翔工作室，被拷打了：基础不牢，地动山摇！好家伙问我排序算法，猴子排序，量子排序都出来，也是真没招了:cry:
+- 10.27
+  - 数电：多进制计数器，感觉越欠越多，真有点听不懂了，得恶补一下了
+  - 概率论：三大数理统计分布
+  - leetcode：刷完前几天每日一题，`count_if`函数+lambda表达式
+  - 成功调用大模型 api 构造前后端对话系统（Thinter）
+- 10.28
+  - 计组：又学上原码、补码、反码了，似乎是第三次上了
+  - 大物：双缝干涉
+  - Project：花一下午将数据从网站上爬取下来了，本来以为能实操一次bs4，结果是js、vue动态渲染的，还是得看AI，不过倒是发现一个不错的网站[xml-sitemaps](https://www.xml-sitemaps.com/)，能找到域名下所有的网站；本以为数据爬取会麻烦一点，结果被17w数据清洗版绊了个大跟头，接入 API 清洗没钱买 Token 免费的大模型效果不好，扔给豆包、Deepseek又难以处理这样长的文本，最后只能用土办法，将文本手动切割为一段一段扔给豆包进行清洗，效果倒是不错的！
+- 10.29
+  - CSP：刷完每日一题就继续去整我的 Project 了，AI IDE Trae 啥AI都尝试了，均已失败告终，还是集成在vscode里面的Trae效果更好（主打一个免费），忙活一晚上，终于整出一个小 demo ，虽然检索效果不佳，但也足以让人为之兴奋！
+- 10.30
+  - 数电：时序电路分析
+  - 概率论：矩估计
