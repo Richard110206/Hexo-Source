@@ -105,6 +105,7 @@ summer vacation assignment:rage:
 - 精进日记 :arrow_right::arrow_right: 偏学业
 - 生活杂谈 :arrow_right::arrow_right: 偏生活
   
+
 ![2025年8月13日23点10分Github截图](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/20250813.png?raw=true)
 
 #### 8.14
@@ -396,7 +397,7 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
             width: 100%;
             overflow: auto;
         }
- ```
+```
 - 10.14
   - 跟着Bro Code学习 PyQt5
   - 上传大物的笔记，才发现 $\cos$ 要打成`\cos`的形式，否则会被识别为其他字母
@@ -419,11 +420,11 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
   - 二级域名，仿佛发现新大陆
 ```bash
 # 1. 将WordPress目录的所有者改为PHP-FPM进程用户（1panel）
-chown -R 1panel:1panel /opt/1panel/apps/openresty/openresty/www/sites/you_domain  /index
+chown -R 1panel:1panel /opt/1panel/apps/openresty/openresty/www/sites/your_domain  /index
 
 # 2. 设置正确的目录和文件权限
-find /opt/1panel/apps/openresty/openresty/www/sites/you_domain/index -type d -exec chmod 755 {} \;
-find /opt/1panel/apps/openresty/openresty/www/sites/you_domain/index -type f -exec chmod 644 {} \;
+find /opt/1panel/apps/openresty/openresty/www/sites/your_domain/index -type d -exec chmod 755 {} \;
+find /opt/1panel/apps/openresty/openresty/www/sites/your_domain/index -type f -exec chmod 644 {} \;
 ```
 - 10.20
   - 数电：触发器
@@ -467,3 +468,45 @@ Executing transaction: done
 - 10.30
   - 数电：时序电路分析
   - 概率论：矩估计
+- 10.31
+  - 计组：运算器（梦回数电）
+  - 大创：完成鹰眼巡墙机器人大创网站的搭建
+- 11.1
+  - 新的一个月！
+  - 物理实验：分光计测光栅常量，有点牢！
+- 11.2
+  - 今天过生日！榴莲千层好吃！
+  - leetcode 周赛，AI辅助下AC了三题，下午复盘，累~
+  - 又发现个免费一秒建站的网站 [creght.cn](https://creght.cn/) ，域名、服务器啥的都不需要买
+- 11.3
+  - 数电：寄存器
+  - 概率论：最大似然估计
+  - 复习数竞（临时抱佛脚）
+- 11.4
+  - 计组：二进制乘除法
+  - 大物：斜劈
+  - 房地产评估：开课！
+  - 完成 CSP 拼图任务，发觉自己用AI都做不出19级老学长圣遗物的水平！:cry:![这一刻大脑的褶皱都被抚平了](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/folder_bug.png?raw=true)其实是文件名前面多打了一个空格，仔细观察缩进就可以发现（py还是敲少了，下次记得带游标卡尺）
+  - 之前敲Python一直用的是pycharm，转战vscode，发现将py文件移动到新文件夹（目录的子文件夹）后，引入的图片竟然无法显示，后来才知道，运行时路径检索是以程序运行时的工作目录为基准的，而不是以代码文件（  .py）所在的目录为基准。
+- 11.5
+  - 买断`Typora`，说实在的和开源的`marktext`差别有多大其实也不太能看的出来，但就是有点想为用这么久的markdown知识付费一波~你别说这在 mac 上用就是优雅、大道至简，但在 win 上就感觉甚是简陋......
+  - 熟悉了解anaconda后，重新整理之前配置的杂乱无章的各种虚拟环境和解释器
+- 11.6
+  - 数电：旁边有老师听课，依然听不懂
+  - 概率论：结课！
+  - 发现老学长的文本编辑器竟然是手搓了个 WPS，还接入 API，有AI助手
+- 11.7
+  - 大物：干涉
+  - 计组：:x:
+- 11.8
+  - 高数竞赛3填空1大题，不知能不能混个省三嘞
+  - Fuck you Tim!It only works on your machine!
+- 11.9
+  - 想用 OpenAI API，去开了 MasterCard，结果还是不行，GooglePlay好像也整不了~
+  - 一拳干碎算竞梦，长官我是计科人！一题没 AC
+  - 似乎发现 error 的原因了：(I)不能开VPN代理(II)deepseek似乎没有文本嵌入模型，需要更换model
+- 11.10
+  - 数电实验：太牢了
+  - 网球：1000m：4m23s感觉不算特别累，校园跑有用的！
+
+
