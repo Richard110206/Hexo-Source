@@ -1,7 +1,7 @@
 ---
 title: Docker Tutorial
 date: 2025-10-18 09:01:25
-tags:
+tags: [updating]
 archive: true
 category: Tutorial
 category_bar: true

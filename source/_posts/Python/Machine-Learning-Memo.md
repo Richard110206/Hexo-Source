@@ -1,7 +1,7 @@
 ---
 title: Machine Learning Memo
 date: 2025-09-30 14:09:27
-tags:
+tags: [updating]
 category: Python
 archive: true
 category_bar: true

@@ -1,7 +1,7 @@
 ---
 title: PyQt5 Project
 date: 2025-10-15 15:37:27
-tags:
+tags: [updating]
 archive: true
 ---
 
