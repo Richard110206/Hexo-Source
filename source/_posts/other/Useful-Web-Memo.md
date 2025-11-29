@@ -40,3 +40,10 @@ archive: true
 |[Sora](https://sora.chatgpt.com/explore)|AI提示词生成图片|
 |[表格生成器](https://www.tablesgenerator.com/)|LaTeX表格制作工具，可视化编辑生成LaTeX代码，简化学术论文表格制作流程|
 |[Coze](https://www.coze.cn/)|个性化AI工作流搭建，无需编码即可创建定制化的AI应用，实现自动化任务处理|
+
+
+-  `Cmd+Shift+F`（Mac），调出全局搜索面板。
+- wps顽固的空白页：鼠标点击空白页，右键段落将行间距修改`固定值`为`1`
+- wps中照片显示不完全：`ctrl`+`1`
+- 切换源代码和可显示的模式：`ctrl`+`/`
+- mac显示无法安全下载：按住control键右键打开点击保留

@@ -93,3 +93,12 @@ description: This article details the entire process from purchasing a server to
   - TTL：默认即可（通常10分钟）。
 {%endnote%}
 为保障网络访问的安全性，可在域名注册商处签发SSL证书（2min），将网站升级为HTTPS协议，然后在1Panel面板手动导入`key``pem`文件！
+
+
+
+
+2025.10.25-2025.11.18进入审查阶段
+
+2025.11.18小程序备案完成
+
+2025.11.19完成微信认证工作 缴纳30r

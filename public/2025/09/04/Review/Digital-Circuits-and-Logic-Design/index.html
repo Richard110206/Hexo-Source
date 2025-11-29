@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/circuitsymboltable2.png?raw=true">
 <meta property="og:image" content="https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/adder.png?raw=true">
 <meta property="article:published_time" content="2025-09-04T04:58:09.000Z">
-<meta property="article:modified_time" content="2025-11-24T15:21:46.525Z">
+<meta property="article:modified_time" content="2025-11-29T14:02:14.343Z">
 <meta property="article:author" content="Li Qinxuan">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://github.com/Richard110206/Blog-image/blob/main/article/Review/DigitalCircuits/circuitsymboltable1.png?raw=true">
@@ -304,7 +304,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.9k words
+          5.6k words
         
       </span>
     
@@ -315,7 +315,7 @@
         
         
         
-          42 mins
+          47 mins
         
       </span>
     
@@ -374,7 +374,7 @@
         aria-expanded="true"
       >
         Review
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(4)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -392,6 +392,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">College Physics 2</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/11/29/Review/Computer-Organization-and-Architecture/" title="Computer Organization and Architecture"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Computer Organization and Architecture</span>
         </a>
       
     
@@ -1266,7 +1275,8 @@ $ S $: 控制输入端（若低电平有效可直接接地）</p>
 <li>有外触发器：状态改变</li>
 <li>触发信号撤除：维持状态不变</li>
 </ul>
-<h3 id="I-RS触发器">(I) RS触发器</h3>
+<h3 id="I-电平触发器">(I) 电平触发器</h3>
+<h4 id="RS触发器">RS触发器</h4>
 <ul>
 <li>输入信号：$\overline{R_D}$（复位端，低电平有效）、$\overline{S_D}$（置位端，低电平有效）</li>
 <li>输出信号：$Qⁿ$（现态，触发器当前状态）、$Q^{n+1}$（次态，触发后新状态）</li>
@@ -1305,6 +1315,9 @@ $ S $: 控制输入端（若低电平有效可直接接地）</p>
     </tr>
   </tbody>
 </table>
+<div class="note note-info">
+            <p>$R$为置0端，$S$为置1端，无论是或非还是与非触发器，都是谁有效，就实现谁的功能！<br>分析波形图时可以理解为相同就保持，不同就取反！优先级最高！参考资料：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1qt4y1J7L6?spm_id_from=333.788.videopod.episodes&amp;vd_source=54c2981c1a7a8e0433b7d23096150b7a&amp;p=13">13RS锁存器</a></p>
+          </div>
 <p>约束条件：$\overline{R_D}+\overline{S_D}=1$（此时两个输出端不再满足互补关系，是禁止出现的输入项）</p>
 <p>绘制卡诺图（自变量：$\overline{R_D}$、$\overline{S_D}$、$Qⁿ$；因变量：$Q^{n+1}$）（不定项可当做1处理）。</p>
 <table>
@@ -1349,7 +1362,12 @@ $ S $: 控制输入端（若低电平有效可直接接地）</p>
 <li><strong>异步置位（$\overline{S_D}$）</strong>：只要$\overline{S_D}$加低电平，无需等待CP时钟，触发器立刻置1（$Q=1$），不受CP和其他输入信号控制。</li>
 <li><strong>异步复位（$\overline{R_D}$）</strong>：只要$\overline{R_D}$加低电平，无需等待CP时钟，触发器立刻置0（$Q=0$），不受CP和其他输入信号控制。</li>
 </ul>
-<h3 id="II-钟控JK触发器">(II) 钟控JK触发器</h3>
+<h4 id="D触发器">D触发器</h4>
+<ul>
+<li>当$CP=0$时：时钟无效，触发器保持原有状态</li>
+<li>当$CP=1$时：时钟有效，有$Q^{n+1} = D$</li>
+</ul>
+<h4 id="JK触发器">JK触发器</h4>
 <p>钟控JK触发器是在同步RS触发器基础上改进而来，通过将输出端$Q$和$\overline{Q}$反馈到输入端，<strong>彻底解决了RS触发器的“不定态”问题</strong>，是应用更广泛的时钟控制触发器。</p>
 <ul>
 <li>输入信号：$J$（置位控制端）、$K$（复位控制端）、$CP$（时钟控制端，高电平有效）</li>
@@ -1404,11 +1422,18 @@ $ S $: 控制输入端（若低电平有效可直接接地）</p>
 </tr>
 </tbody>
 </table>
-<p>根据特性表推导，钟控JK触发器（高电平有效）的次态表达式为：<br>
-$Q^{n+1} = J\overline{Qⁿ} + \overline{K}Qⁿ$（$CP=1$时有效，$CP=0$时$Q^{n+1}=Qⁿ$）<br>
-该表达式无约束条件，因反馈机制已排除不定态。</p>
-<h3 id="III-边沿触发器">(III) 边沿触发器</h3>
+<div class="note note-info">
+            <ul><li><strong>相同保持</strong></li><li><strong>相异跟随$J$</strong></li></ul>
+          </div>  
+<p>根据特性表推导，钟控JK触发器（高电平有效）的次态表达式为：  $Q^{n+1} = J\overline{Qⁿ} + \overline{K}Qⁿ$（$CP=1$时有效，$CP=0$时$Q^{n+1}=Qⁿ$），该表达式无约束条件，因反馈机制已排除不定态。</p>
+<h3 id="II-边沿触发器">(II) 边沿触发器</h3>
 <p>边沿触发器是对钟控触发器的进一步优化，<strong>仅在时钟信号（CP）的上升沿（↑）或下降沿（↓）瞬间触发</strong>，CP电平稳定期间（高/低电平）输入信号变化不影响输出，彻底解决了“空翻”问题。</p>
+<div class="note note-info">
+            <ul><li><strong>图中有尖尖三角形代表边沿触发的方式</strong></li><li><strong>没有圈圈代表上升沿触发</strong></li></ul>
+          </div>
+<div class="note note-danger">
+            <p>做题时现在波形图上将<strong>上升下降沿标注</strong>出来</p>
+          </div>
 <ul>
 <li>
 <p><strong>边沿JK触发器</strong>：</p>
@@ -1459,10 +1484,63 @@ $Q^{n+1} = J\overline{Qⁿ} + \overline{K}Qⁿ$（$CP=1$时有效，$CP=0$时$Q^
 </table>
 <ul>
 <li>次态表达式：$Q^{n+1} = D$（仅CP边沿时有效），逻辑简单，常用于数据锁存、移位寄存器。</li>
-<li>无空翻：仅边沿触发，CP电平稳定期输入变化不影响输出，适合高频数字电路。</li>
-<li>抗干扰强：对CP电平波动和输入噪声不敏感，电路稳定性高。</li>
-<li>典型应用：计数器、定时器、数据存储器、数字通信中的信号同步电路。</li>
 </ul>
+<h3 id="III-脉冲（主从）触发器">(III) 脉冲（主从）触发器</h3>
+<h4 id="主从RS触发器">主从RS触发器</h4>
+<p>触发方式：时钟信号 CP 的下降沿触发，新状态由 CLK 脉冲下降沿到来前的$R$、$S$决定（就是CLK=1时的$R$、$S$决定）</p>
+<div class="note note-info">
+            <p>出现<code>「</code>表示主从方式触发（其余与RS触发器完全相同）</p>
+          </div>
+<h4 id="主从JK触发器">主从JK触发器</h4>
+<div class="note note-info">
+            <ul><li><strong>00保持，11翻转</strong></li><li><strong>相异跟随$J$</strong></li></ul>
+          </div> 
+<div class="note note-info">
+            <ul><li><strong>没有圈圈代表下降沿触发</strong></li></ul>
+          </div>
+<h3 id="多个触发器组合">多个触发器组合</h3>
+
+    <div class="fold">
+      <div class="fold-title fold-into collapsed" data-toggle="collapse" href="#collapse-24c54aad" role="button" aria-expanded="false" aria-controls="collapse-24c54aad">
+        <div class="fold-arrow">▶</div>由JK触发器转换为RS触发器（特性方程法）
+      </div>
+      <div class="fold-collapse collapse" id="collapse-24c54aad">
+        <div class="fold-content">
+          <p><strong>1. 明确特性方程：</strong></p><ul><li>目标RS触发器：特性方程为 $Q^* = S + \overline{R}Q$，约束条件 $SR = 0$（$Q^*$为次态，$Q$为现态）；</li><li>原始JK触发器：特性方程为 $Q^* = J\overline{Q} + \overline{K}Q$（无不定态）。</li></ul><p><strong>2. 对RS触发器方程配项变形：</strong><br>利用逻辑恒等式互补律，对RS方程的$S$项配项：$Q^* = S(Q + \overline{Q}) + \overline{R}Q$，展开后拆分两项：$Q^* = SQ + S\overline{Q} + \overline{R}Q$，结合RS触发器约束条件 $SR=0$（即$S=0$或$R=0$），分析$SQ$项：</p><ul><li>当$S=1$时，$R=0$，则$\overline{R}=1$，$SQ = 1\cdot Q = \overline{R}Q$；</li><li>当$S=0$时，$SQ = 0\cdot Q = 0$，无影响；<br>因此$SQ + \overline{R}Q = \overline{R}Q$，最终简化为：$Q^{*} = S\overline{Q} + \overline{R}Q$</li></ul><p><strong>3. 验证等价性：</strong><br>将变形后的RS方程 $Q^* = S\overline{Q} + \overline{R}Q$ 与JK方程 $Q^* = J\overline{Q} + \overline{K}Q$ 逐项对比：</p><ul><li>对应 $\overline{Q}$ 项：$J\overline{Q} = S\overline{Q}$ → $J = S$；</li><li>对应 $Q$ 项：$\overline{K}Q = \overline{R}Q$ → $\overline{K} = \overline{R}$ → $K = R$。</li></ul><p>最终转换关系：输入端口关联：$J = S$，$K = R$</p>
+        </div>
+      </div>
+    </div>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">触发器类型</th>
+<th style="text-align:center">特性方程（次态 $Q^{*}$）</th>
+<th style="text-align:center">约束/说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">RS触发器</td>
+<td style="text-align:center">$Q^{*} = S + \overline{R}Q$</td>
+<td style="text-align:center">$SR = 0$（S=1且R=1时不定态）</td>
+</tr>
+<tr>
+<td style="text-align:center">T触发器</td>
+<td style="text-align:center">$Q^{*} = T\overline{Q} + \overline{T}Q$</td>
+<td style="text-align:center">T=0时保持，T=1时翻转</td>
+</tr>
+<tr>
+<td style="text-align:center">JK触发器</td>
+<td style="text-align:center">$Q^{*} = J\overline{Q} + \overline{K}Q$</td>
+<td style="text-align:center">无约束</td>
+</tr>
+<tr>
+<td style="text-align:center">D触发器</td>
+<td style="text-align:center">$Q^{*} = D$</td>
+<td style="text-align:center">无约束</td>
+</tr>
+</tbody>
+</table>
 <h2 id="六、时序逻辑电路">六、时序逻辑电路</h2>
 <ul>
 <li>同步：</li>
@@ -1491,6 +1569,16 @@ $$ Y = AB + A’C + BC $$<br>
 数据输出端</p>
 <p>74LS85芯片<br>
 比较器</p>
+<h2 id="AHDL">AHDL</h2>
+<ol>
+<li>语言字符不区分大 mn 小写，但建议使用大写来写关键字</li>
+<li>同一类型多个输入用逗号分隔，完整的语句用分号结束，用-来注释一行用%%来注释一整段</li>
+<li>所有的程序并发的执行，不区分顺序</li>
+</ol>
+<p>通常采用同步的设计思想</p>
+<ol>
+<li>数值不能赋值给节点，必须使用VCC和GND</li>
+</ol>
 
                 
               </div>
@@ -1548,7 +1636,7 @@ $$ Y = AB + A’C + BC $$<br>
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>November 24, 2025</div>
+          <div>November 29, 2025</div>
         </div>
       
       
