@@ -11,7 +11,7 @@ math: true
 
 ## Leetcode 160. 相交链表
 
-[原题链接](https://leetcode.cn/problems/intersection-of-two-linked-lists?envType=problem-list-v2&envId=hash-table)
+[Leetcode 160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists?envType=problem-list-v2&envId=hash-table)
 
 
 ### 方法一：哈希表
@@ -65,7 +65,7 @@ public:
 ***
 ## Leetcode 21. 合并两个有序链表
 
-[原题链接](https://leetcode.cn/problems/merge-two-sorted-lists)
+[Leetcode 21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists)
 {%fold into @基础解法 %}
 ```cpp
 class Solution {
@@ -230,7 +230,7 @@ public:
 
 ***
 ## Leetcode 53. 最大子数组和
-[原题链接](https://leetcode.cn/problems/maximum-subarray)
+[Leetcode 53. 最大子数组和](https://leetcode.cn/problems/maximum-subarray)
 {%fold into @常规解法Time Error %}
 ```cpp
 class Solution {
@@ -276,7 +276,7 @@ public:
 ```
 
 ## Leetcode 739.每日温度
-[原题链接](https://leetcode.cn/problems/daily-temperatures)
+[Leetcode 739. 每日温度](https://leetcode.cn/problems/daily-temperatures)
 {%fold into @Time Error Version :x: %}
 双重循环暴力搜索时间复杂度为$O(n^2)$，会超时。
 ```cpp
@@ -395,7 +395,7 @@ $= a_1^2 + a_2^2 + \cdots + a_n^2 + 2\left(a_1a_2 + a_1a_3 + \cdots + a_{n-1}a_n
 
 
 ## Leetcode 209. 长度最小的子数组
-[原题链接](https://leetcode.cn/problems/minimum-size-subarray-sum)
+[Leetcode 209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum)
 
 ### 方法一：前缀和+二分查找
 
@@ -449,7 +449,7 @@ auto it = lower_bound(begin, end, value, greater<int>());
 ### 补充：前缀和
 &emsp;&emsp;前缀和指的是数组中从第一个元素到当前元素之间所有元素的累加和。具体来说，给定一个数组`nums`，它的前缀和数组`prefix`定义为：`prefix[i]=nums[0]+nums[1]+…+nums[i-1]`，通过前缀和我们可以轻松计算任意连续子区间的和，如`prefix[i]-prefix[j]`。
 {%fold into@前缀和练习%}
-[原题链接](https://leetcode.cn/problems/taking-maximum-energy-from-the-mystic-dungeon?envType=daily-question&envId=2025-10-10)
+[Leetcode 3076. 数组中的最大字符串值](https://leetcode.cn/problems/taking-maximum-energy-from-the-mystic-dungeon?envType=daily-question&envId=2025-10-10)
 
 由于末尾的`n-k`为循环终点，必会被取到，因而采用逆序遍历的“前缀和”
 ```cpp
@@ -470,6 +470,8 @@ public:
 };
 ```
 {%endfold%}
+
+
 ### 方法二：滑动窗口
 &emsp;&emsp;我们使用两个指针 `start` 和 `end` 表示当前子数组的开始位置和结束位置，`sum` 表示当前子数组的和。初始时，`start` 和 `end` 都指向数组的第一个元素，`sum` 为 0。
 - 当`sum < target`时，将 `end` 向后移动一位，`sum`加上`nums[end]`
@@ -493,6 +495,65 @@ public:
             end++;
         }
         return ans==INT_MAX?0:ans;
+    }
+};
+```
+
+{%note danger%}
+补充：注意前缀和的使用场景(有些题目用前缀和+滑动窗口也要注意数组是否恒为正数y)
+{%endnote%}
+## Leetcode.560 和为k的子数组
+[Leetcode.560 和为k的子数组](https://leetcode.cn/problems/subarray-sum-equals-k)
+
+{%fold into@ Wrong Version%}
+```cpp
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        int left=0,right=0;
+        int n=nums.size();
+        int sum=nums[0],count=0;
+        while(right!=n){
+            if(sum>k) {
+                if(right==left){
+                    left++;
+                    right++;
+                    sum=nums[left];
+                }
+                sum-=nums[left];
+                left++;}
+            else if(sum<k) {
+                right++;
+                sum+=nums[right];
+            }
+            else {
+                count++;
+                sum-=nums[left];
+                left++;}
+        }
+        return count;
+    }
+};
+```
+{%endfold%}
+### 方法一：哈希表+前缀和
+初始化哈希表记录前缀和0出现1次（对应从数组开头开始的子数组）。遍历每个数时累加得到当前前缀和，检查 当前`前缀和 - k` 是否在哈希表中，如果在则累加其出现次数到结果中，最后将当前前缀和加入哈希表并更新出现次数。(需要查找用`unordered_map`时间复杂度为 $O(1)$，不需要有序的`map`，效率更高)
+```
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        int count=0;
+        int sum=0;
+        unordered_map<int,int> mp;
+        mp[0]=1;
+        for(int num:nums){
+            sum+=num;
+            if(mp.find(sum-k)!=mp.end()){
+                count+=mp[sum-k];
+            }
+            mp[sum]++;
+        }
+        return count;
     }
 };
 ```

@@ -336,3 +336,32 @@ int main() {
     }
 }
 ```
+
+###  `<numeric>`
+#### 数组求和
+[Leetcode 3422.统计元素和差值为偶数的分区方案](https://leetcode.cn/problems/count-partitions-with-even-sum-difference?envType=daily-question&envId=2025-12-05)
+```cpp
+class Solution {
+public:
+    int countPartitions(vector<int>& nums) {
+        long long sum=accumulate(nums.begin(),nums.end(),0LL);
+        int n=nums.size();
+        if(sum%2==0) return n-1;
+        else return 0;
+    }
+};
+```
+```cpp
+accumulate(first,last,init,binary_op);
+```
+用于计算序列中所有元素的**累积和**
+- `first`, `last`：迭代器范围
+- `init`：初始值（必须正确指定类型）
+- `binary_op`：二元操作函数（可选，默认是加法）
+{%note danger%}
+注意使用 `long long` 避免溢出
+```cpp
+vector<int> large_nums = {1000000000, 1000000000, 1000000000};
+long long sum = accumulate(large_nums.begin(), large_nums.end(), 0LL);
+```
+{%endnote%}

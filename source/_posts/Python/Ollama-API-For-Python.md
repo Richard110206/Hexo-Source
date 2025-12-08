@@ -1,10 +1,11 @@
 ---
 title: Ollama API For Python
 date: 2025-10-18 09:01:10
-tags:
-archive: true
+tags: [updating, Python, API, Ollama]
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/Ollama%20API.png?raw=true
 categories: Python
 category_bar: true
+description: A lightweight Python API service built with FastAPI to connect local Ollama LLMs, featuring API key verification, credit management, and easy integration for secure, controlled access to local model capabilities.
 ---
 
 

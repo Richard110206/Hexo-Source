@@ -2,7 +2,7 @@
 title: RAG Python App
 date: 2025-11-16 12:57:21
 tags: [updating, Python, RAG]
-archive: true
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/RAG%20Python%20App.png?raw=true
 category: Python
 category_bar: true
 description: This Production-Ready RAG Python app lets you deploy locally with ease. Try out RAG functionalities firsthand and enjoy a smooth experience!

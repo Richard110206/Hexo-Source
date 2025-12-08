@@ -2,7 +2,8 @@
 title: Useful Web Memo
 date: 2025-10-11 12:20:46
 tags:
-archive: true
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/Useful%20Web%20Memo.png?raw=true
+description: A collection of useful websites for learning, algorithmic problem-solving, and more.
 ---
 
 ## 前言

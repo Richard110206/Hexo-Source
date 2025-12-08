@@ -2,7 +2,7 @@
 title: ICP Filing
 date: 2025-09-27 11:33:27
 tags: [Server, Website Launch,ICP filing]
-index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/ICP%20filing.png?raw=true
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/ICP%20Filing.png?raw=true
 category: Tutorial
 category_bar: true
 description: This article details the entire process from purchasing a server to successfully completing the filing, including server selection, domain name purchase, filing procedures, and precautions.
@@ -92,7 +92,7 @@ description: This article details the entire process from purchasing a server to
   - 记录值：填写你的服务器公网IP地址 111.222.333.444。
   - TTL：默认即可（通常10分钟）。
 {%endnote%}
-为保障网络访问的安全性，可在域名注册商处签发SSL证书（2min），将网站升级为HTTPS协议，然后在1Panel面板手动导入`key``pem`文件！
+为保障网络访问的安全性，可在域名注册商处签发SSL证书（2min），将网站升级为HTTPS协议，然后在1Panel面板手动导入`key`和`pem`文件！
 
 
 

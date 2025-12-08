@@ -23,7 +23,7 @@ description: The article is intended to systematically document the errors I enc
 
 ## Leetcode 628.三个数的最大乘积
 
-[原题链接](https://leetcode.cn/problems/maximum-product-of-three-numbers/solutions/567309/san-ge-shu-de-zui-da-cheng-ji-by-leetcod-t9sb/)
+[Leetcode 628. 三个数的最大乘积](https://leetcode.cn/problems/maximum-product-of-three-numbers/solutions/567309/san-ge-shu-de-zui-da-cheng-ji-by-leetcod-t9sb/)
 
 {%fold into @ Time Error Version :x:%}
 一开始无脑遍历所有组合，显然时间复杂度是$O(n^3)$，会超时！
@@ -73,7 +73,7 @@ public:
 ```
 
 ## Leetcode 645.错误的集合
-[原题链接](https://leetcode.cn/problems/set-mismatch)
+[Leetcode 645. 错误的集合](https://leetcode.cn/problems/set-mismatch)
 
 {%fold into @ Error Version :x:%}
 需要注意题目要求的数组中数字的**顺序**，若是使用`if`，则先找到谁会先输出谁！
@@ -137,7 +137,7 @@ public:
 
 ## Leetcode 448.找到数组中消失的数字
 
-[原题链接](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array)
+[Leetcode 448. 找到数组中消失的数字](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array)
 
 {%fold into @ Error Version :x:%}
 企图使用键key和值val相配对的方式**找到缺失数字**，但是又包含**重复数字**，意图使用键值大小比较，另设`extra`进行**偏移量调整**，但是使用`auto`迭代器，**索引无法完成补偿**，且代码过于冗余，遂放弃！
@@ -194,7 +194,7 @@ public:
 
 ## Leetcode 274.H指数
 
-[原题链接](https://leetcode.cn/problems/h-index)
+[Leetcode 274. H指数](https://leetcode.cn/problems/h-index)
 
 {%fold into @ Error Version :x:%}
 想先排序，再按照`citations[i]`的值与`index`**数组索引值**（计算>的至少有多少篇），但未考虑到若是`4、4、4`这样分布，H指数未必是数组中的数字。
@@ -234,7 +234,7 @@ public:
 
 ## Leetcode 283.移动零
 
-[原题链接](https://leetcode.cn/problems/move-zeroes)
+[Leetcode 283. 移动零](https://leetcode.cn/problems/move-zeroes)
 
 {%fold into @ Error Version :x:%}
 未考虑**连续0**的情况
@@ -288,8 +288,8 @@ public:
 ```
 
 ## Leetcode 118.杨辉三角 + 119.杨辉三角ii
-[原题链接](https://leetcode.cn/problems/pascals-triangle)
-[原题链接](https://leetcode.cn/problems/pascals-triangle-ii)
+[Leetcode 118. 杨辉三角](https://leetcode.cn/problems/pascals-triangle)
+[Leetcode 119. 杨辉三角 II](https://leetcode.cn/problems/pascals-triangle-ii)
 
 ```cpp
 class Solution {
@@ -346,7 +346,7 @@ public:
 ```
 
 ## Leetcode 14.最长公共前缀
-[原题链接](https://leetcode.cn/problems/longest-common-prefix)
+[Leetcode 14. 最长公共前缀](https://leetcode.cn/problems/longest-common-prefix)
 
 ### 方法一：横向扫描
 1. 获取数组中第一个字符串作为**最长公共前缀**
@@ -403,7 +403,7 @@ public:
 
 
 ## Leetcode 470.用 Rand7() 实现 Rand10()
-[原题链接](https://leetcode.cn/problems/implement-rand10-using-rand7)
+[Leetcode 470. 用 Rand7() 实现 Rand10()](https://leetcode.cn/problems/implement-rand10-using-rand7)
 {%fold into @ Error Version :x:%}
 ```cpp
 class Solution {
