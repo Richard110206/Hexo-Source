@@ -99,7 +99,7 @@ ignore:
 theme: fluid
 
 server:
-  port: 5000  # 设置默认端口为 5000
+  port: 4000  # 设置默认端口为 4000
   compress: true  # 可选：启用压缩
   header: true    # 可选：启用 header
   
