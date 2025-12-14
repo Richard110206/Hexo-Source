@@ -2,7 +2,9 @@
 title: Project and Business Plan
 date: 2025-11-20 10:56:01
 tags: [updating，Project, Business]
-archive: true
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/Project%20and%20Business%20Plan.png?raw=true
+category_bar: true
+description: A collection of projects that originate from tiny ideas. Each entry explores the idea's value, implementation, and challenges, documenting the journey from concept to solution.
 ---
 
 自大学入学以来，通过参与各类竞赛以及与实验室不同专业不同年级的同学深入交流，我接触到了众多富有挑战性的项目，视野得以拓宽，思维也进一步解放。与此同时，层出不穷的新技术，仿佛一根根点燃的导火索，不断串联起我的思考，激发了一个又一个项目构想与创业计划。因此，我希望在此对这些 idea 进行较为系统的梳理与记录，内容包括：产生该创意的缘由、其价值所在、具体实现路径；或是分析可能面临的阻碍与技术壁垒，探讨为何当前难以落地；又或者，如果项目顺利推进，也将同步记录其最新进展！

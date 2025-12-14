@@ -4,7 +4,8 @@
       "Bash(git add:*)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(Get-NetTCPConnection -LocalPort 5000 -ErrorAction SilentlyContinue)"
+      "Bash(Get-NetTCPConnection -LocalPort 5000 -ErrorAction SilentlyContinue)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
