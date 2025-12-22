@@ -129,7 +129,8 @@ description: A collection of useful websites for learning, algorithmic problem-s
 |[凹凸工坊](https://www.autohanding.com/)|手写风格转换工具，可将电子文本转换为模拟手写的文稿样式|
 |[Excalidraw](https://excalidraw.com/)|在线矢量绘图工具，支持实时协作绘制矢量图|
 |[HiPlot](https://hiplot.cn/)|数据可视化分析工具，支持多种图表类型|
-|[Create your Google Sitemap Online - XML Sitemaps Generator](https://www.xml-sitemaps.com/)|XML站点地图生成工具，虽不属于算法工具，但用于网站SEO优化，生成符合规范的站点地图|
+|[Create your Google Sitemap Online - XML Sitemaps Generator](https://www.xml-sitemaps.com/)|XML站点地图生成工具|
+|[哲风壁纸](https://haowallpaper.com/)|免费的壁纸网站，提供高清壁纸下载|
 
 ### 个人博客类
 | 博客名称| 内容方向 |

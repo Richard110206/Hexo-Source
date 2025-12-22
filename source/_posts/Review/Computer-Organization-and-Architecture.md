@@ -4,7 +4,8 @@ date: 2025-11-29 21:49:43
 tags: [Computer Science]
 category: Review
 category_bar: true
-archive: true
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/Computer%20Organization.jpg?raw=true
+description: Based on textbooks and Bilibili lectures, a systematic review of core knowledge in Computer Organization and Architecture.
 math: true
 ---
 
