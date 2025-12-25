@@ -660,5 +660,27 @@ RD /S /Q \\?\%1
   - 复习毛中特，粗略复习，大致掌握，还有很多细节要抠一下
   - 完成大创 v2.1版本
   - 从 csdiy 跳转到了一位博主的主页，又顺着友链一步步探索下去 —— 每当陷入迷茫时，这样的 “博客漫游” 总让我觉得格外有趣。看看同专业的学长学姐、同龄人们在钻研什么方向，做着哪些有意思的项目，总能从中获得几分启发，既开阔了眼界，也为未来锚定一点前行的方向。
+  - 为VScode添加插件[codetime](https://codetime.dev/dashboard)，用于统计代码编写时间
+  - 用cloudflare给[博客](https://blog-proxy.lqx3222482537.workers.dev/)弄CDN加速，增加国内访问速度，但似乎效果不太好
 - 12.22
-  - 计组实验：第一个验收，小保底，但还需要使用机器码在进行一次验收
+  - 计组实验：全班第一个验收，小保底，但还需要使用机器码在进行一次验收
+  - 第一次申请软著遗憾退回了...大概问题是源代码中太多的前端代码和Fastapi框架，导致雷同，应该放更多的后端算法代码，感觉得完全重构，实在麻烦，但又不太想直接放弃，等着期末考完试再去慢慢补充吧。
+![软著补正通知书](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/Copyright.png?raw=true)
+
+- 12.23
+  - 学完计组指令集相关内容
+  - 正式开始复习大物！
+  - 帮春政跑代码意外收获一杯霸王茶姬！第一次劳动所得的！
+  - claude简直是毒品！
+![GLM 4.7模型续费](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/GLM4.7.png?raw=true)
+- 12.24
+  - 经典“挂羊头卖狗肉”，用Verilog硬件电路实现，然后给老师验收看的代码是机器码和汇编写的，后面还得好好打磨一下报告  
+  - 用AI帮柏哥拟合函数，说是帮他复现代码，毕业论文致谢带上我哈哈
+  - 看了[【保姆级教程】Windows下安装Claude Code并接入智谱GLM-4.6模型](https://juejin.cn/post/7563251747022176297)才将GLM4.7接入claude，寻思着我前面用的都不是GLM么，y1s1，windows配环境真是麻烦不少，还得找系统环境变量去配置
+![GLm 4.7成功接入claude code](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/claude_env.png?raw=true)
+
+- 12.25
+  - 毛中特：就背了俩大题，结果还正好有！
+  - 房地产评估课程报告 and 结课
+  - 完成计组实验报告进度50%
+  - 发现LJ2605D 总是无法打印的原因：选择的打印机脱机了，遂正好将解决方案记录下来，并且写成使用规范进行张贴

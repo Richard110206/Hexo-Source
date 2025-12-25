@@ -140,4 +140,23 @@ $$y(x,t) = A{\cos\left[\omega\left(t + \frac{x}{v}\right) + \phi\right]}$$
 - **波腹**：振幅最大的位置
 - **波节**：振幅为0的位置
 
-反射：自由端反射时，无半波损失（相位突变\(\pi\)）
+反射：自由端反射时，无半波损失（相位突变$\pi$）
+
+## 光学
+获得相干光的的方法：
+1. 分波阵面法（两个双缝）
+2. 分振幅法（上表面和下表面的反射光）
+
+光程=折射率$\times$路径长=$n\times r$
+光程差：$\Delta r = n_2\times r_2 - n_1\times r_1$
+相位差：$\Delta \phi = \phi_2 - \phi_1 = 2\pi \frac{\Delta r}{\lambda}$
+
+杨氏双缝干涉：间距相等的干涉条纹
+- 双缝间距为$d$
+- 距离双缝$D$
+- 到0级明纹的距离$x$
+$\delta = r_2 - r_1 = \frac{d x}{D}$
+
+$\delta = $
+- $\pm k\lambda  \text{明纹} \quad (k=0,1,2,\dots)$
+- $\pm(2k+1)\dfrac{\lambda}{2}  \text{暗纹} \quad (k=0,1,2,\dots)$
