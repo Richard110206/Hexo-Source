@@ -30,10 +30,12 @@ description: This blog provides a brief self-introduction and explains the motiv
 
 &emsp;&emsp;在CSDN的简单试水中，我收获了莫大的自信，遂趁着期末周刚结束，全身心地投入到Github个人博客的创建中来！
 
-![截止2025年7月13日CSDN状态图](https://github.com/Richard110206/Blog-image/blob/main/article/General/About%20Me%20and%20My%20Blog/About-Me-and-My-Blog.png?raw=true)
+![截止2025年7月13日CSDN状态图](https://github.com/Richard110206/Blog-image/blob/main/article/General/About%20Me%20and%20My%20Blog/CSDN_BLOG.png?raw=true)
 
 
 ## About Myself
+
+[![CodeTime Badge](https://shields.jannchie.com/endpoint?style=for-the-badge&color=222&url=https%3A%2F%2Fapi.codetime.dev%2Fv3%2Fusers%2Fshield%3Fuid%3D35691)](https://codetime.dev)
 
  {% note primary%}
  I am **Li Qinxuan (李沁轩)**, a dedicated Computer Science and Technology scholar at **China University of Mining and Technology (中国矿业大学)**. My academic pursuits encompass diverse domains of computing, with specialized expertise and fervent enthusiasm for **computer vision** and **algorithmic design**.{% endnote %}
@@ -81,9 +83,9 @@ description: This blog provides a brief self-introduction and explains the motiv
 
 ### Contact With Me
 
- + lqx3222482537@qq.com
- + richardli.11.02.06@gmail.com
- + 08241120@cumt.edu.cn
+  - 🏫 Academic: `08241120@cumt.edu.cn`
+  - 🌐 Personal: `richardli.11.02.06@gmail.com`
+  - 💬 QQ: `lqx3222482537@qq.com`
 
 ### My Blog in CSDN
 [不在了情绪的CSDN博客账号](https://blog.csdn.net/2401_86849688?type=blog)
@@ -101,7 +103,7 @@ description: This blog provides a brief self-introduction and explains the motiv
 <img src="https://ghchart.rshah.org/Richard110206" alt="Li Qinxuan's Github Contributions" />
 
 ### Photos
-- 图片多从YouTube和[unsplash](https://unsplash.com/)上获取
+- 封面多从[YouTube](https://youtube.com/)和[unsplash](https://unsplash.com/)上获取 && AI生成
 - 使用[PicGo插件](https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here)和Github实现**图床**功能
 
 可以参考这篇博客：[Offload Your Hexo Images](https://richard110206.github.io/2025/08/21/Tutorial/Offload-Your-Hexo-Images/)
