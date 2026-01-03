@@ -6,7 +6,7 @@ index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/Digital%2
 math: true
 category: Review
 category_bar: true
-description: A comprehensive guide covering fundamental concepts from number systems and Boolean algebra to sequential logic circuits and AHDL programming. 
+description: A comprehensive guide covering fundamental concepts from number systems and Boolean algebra to sequential logic circuits and AHDL progRAMming. 
 ---
 
 ## 一、数制与编码
