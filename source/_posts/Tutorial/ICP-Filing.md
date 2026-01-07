@@ -95,7 +95,7 @@ description: This article details the entire process from purchasing a server to
 为保障网络访问的安全性，可在域名注册商处签发SSL证书（2min），将网站升级为HTTPS协议，然后在1Panel面板手动导入`key`和`pem`文件！
 
 
-
+还是ssh快 给vercel配置域名 现在域名注册商处添加CNAME解析
 
 2025.10.25-2025.11.18进入审查阶段
 

@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://github.com/Richard110206/Blog-image/blob/main/cover/Computer%20Organization.jpg?raw=true">
 <meta property="article:published_time" content="2025-11-29T13:49:43.000Z">
-<meta property="article:modified_time" content="2026-01-03T13:30:26.039Z">
+<meta property="article:modified_time" content="2026-01-05T06:59:36.593Z">
 <meta property="article:author" content="Li Qinxuan">
 <meta property="article:tag" content="Computer Science">
 <meta name="twitter:card" content="summary_large_image">
@@ -303,7 +303,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12k words
+          13k words
         
       </span>
     
@@ -314,7 +314,7 @@
         
         
         
-          101 mins
+          109 mins
         
       </span>
     
@@ -445,6 +445,14 @@
               <div class="markdown-body">
                 
                 <h2 id="运算方法">运算方法</h2>
+<h4 id="双符号位">双符号位</h4>
+<p>双符号位表示带符号数时，符号位的组合含义为：</p>
+<ul>
+<li>00：正，无溢出；</li>
+<li>01：正溢出（上溢）；</li>
+<li>10：负溢出（下溢）；</li>
+<li>11：负，无溢出</li>
+</ul>
 <h4 id="IEEE754">IEEE754</h4>
 <p>浮点数表示标准：</p>
 <ul>
@@ -457,20 +465,22 @@
           </div>
 <h4 id="浮点运算方法和浮点运算器">浮点运算方法和浮点运算器</h4>
 <ol>
-<li>零操作数检查</li>
-<li>比较阶码大小并完成对阶（小阶向大阶看齐）：对齐小数点，以便进行尾数的加减运算</li>
+<li>阶码（双符号位补码）+ 尾数（双符号位补码）的形式</li>
 </ol>
 <ul>
-<li>
-<p>尾数左移会导致最高有效位的缺失，造成的误差较大</p>
-</li>
-<li>
-<p>尾数右移最低有效位缺失，造成的误差较小，每右移一位，阶码加一，右移位数等于阶差</p>
-</li>
+<li>正数：00.1xxxxx</li>
+<li>负数：11.0xxxxx</li>
 </ul>
-<ol>
+<ol start="2">
+<li>比较阶码大小并完成对阶（<strong>小阶向大阶看齐</strong>）：对齐小数点，以便进行尾数的加减运算</li>
+</ol>
+<ul>
+<li>右移：左边空缺的位会用符号位填充（补码运算中，正数填 0，负数填 1）</li>
+<li>左移：右边空缺的位用 0 填充</li>
+</ul>
+<ol start="3">
 <li>尾数求和：与定点数加减法方法相同</li>
-<li>规格化处理：尾数右移实现规格化</li>
+<li>规格化处理</li>
 <li>舍入处理：规格化后最低有效位丢失，会造成一定误差，要进行舍入处理
 <ul>
 <li>就近舍入</li>
@@ -488,16 +498,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="浮点运算流水线">浮点运算流水线</h4>
-<p>使各子任务能在流水线的各个阶段并发执行（实现计算机时间并行性），子任务内部具有优先关系的叫做线性流水线。</p>
-<p>对于一个具有k级过程段的流水线处理n个任务需要的：</p>
-<ul>
-<li>采用流水线：$T_k=k+(n-1)$</li>
-<li>不采用流水线：$T_L=n·k$</li>
-</ul>
-<p>流水线加速比为二者的比值$C_k=\frac{T_L}{T_k}$，取limit极限，加速比为k</p>
-<h3 id="存储系统">存储系统</h3>
-<h4 id="存储器三剑客：">存储器三剑客：</h4>
+<h2 id="存储系统">存储系统</h2>
+<h4 id="存储器三剑客">存储器三剑客</h4>
 <ul>
 <li>
 <p>主存（内存）：用来存放计算机<strong>运行期间所需要的程序和数据</strong>，CPU可以直接随机的进行读/写访问，存取速度快。</p>
@@ -514,8 +516,11 @@
 <li>
 <p>随机存储器RAM</p>
 <ul>
-<li>优点：对RAM任意单元的<strong>读写时间相同</strong>，与物理地址无关（类似数组）</li>
-<li>缺点：一旦断电，RAM失去存储信息
+<li>
+<p>优点：对RAM任意单元的<strong>读写时间相同</strong>，与物理地址无关（类似数组）</p>
+</li>
+<li>
+<p>缺点：一旦断电，RAM失去存储信息</p>
 <ul>
 <li>静态SRAM：双稳态触发器，制造cache</li>
 <li>动态DRAM：mos管和电容，主存</li>
@@ -537,7 +542,7 @@
 </ul>
 </li>
 <li>
-<p>直接存取存储器dam：光盘（随机+顺序存取相结合）</p>
+<p>直接存取存储器DAM：光盘（随机+顺序存取相结合）</p>
 <ul>
 <li>特点：先通过随机访问，确定一个较小的存储区域，在在这小区域内顺序查找</li>
 </ul>
@@ -545,16 +550,6 @@
 <li>
 <p>相联存储器：按照内容寻址，将所存的内容的某一部分作为检索项（关键字）去检索</p>
 </li>
-</ul>
-<h4 id="按断电后信息的可保存性分类">按断电后信息的可保存性分类</h4>
-<ul>
-<li><strong>易失性</strong>存储器</li>
-<li><strong>非易失性</strong>存储器</li>
-</ul>
-<h4 id="按读出方式分类">按读出方式分类</h4>
-<ul>
-<li>破坏性读出：读出后若不加恢复则存储器存储的信息会丢失（DRAM）</li>
-<li>非破坏性读出：不会丢失信息（SRAM，ROM）</li>
 </ul>
 <h3 id="寻址">寻址</h3>
 <ul>
@@ -585,34 +580,49 @@
             <ul><li>1 s（秒）= 10³ ms（毫秒）= 1000 ms</li><li>1 ms（毫秒）= 10³ μs（微秒）= 1000 μs</li><li>1 μs（微秒）= 10³ ns（纳秒）= 1000 ns</li></ul>
           </div>
 <ul>
-<li>访问时间：
+<li>
+<p>访问时间：</p>
 <ul>
 <li>读出时间$T_A$</li>
 <li>写入时间$T_W$</li>
 </ul>
 </li>
-<li>存储周期：进行一次<strong>读写操作</strong>所需要的全部时间，就是存储器进行连续读写操作所允许的最短时间间隔</li>
-<li>存储带宽：表示存储器被连续访问时可以提供的数据传送速率，字节/秒</li>
+<li>
+<p>存储周期：进行一次<strong>读写操作</strong>所需要的全部时间，就是存储器进行连续读写操作所允许的最短时间间隔</p>
+</li>
+<li>
+<p>存储带宽：表示存储器被连续访问时可以提供的数据传送速率，字节/秒</p>
+</li>
 </ul>
 <div class="note note-info">
             <ul><li>存取时间：存储器从读出或者写入一次信息所需要的平均时间</li><li>存取周期：<strong>连续两次访问存储器</strong>之间所必需的最短时间间隔</li></ul>
           </div>
 <h4 id="存储介质">存储介质</h4>
 <ul>
-<li>磁存储器：存取速度慢，但成本低</li>
-<li>光存储器：用激光束照射盘面，靠盘面的不同反射率来读出数据，便于携带</li>
-<li>半导体存储器</li>
+<li>
+<p>磁存储器：存取速度慢，但成本低</p>
+</li>
+<li>
+<p>光存储器：用激光束照射盘面，靠盘面的不同反射率来读出数据，便于携带</p>
+</li>
+<li>
+<p>半导体存储器</p>
+</li>
 </ul>
 <h4 id="RAM工作原理">RAM工作原理</h4>
 <p>存放一个二进制的物理器件叫做存储元，地址码相同的多个存储元构成一个存储单元，若干存储单元的集合构成存储体</p>
 <ul>
-<li>DRAM：用于主存，由mos管和电容组成，当电容存储的电荷数超过阈值（电量），电容所在的存储元表示1
+<li>
+<p>DRAM：用于主存，由mos管和电容组成，当电容存储的电荷数超过阈值（电量），电容所在的存储元表示1</p>
 <ul>
 <li>写入：给高电压，mos管导通，充电</li>
-<li>读出：mos管导通，若电容有电，电流流出，通过外接信号放大器检测电容的电压信息，放电后需要再次充电进行恢复（破坏性读出）；漏电需要刷新 ，重新将电荷充满</li>
+<li>读出：mos管导通，若电容有电，电流流出，通过外接信号放大器检测电容的电压信息，放电后需要再次充电进行恢复（破坏性读出）；漏电需<br>
+要刷新 ，重新将电荷充满</li>
 </ul>
 </li>
-<li>SRAM双稳态触发器（6个mos管）：存取速度按快，用于cache</li>
+<li>
+<p>SRAM双稳态触发器（6个mos管）：存取速度按快，用于cache</p>
+</li>
 </ul>
 <table>
 <thead>
@@ -724,16 +734,25 @@
 <p>动态存储器的刷新<strong>按行进行</strong>，为了减少刷新周期，可以减少存储矩阵的行数，增加列数</p>
 <h3 id="只读存储器ROM">只读存储器ROM</h3>
 <ul>
-<li>掩模式只读存储器MROM：在芯片生产过程中直接写入，写入后任何人都无法改变
+<li>
+<p>掩模式只读存储器MROM：在芯片生产过程中直接写入，写入后任何人都无法改变</p>
 <ul>
 <li>优点：<strong>可靠性高</strong></li>
 <li>缺点：<strong>灵活性差</strong></li>
 </ul>
 </li>
-<li>一次可编程只读存储器<strong>PROM</strong>：允许用户一次性编程写入程序</li>
-<li>可擦除可编程只读存储器<strong>EPROM</strong>：用户可以写入还能进行多次修改，不能取代RAM，因为编程次数有限，而且写入时间过长</li>
-<li><strong>flash</strong>存储器：闪存，支持快速擦出和重写，写入前必须先擦除</li>
-<li>固态硬盘<strong>SSD</strong>：基于闪存，价格较高</li>
+<li>
+<p>一次可编程只读存储器<strong>PROM</strong>：允许用户一次性编程写入程序</p>
+</li>
+<li>
+<p>可擦除可编程只读存储器<strong>EPROM</strong>：用户可以写入还能进行多次修改，不能取代RAM，因为编程次数有限，而且写入时间过长</p>
+</li>
+<li>
+<p><strong>flash</strong>存储器：闪存，支持快速擦出和重写，写入前必须先擦除</p>
+</li>
+<li>
+<p>固态硬盘<strong>SSD</strong>：基于闪存，价格较高</p>
+</li>
 </ul>
 <h3 id="主存容量扩展">主存容量扩展</h3>
 <ul>
@@ -747,7 +766,8 @@
 <p>通过译码器控制扩展后的芯片选通</p>
 <h4 id="字扩展">字扩展</h4>
 <ul>
-<li>线选法：用除片内寻址外的高位地址线连接存储芯片的片选端
+<li>
+<p>线选法：用除片内寻址外的高位地址线连接存储芯片的片选端</p>
 <ul>
 <li>优点：不需要地址译码器，线路简单</li>
 <li>缺点：地址空间不连续，不能充分利用系统的存储器的空间</li>
@@ -824,14 +844,15 @@
 <h3 id="主存">主存</h3>
 <h4 id="磁盘">磁盘</h4>
 <p>由磁盘驱动器、磁盘控制器、磁头、盘片线组成 （从外往里数为0，1，2号磁道），磁道被分为很多<strong>扇区</strong></p>
-<p>由多个盘片构成，每个盘片分成上下两个盘面，每个盘面有多个圆环构成，圆盘上均匀分布磁介质（用来存储0和1）尽管磁道长度不同，但是<strong>每个磁道存储的数据量相同</strong>，因此<strong>从外到内磁道的位密度逐渐变小</strong>，顺时针分扇区，扇区间有扇区间隙，多个<strong>磁道号相同的磁道</strong>，共同构成一个<strong>柱面</strong>，柱面号即为磁道号，多个盘片绑在一个电机上，旋转时，盘面会同时旋转。</p>
+<p>由多个盘片构成，每个盘片分成上下两个盘面，每个盘面有多个圆环构成，圆盘上均匀分布磁介质（用来存储0和1）尽管磁道长度不同，但是<strong>每个磁道存储的数据量相同</strong>，因此<strong>从外到内磁道的位密度逐渐变大</strong>，顺时针分扇区，扇区间有扇区间隙，多个<strong>磁道号相同的磁道</strong>，共同构成一个<strong>柱面</strong>，柱面号即为磁道号，多个盘片绑在一个电机上，旋转时，盘面会同时旋转。</p>
 <ul>
-<li>
-<p>道密度：沿<strong>磁道半径方向单位长度上的磁道数</strong></p>
-</li>
-<li>
-<p>位密度：磁道<strong>单位长度上能记录的二进制代码位数</strong></p>
-</li>
+<li>道密度：沿<strong>磁道半径方向单位长度上的磁道数</strong></li>
+<li>位密度：磁道<strong>单位长度上能记录的二进制代码位数</strong></li>
+</ul>
+<div class="note note-info">
+            <p>如果某文件长度超过一个磁道的容量，应将它记录在同一个<strong>柱面</strong>上:因为不需要重新找道，数据读/写速度快</p>
+          </div>
+<ul>
 <li>
 <p>磁道的容量：</p>
 <ul>
@@ -840,9 +861,14 @@
 </ul>
 </li>
 </ul>
-<p>$存取时间=寻道时间（磁头到目的磁道）（取平均时间最外到最内到一半）+旋转延迟时间（磁头定位到读写扇区时间）（平均取旋转半周）+传输时间（传输数据所花费的时间）$</p>
+<p>存取时间=寻道时间（磁头到目的磁道）（取平均时间最外到最内到一半）+旋转延迟时间（磁头定位到读写扇区时间）（平均取旋转半周）+传输时间（传输数据所花费的时间）</p>
 <p>CPU➡️磁盘控制器➡️磁盘驱动器➡️磁盘</p>
-<p>磁盘寻址：</p>
+<ul>
+<li>$总容量 = 有效记录面数 \times 每面磁道数 \times 每道容量$</li>
+<li>$数据传输率 = 每道容量 \times 转速$</li>
+<li>$平均等待时间=\frac{1}{2 \times n}$</li>
+</ul>
+<p>磁盘寻址：<code>记录面号(位) + 磁道号(位) + 扇区号(位)</code></p>
 <ol>
 <li>确定访问哪个磁盘组（由多个磁盘构成）</li>
 <li>确定应该访问哪个<strong>柱面</strong></li>
@@ -850,7 +876,8 @@
 <li>确定<strong>扇区</strong></li>
 </ol>
 <ul>
-<li>磁盘阵列（RAID）:用独立磁盘构成具有冗余能力的阵列（0～5分别代表不同的架构与功能）
+<li>
+<p>磁盘阵列（RAID）:用独立磁盘构成具有冗余能力的阵列（0～5分别代表不同的架构与功能）</p>
 <ul>
 <li>RAID0：无数据校验，不提供冗余策略，没有容错能力</li>
 <li>RAID1：无差别写入两份磁盘，分为工作磁盘和镜像磁盘，利用率只有50%，两块当一块使用</li>
@@ -860,8 +887,11 @@
 <h4 id="固态硬盘-SSD">固态硬盘(SSD)</h4>
 <p>与U盘无本质差别，只是容量更大，存取性能更好</p>
 <ul>
-<li>优点：启动快、抗摔性好</li>
-<li>缺点：一个块的写入次数不能过多，一般不超过10w次，否则会因为默算而无法再次写入;引入磨损均衡：避免数据重复在某个空间写入，以保证各个存储区域磨损程度基本一致
+<li>
+<p>优点：启动快、抗摔性好</p>
+</li>
+<li>
+<p>缺点：一个块的写入次数不能过多，一般不超过10w次，否则会因为默算而无法再次写入;引入磨损均衡：避免数据重复在某个空间写入，以保证各个存储区域磨损程度基本一致</p>
 <ul>
 <li>动态：写入数据时，<strong>自动选择</strong>较新的内存块</li>
 <li>静态：SSD检测并自动进行数据分配，平常的读写操作在较新的闪存块中进行</li>
@@ -889,18 +919,22 @@
 <h4 id="cache行和主存的映射方式">cache行和主存的映射方式</h4>
 <p>先将主存高位地址的标记与cache进行比较，若相等且有效值为1则命中直接取出信息；若不相等则CPU从主存中读出信息送到cache任意空闲行中，有效位置1，并设置标记</p>
 <ul>
-<li>全相联映射：主存可以复制到cache任意行中只要有空闲的cache块<code>主存标记+块内地址</code>
+<li>
+<p>全相联映射：主存可以复制到cache任意行中只要有空闲的cache块<code>主存标记+块内地址</code></p>
 <ul>
 <li>优点：冲突概率低，空间利用率高，命中率高</li>
 <li>缺点：标记比较速度较慢，实现成本较高，要按内容寻址的相联存储器</li>
 </ul>
 </li>
-<li>直接映射：映射到特定行<code>主存标记+cache行号+块内地址</code>
+<li>
+<p>直接映射：映射到特定行<code>主存标记+cache行号+块内地址</code></p>
 <ul>
 <li>$cache行号=主存块号 \mod cache行数$</li>
 </ul>
 </li>
-<li>组相联映射：将cache分成多个组，组内有多行，主存可以放在特定组的任意行（组间采用直接映射，组内采用全相联映射）<code>主存标记+组地址+块内地址</code></li>
+<li>
+<p>组相联映射：将cache分成多个组，组内有多行，主存可以放在特定组的任意行（组间采用直接映射，组内采用全相联映射）<code>主存标记+组地址（cache行号/路数）+块内地址</code></p>
+</li>
 </ul>
 <h4 id="替换策略">替换策略</h4>
 <ul>
@@ -926,14 +960,21 @@
 <h4 id="不一致性">不一致性</h4>
 <p>写给cache时，会导致主存和cache不一致的问题</p>
 <ul>
-<li>全写法：写操作时，若写命中，则同时写cache和主存：需要额外引入写缓冲，CPU在将数据写入cache时也写入写缓冲，然后由写缓冲将需要写入的数据写回主存
+<li>
+<p>全写法：写操作时，若写命中，则同时写cache和主存：需要额外引入写缓冲，CPU在将数据写入cache时也写入写缓冲，然后由写缓冲将需要写入的数据写回主存</p>
 <ul>
 <li>缺点：增加访存次数</li>
 </ul>
 </li>
-<li>写回法：写命中时，信息写入cache而不写入主存，直到cache被替换出去时，才将数据写回主存，需要给cache增加<code>脏位</code>（<code>修改位</code>）</li>
-<li>写分配法：写回主存后，把写入过的主存调入cache中</li>
-<li>非写分配法：写回主存后，不调入cache</li>
+<li>
+<p>写回法：写命中时，信息写入cache而不写入主存，直到cache被替换出去时，才将数据写回主存，需要给cache增加<code>脏位</code>（<code>修改位</code>）</p>
+</li>
+<li>
+<p>写分配法：写回主存后，把写入过的主存调入cache中</p>
+</li>
+<li>
+<p>非写分配法：写回主存后，不调入cache</p>
+</li>
 </ul>
 <table>
 <thead>
@@ -961,19 +1002,20 @@
 </table>
 <h4 id="cache分离">cache分离</h4>
 <ul>
-<li>统一cache：刚出现时<strong>指令和数据都放在里面</strong>
+<li>
+<p>统一cache：刚出现时<strong>指令和数据都放在里面</strong></p>
 <ul>
 <li>优点：设计和实现相对简单</li>
 <li>缺点：存取数据又要读指令时会发生冲突</li>
 </ul>
 </li>
-<li>独立cache：<strong>分开为指令cache和数据cache</strong>
+<li>
+<p>独立cache：<strong>分开为指令cache和数据cache</strong></p>
 <ul>
 <li>指令cache（顺序执行）比数据cache（跳转访问）有更好的空间局部性</li>
 </ul>
 </li>
 </ul>
-<h4 id="cache分离-v2">cache分离</h4>
 <p>将cache集成在CPU中称为第一级cache：减少对片外总线的访问，加快存取速度；但由于容量较小，CPU和主存之间设置的cache为第二级cache。</p>
 <ul>
 <li>L1和L2全写法</li>
@@ -988,25 +1030,32 @@
 </ul>
 <h4 id="指令按地址码分类">指令按地址码分类</h4>
 <ul>
-<li>零地址指令：<code>OP</code>
+<li>
+<p>零地址指令：<code>OP</code></p>
 <ul>
 <li>不需要操作数：空操作、停机、关中断指令</li>
-<li>两个操作数在堆栈计算机中（隐含寻址）</li>
+<li>两个操作数在<strong>堆栈</strong>计算机中（隐含寻址）</li>
 </ul>
 </li>
-<li>一地址指令：<code>OP+A1</code>
+<li>
+<p>一地址指令：<code>OP+A1</code></p>
 <ul>
 <li>进行<code>OP</code>操作后放回原地址：加1、减1、求反、求补、移位</li>
-<li>将结果存入默认地址如累加器中</li>
+<li>将结果存入默认地址如<strong>累加器</strong>中</li>
 </ul>
 </li>
-<li>二地址指令<code>OP+A1+A2</code>
+<li>
+<p>二地址指令<code>OP+A1+A2</code></p>
 <ul>
 <li><code>A1</code>是目的操作数<code>A2</code>是源操作数，将运算结果存入<code>A1</code></li>
 </ul>
 </li>
-<li>三地址指令：<code>OP+A1+A2+A3(结果)</code></li>
-<li>四地址指令：<code>OP+A1+A2+A3(结果)+A4(下址)</code></li>
+<li>
+<p>三地址指令：<code>OP+A1+A2+A3(结果)</code></p>
+</li>
+<li>
+<p>四地址指令：<code>OP+A1+A2+A3(结果)+A4(下址)</code></p>
+</li>
 </ul>
 <h4 id="指令长度">指令长度</h4>
 <p>操作码随着地址码的减少而增加</p>
@@ -1068,7 +1117,7 @@
 <li>
 <p>隐含寻址：不直接给出操作数的地址，而是在指令中隐含着操作数地址（隐含在寄存器中）。</p>
 <ul>
-<li>指令更短</li>
+<li>优点：指令更短</li>
 <li>缺点：需要添加额外额硬件来实现</li>
 </ul>
 </li>
@@ -1213,16 +1262,30 @@
 <h3 id="x86">x86</h3>
 <h4 id="寄存器">寄存器</h4>
 <ul>
-<li>EAX（32）=E（16）+AX（16）</li>
-</ul>
-<p>AX=AH（8）+AL（8）</p>
+<li>
+<p>EAX（32）=E（16）+AX（16）</p>
 <ul>
-<li>EAX是扩展累加寄存器（accumulator），通常用于存储操作结果。</li>
-<li>EBX是扩展基地址寄存器（base），可以在内存寻址时存放基地址。（基址寄存器）</li>
-<li>ECX是扩展计数寄存器（count），是某些指令的计数器。</li>
-<li>EDX是扩展数据寄存器（data），与EAX经常配合使用。</li>
-<li>ESI/EDI是扩展源/目标指针寄存器（source index/destination），其中，ESI通常用于存储当前正在处理的源数据（source data）的索引或地址。例如数组访问中使用，以指向数据的来源位置。（变址寄存器）</li>
-<li>EBP是扩展基址指针寄存器（base pointer），一般用于指示 ESP是扩展堆栈指针寄存器（stack pointer），一般用于指示栈顶。</li>
+<li>AX=AH（8）+AL（8）</li>
+</ul>
+</li>
+<li>
+<p>EAX是扩展累加寄存器（accumulator），通常用于存储操作结果。</p>
+</li>
+<li>
+<p>EBX是扩展基地址寄存器（base），可以在内存寻址时存放基地址。（基址寄存器）</p>
+</li>
+<li>
+<p>ECX是扩展计数寄存器（count），是某些指令的计数器。</p>
+</li>
+<li>
+<p>EDX是扩展数据寄存器（data），与EAX经常配合使用。</p>
+</li>
+<li>
+<p>ESI/EDI是扩展源/目标指针寄存器（source index/destination），其中，ESI通常用于存储当前正在处理的源数据（source data）的索引或地址。例如数组访问中使用，以指向数据的来源位置。（变址寄存器）</p>
+</li>
+<li>
+<p>EBP是扩展基址指针寄存器（base pointer），一般用于指示 ESP是扩展堆栈指针寄存器（stack pointer），一般用于指示栈顶。</p>
+</li>
 </ul>
 <h4 id="指令格式">指令格式</h4>
 <p>汇编指令：<code>助记符+目的操作数+源操作数</code></p>
@@ -1635,7 +1698,8 @@
 </ul>
 <h4 id="I-O端口及其编址">I/O端口及其编址</h4>
 <ul>
-<li>统一编址：外部设备地址与内存地址统一编址，通过不同的地址区域来进行划分。不需要设置专门的I/O指令。采用<code>Load/Store</code>访存指令就可以访问外部设备
+<li>
+<p>统一编址：外部设备地址与内存地址统一编址，通过不同的地址区域来进行划分。不需要设置专门的I/O指令。采用<code>Load/Store</code>访存指令就可以访问外部设备</p>
 <ul>
 <li>优点：更加灵活方便，共享访存指令的寻址方式和保护机制</li>
 <li>缺点：占用了主存空间的地址，减少了主存可用容量；译码过程更加复杂，降低寻址速度</li>
@@ -1644,7 +1708,8 @@
 </ul>
 <figure class="highlight mips"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs MIPS"><span class="hljs-keyword">lw </span>$<span class="hljs-built_in">t0</span> <span class="hljs-number">0x00000004</span> <span class="hljs-comment"># 从ROM读取一个字</span><br><span class="hljs-keyword">sb </span>$<span class="hljs-built_in">t0</span> <span class="hljs-number">0xff000004</span> <span class="hljs-comment"># 写一个字节到内存</span><br><span class="hljs-keyword">sb </span>$<span class="hljs-built_in">t0</span> <span class="hljs-number">0xffff0004</span> <span class="hljs-comment"># 写一个字节到I/O设备</span><br></code></pre></td></tr></tbody></table></figure>
 <ul>
-<li>独立编址：I/O映射方式，对主存空间和I/O端口地址分别进行编址，地址范围可以重叠，需要专门的I/O指令来表明访问的是I/O地址空间
+<li>
+<p>独立编址：I/O映射方式，对主存空间和I/O端口地址分别进行编址，地址范围可以重叠，需要专门的I/O指令来表明访问的是I/O地址空间</p>
 <ul>
 <li>优点：I/O端口只需要少量地址线，译码更加简单，寻址速度更快；指令更加清晰，便于理解和检查</li>
 <li>缺点：专门的I/O指令只包含简单的传输操作，降低了程序设计的灵活性，而且CPu需要分别提供专门的读写命令，总线控制逻辑更加复杂；需要专门的硬件保护措施</li>
@@ -1665,13 +1730,15 @@
 <h3 id="I-O控制方式">I/O控制方式</h3>
 <h4 id="程序查询方式">程序查询方式</h4>
 <ul>
-<li>独占查询：设备启动后，CPU 全程循环查询外设状态，直到设备就绪。
+<li>
+<p>独占查询：设备启动后，CPU 全程循环查询外设状态，直到设备就绪。</p>
 <ul>
 <li>CPU 100% 时间用于 I/O 轮询，和外设完全串行工作；</li>
 <li>实现简单，但<strong>CPU 资源浪费严重</strong></li>
 </ul>
 </li>
-<li>定时查询：CPU 启动设备后，通过<strong>定时中断</strong>周期性查询状态，期间可运行其他程序。
+<li>
+<p>定时查询：CPU 启动设备后，通过<strong>定时中断</strong>周期性查询状态，期间可运行其他程序。</p>
 <ul>
 <li>CPU 可以并行运行其他任务，<strong>资源利用率比独占查询高</strong></li>
 </ul>
@@ -1693,13 +1760,15 @@
 </ul>
 <h4 id="DMA和CPU冲突">DMA和CPU冲突</h4>
 <ul>
-<li>停止访存：当 I/O 设备有 DMA 请求时，DMA 接口让 CPU 暂停访存、交出总线控制权，直到 DMA 传完数据再归还。
+<li>
+<p>停止访存：当 I/O 设备有 DMA 请求时，DMA 接口让 CPU 暂停访存、交出总线控制权，直到 DMA 传完数据再归还。</p>
 <ul>
 <li>优点：控制简单，适合高速 I/O 设备成组传数据</li>
 <li>缺点：DMA 工作时 CPU 基本闲置。</li>
 </ul>
 </li>
-<li>周期挪用：因 I/O 访存优先级更高，I/O 会 “挪用” 1 个存取周期传 1 个数据后立刻释放总线（单字传送）。
+<li>
+<p>周期挪用：因 I/O 访存优先级更高，I/O 会 “挪用” 1 个存取周期传 1 个数据后立刻释放总线（单字传送）。</p>
 <ul>
 <li>CPU 不访存则无冲突；</li>
 <li>CPU 正在访存则等其周期结束再让总线；</li>
@@ -1712,7 +1781,8 @@
 </li>
 </ul>
 </li>
-<li>DMA和CPU交替访存：把 CPU 工作周期分成两个时间片，分别给 CPU 和 DMA 轮流访存（适用于 CPU 周期长于主存存取周期的情况，轮流时间固定）。
+<li>
+<p>DMA和CPU交替访存：把 CPU 工作周期分成两个时间片，分别给 CPU 和 DMA 轮流访存（适用于 CPU 周期长于主存存取周期的情况，轮流时间固定）。</p>
 <ul>
 <li>优点：无需申请 / 归还总线，通过分时控制总线使用权</li>
 <li>缺点：硬件逻辑复杂</li>
@@ -1841,6 +1911,91 @@
 </ol>
 <h4 id="底层模块门原语">底层模块门原语</h4>
 <p>这是Verilog语言提供的已经设计好的门，可以直接调用，其中实例名可以忽略，且只能采用顺序法，输出在前，输入在后：<code>and(out,in1,in2)</code>。</p>
+<h2 id="真题拟合">真题拟合</h2>
+<p>CPU的组成：由算术逻辑运算单元、操作控制器组成。</p>
+<ul>
+<li>ALU：算术逻辑运算单元。执行算术运算、逻辑运算并测试</li>
+<li>操作控制器：协调和指挥整个系统的操作，取指令并执行。</li>
+<li>A和B：运算器前端的数据暂存器，也称运算寄存器，用来暂存参加运算的操作数</li>
+<li>R0～R3：CPU的通用寄存器组，存放操作数。</li>
+<li>IR-指令寄存器器：保存当前正在执行的指令的指令码 Instruction Register</li>
+<li>PC-程序计数器：其保持的总是将要执行的下一条指令的地址，由于大多数指令都是按顺序来执行的，所以修改的过程通常只是简单的对PC加1。</li>
+<li>AR—地址寄存器：用来保存当前CPU所访问的内存单元的地址（指令地址或操作数地址） Address Register</li>
+<li>DR—数据（缓冲）寄存器：用来暂存写入内存单元的数据及从内存单元读出的数据 Data Register</li>
+</ul>
+<p>指令周期流程图：</p>
+<figure class="highlight clean"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs clean">PC-&gt;AR<br>M-&gt;DR<br>DR-&gt;IR<br></code></pre></td></tr></tbody></table></figure>
+<p>$按字编址的寻址单元数 = 总字节数 \div 每字字节数$</p>
+<ul>
+<li>程序查询方式中，主机需不断轮询设备状态，设备未准备好时主机等待，因此主机与设备是串行工作的；</li>
+<li>中断、DMA、通道方式下，主机可在设备传输时执行其他任务，属于并行 / 半并行工作</li>
+</ul>
+<p>补码比原码 / 反码多表示一个最小负数(8 位补码中，10000000 表示 - 128，而原码 / 反码中10000000无合法数值含义)</p>
+<p>隐指令是指令系统中没有的指令，由硬件自动执行</p>
+<ul>
+<li>静态微程序控制器的微程序存储在 ROM（不可改写）中；</li>
+<li>动态微程序控制器的微程序可存储在 EPROM（可擦写改写）（速度较慢，无法替代RAM高速读写的需求）中，支持微程序的修改与更新</li>
+</ul>
+<p>16 位浮点数需平衡范围（阶码）与精度（尾数）：</p>
+<ul>
+<li>阶码过短（范围太小）</li>
+<li>尾数过短（精度不足）</li>
+</ul>
+<p>流水线的每个时钟周期是统一的固定值，时钟周期必须能覆盖耗时最长的那个过程段</p>
+<ul>
+<li>多重中断的中断服务程序：</li>
+</ul>
+<ol>
+<li>保护断点；</li>
+<li>保护现场；</li>
+<li>开中断；</li>
+<li>执行中断服务程序</li>
+</ol>
+<p>同步通信和异步通信的主要区别是前者有公共时钟，总线上的所有设备按统一的时序，统一的传输周期进行信息传输，通信双方按约定好的时序联络。后者没有公共时钟，没有固定的传输周期，采用应答方式通信，具体的联络方式有不互锁、半互锁和全互锁三种。不互锁方式通信双方没有相互制约关系；半互锁方式通信双方有简单的制约关系；全互锁方式通信双方有完全的制约关系。其中全互锁通信可靠性最高。</p>
+<ul>
+<li>顺序存储器：$t_1=mT$</li>
+<li>交叉存储器：$t_2=T+(m-1)\tau$</li>
+</ul>
+<h3 id="祖传大题">祖传大题</h3>
+<ol>
+<li>浮点数运算</li>
+<li>cache 映射，字、位扩展</li>
+<li>指令格式</li>
+<li>cache 命中率</li>
+<li>磁盘容量、时间计算</li>
+<li>程序执行流程框图</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">特性</th>
+<th style="text-align:center">程序查询方式</th>
+<th style="text-align:center">程序中断方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CPU 工作方式</td>
+<td style="text-align:center">CPU 主动循环查询设备状态，直到设备准备好</td>
+<td style="text-align:center">设备准备好后主动向 CPU 发送中断请求，CPU 在执行完当前指令后响应</td>
+</tr>
+<tr>
+<td style="text-align:center">CPU 利用率</td>
+<td style="text-align:center">低（查询期间 CPU 无法做其他工作）</td>
+<td style="text-align:center">高（CPU 可在设备准备期间执行其他任务）</td>
+</tr>
+<tr>
+<td style="text-align:center">响应延迟</td>
+<td style="text-align:center">大（可能需要等待一个完整的查询周期）</td>
+<td style="text-align:center">小（设备准备好后立即触发中断，无额外等待）</td>
+</tr>
+<tr>
+<td style="text-align:center">实时性</td>
+<td style="text-align:center">差（无法及时响应设备的紧急请求）</td>
+<td style="text-align:center">好（可优先响应高优先级中断）</td>
+</tr>
+</tbody>
+</table>
 
                 
               </div>
@@ -1905,7 +2060,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>January 3, 2026</div>
+          <div>January 5, 2026</div>
         </div>
       
       
