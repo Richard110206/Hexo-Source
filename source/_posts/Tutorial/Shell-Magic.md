@@ -403,3 +403,156 @@ Reboot scheduled for Tue 2025-09-02 12:05:06 CST, use 'shutdown -c' to cancel.
 - `-i` 或 `--init`: 关机之前，关闭所有网络接口
 3. `init`
 4. `poweroff`
+
+## WSL
+
+```bash
+❯ wsl --list --online
+以下是可安装的有效分发的列表。
+使用“wsl.exe --install <Distro>”安装。
+
+NAME                            FRIENDLY NAME
+Ubuntu                          Ubuntu
+Ubuntu-24.04                    Ubuntu 24.04 LTS
+openSUSE-Tumbleweed             openSUSE Tumbleweed
+openSUSE-Leap-16.0              openSUSE Leap 16.0
+SUSE-Linux-Enterprise-15-SP7    SUSE Linux Enterprise 15 SP7
+SUSE-Linux-Enterprise-16.0      SUSE Linux Enterprise 16.0
+kali-linux                      Kali Linux Rolling
+Debian                          Debian GNU/Linux
+AlmaLinux-8                     AlmaLinux OS 8
+AlmaLinux-9                     AlmaLinux OS 9
+AlmaLinux-Kitten-10             AlmaLinux OS Kitten 10
+AlmaLinux-10                    AlmaLinux OS 10
+archlinux                       Arch Linux
+FedoraLinux-43                  Fedora Linux 43
+FedoraLinux-42                  Fedora Linux 42
+eLxr                            eLxr 12.12.0.0 GNU/Linux
+Ubuntu-20.04                    Ubuntu 20.04 LTS
+Ubuntu-22.04                    Ubuntu 22.04 LTS
+OracleLinux_7_9                 Oracle Linux 7.9
+OracleLinux_8_10                Oracle Linux 8.10
+OracleLinux_9_5                 Oracle Linux 9.5
+openSUSE-Leap-15.6              openSUSE Leap 15.6
+SUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6
+```
+
+```bash
+❯ wsl --install Debian
+正在下载: Debian GNU/Linux
+正在安装: Debian GNU/Linux
+已成功安装分发。可以通过 “wsl.exe -d Debian” 启动它
+正在启动 Debian...
+Please create a default UNIX user account. The username does not need to match your Windows username.
+For more information visit: https://aka.ms/wslusers
+Enter new UNIX username: richard
+New password:
+Retype new password:
+passwd: password updated successfully
+usermod: no changes
+```
+
+```bash
+(base) PS C:\Users\Legion> wsl -l -v
+  NAME              STATE           VERSION
+* Ubuntu            Running         2
+  Debian            Running         2
+  docker-desktop    Stopped         2
+```
+
+## Scripts
+[30分钟Shell光速入门教程](https://www.bilibili.com/video/BV17m411U7cC/?spm_id_from=333.337.search-card.all.click&vd_source=54c2981c1a7a8e0433b7d23096150b7a)
+```bash
+richard@LAPTOP-THUPDMQ0:~/test$ vim hello.sh
+```
+```bash
+#!/bin/bash
+
+echo "Hello Shell"
+date
+whoami
+```
+- `#!/bin/bash`叫做Shebang，作用是告诉操作系统这个脚本需要用`/bin/bash`这个解释器执行
+```bash
+richard@LAPTOP-THUPDMQ0:~/test$ chmod a+x hello.sh
+richard@LAPTOP-THUPDMQ0:~/test$ ./hello.sh
+Hello Shell
+Sat Jan 17 12:36:15 AM CST 2026
+richard
+```
+- `chmod a+x hello.sh`：`chmod` 是 "change mode" 的缩写，作用是修改文件的权限`chmod [用户范围][操作符][权限] 文件名`
+
+权限针对的三类用户：
+
+|指令|含义|
+|:---:|:---:|
+|`u (user)`|文件的所有者|
+|`g (group)`|文件所属组的用户|
+|`o (others)`|其他所有用户|
+|`a (all)`|等同于 `u+g+o`，即所有用户|
+
+权限的三种核心类型：
+
+|指令|含义|
+|:---:|:---:|
+|`r (read)`|读取文件内容的权限|
+|`w (write)`|修改 / 删除文件内容的权限|
+|`x (execute)`|执行文件的权限（对脚本 / 程序来说，没有 x 权限就无法运行）|
+
+#### 猜数字小游戏
+下面是一个猜数字小游戏来练习简单的shell语法！
+```bash
+#!/bin/bash
+
+channel="猜数字小游戏"
+echo "请输入您的姓名"
+read name
+echo "您好，$name，欢迎来到$channel "
+number=$(shuf -i 1-10 -n 1)
+echo $number
+while true
+do
+echo "请输入一个1-10之间的数字"
+read guess
+if [[ $guess -eq $number ]]; then
+	echo "恭喜您猜对了！是否继续？（y/n）："
+	read choice
+	if [[ $choice = "y" ]] || [[ $choice = "Y" ]]; then
+		number=$((RANDOM%10+1))
+		echo $number
+		continue
+	else
+		break
+	fi
+elif [[ $guess -lt $number ]]; then
+	echo "小了"
+else
+	echo "大了"
+fi
+done
+
+echo "游戏结束，再见！"
+```
+```bash
+richard@LAPTOP-THUPDMQ0:~/test$ ./hello.sh
+请输入您的姓名
+richard
+您好，richard，欢迎来到猜数字小游戏
+6
+请输入一个1-10之间的数字
+4
+小了
+请输入一个1-10之间的数字
+6
+恭喜您猜对了！是否继续？（y/n）：
+y
+1
+请输入一个1-10之间的数字
+3
+大了
+请输入一个1-10之间的数字
+1
+恭喜您猜对了！是否继续？（y/n）：
+n
+游戏结束，再见！
+```

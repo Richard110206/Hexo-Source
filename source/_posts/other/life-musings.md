@@ -184,7 +184,7 @@ yysy 感觉越写越多，CSS都要单开一栏目了:grinning:
 密码的，吃完饭回来电脑竟然**死机了**:cry:
 大概是开太多程序又长时间没有关机的缘故（多学学人家Mac 几周不关机也没事）
 然后一通乱按又把键盘弄失灵了:cry:
-弄俩小时才发现是误触 要`Fn`+`T`**切换到有线模式**才行 太折磨了！
+弄俩小时才发现是误触 要`Fn`+`5`**切换到有线模式**才行 太折磨了！
 
 #### 8.24
 开刷leetcode！
@@ -246,7 +246,7 @@ debug——**ssh**突然网络连接失败（CSDN:white_check_mark:）
 
 {%endfold%}
 
-
+{%fold into @ Semester 2.1 %}
 - 9.1
   - 数电：概论，智能系统=算法+软件+**硬件**，复习信概**进制转换**等内容
   - 概率论：概论，基本**集合符号使用**（与离散数学相似）
@@ -665,19 +665,19 @@ RD /S /Q \\?\%1
 - 12.22
   - 计组实验：全班第一个验收，小保底，但还需要使用机器码在进行一次验收
   - 第一次申请软著遗憾退回了...大概问题是源代码中太多的前端代码和Fastapi框架，导致雷同，应该放更多的后端算法代码，感觉得完全重构，实在麻烦，但又不太想直接放弃，等着期末考完试再去慢慢补充吧。
-![软著补正通知书](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/Copyright.png?raw=true)
+  ![软著补正通知书](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/Copyright.png?raw=true)
 
 - 12.23
   - 学完计组指令集相关内容
   - 正式开始复习大物！
   - 帮春政跑代码意外收获一杯霸王茶姬！第一次劳动所得的！
   - claude简直是毒品！
-![GLM 4.7模型续费](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/GLM4.7.png?raw=true)
+  ![GLM 4.7模型续费](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/GLM4.7.png?raw=true)
 - 12.24
   - 经典“挂羊头卖狗肉”，用Verilog硬件电路实现，然后给老师验收看的代码是机器码和汇编写的，后面还得好好打磨一下报告  
   - 用AI帮柏哥拟合函数，说是帮他复现代码，毕业论文致谢带上我哈哈
   - 看了[【保姆级教程】Windows下安装Claude Code并接入智谱GLM-4.6模型](https://juejin.cn/post/7563251747022176297)才将GLM4.7接入claude，寻思着我前面用的都不是GLM么，y1s1，windows配环境真是麻烦不少，还得找系统环境变量去配置
-![GLm 4.7成功接入claude code](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/claude_env.png?raw=true)
+  ![GLm 4.7成功接入claude code](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/claude_env.png?raw=true)
 
 - 12.25
   - 毛中特：就背了俩大题，结果还正好有！
@@ -708,6 +708,9 @@ RD /S /Q \\?\%1
   - 意图速通Turing Complete，失败，数电部分差不多快结束了！
   - 跨年无事可做，给实验大扫除！劳动最光荣！
   - 现在是2025年12月31日的20点40分，没有什么别的跨年活动，去年学校的也差不多体验过一遍了，没啥新鲜劲了，不如好好享受享受这期末周难得的独处时光，要完成年度报告捏！现在发现手机里的相册、博客、说说已经记录下很多瞬间，足够再来翻看回忆！
+
+## 2026
+
 - 1.1
   - 新年新气象！
   - 完成计组的课程设计报告 && 视听说作业！
@@ -729,4 +732,46 @@ RD /S /Q \\?\%1
 - 1.7
   - 将马庄香包的网站内容录屏记录留存
   - 完成农粮运输项目的网站平台搭建工作！
+  - 在高铁上办公，完成母校行校园生活介绍部分，发现给NotebookLM的文档是word的话无法读取图片，只有转成PDF格式才行  
   - 回家！Semester 2.1 就告一段落了，开启 Winter Vacation！
+  {%endfold%}
+- 1.8
+  - 值得纪念的日子，终于提车了！（也是大开眼界，很多功能亟需探索！）在我的据理力争之下才勉强保住了AC（ACCEPT）这个号，没有被91抢过去！要不然真得被笑死了！（不知道为啥爸妈如此钟情91）凡人之躯比肩AI！后来复盘才发现我们选择的也是豆包的一选！（好比下围棋拟合AI思想）
+  ![与豆包相同的神之一选！](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/plate%20number.png?raw=true)
+- 1.9
+  - 前几天看还是50+G，结果今天C盘突然爆红，安装[WizTree](https://diskanalyzer.com/download)进行检查，发现基本上从未使用过的`marscode`占用高达50G空间，真是未解之谜了！
+  ![C盘爆红](https://github.com/Richard110206/Blog-image/blob/main/article/General/life-musings/Drive%20C.png?raw=true)
+  - [彻底删掉360全家桶 最简方法](https://www.bilibili.com/video/BV1fD4y1n7Je/?spm_id_from=333.337.search-card.all.click&vd_source=54c2981c1a7a8e0433b7d23096150b7a)，其中需要使用的软件[geek官网](https://geekuninstaller.com/download)
+  - [彻底摆脱 搜狗输入法 AI汪仔助手](https://www.bilibili.com/video/BV13yosYuE9V/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=54c2981c1a7a8e0433b7d23096150b7a)
+  - 配置 [Windows 端 Power Shell 配置与美化](https://www.cnblogs.com/myshiqiqi/p/18722229)
+  - 今天购买的新显示屏到了，效果很不错！但最后还是买了一根HDMI转VGA的接线头，用回老的显示器了，要求不高双屏足矣！
+- 1.10
+  - 摆烂的一天捏，看了三部电影！
+  - 还是买入了副屏21寸，感官上比23寸差不少，不过看着也正舒服！
+  - 之前还是想得太简单的，没有自己亲身体会，很难察觉到2k和1080p分辨率的直观区别，感觉还是难以割舍2k！
+- 1.11
+  - 看yolo官方文档，了解语义分割，准备后续fork仓库本地运行
+  - 放假几天第一次使用 claude code 竟然就是为了白嫖智谱上市回馈老用户的福利，实在是惭愧！“阿姨助我”送沪上阿姨奶茶，“智谱旺旺”送上市纪念版旺仔牛奶，赞！（我们怎么能说只是“精神股东”呢，好歹真金白银支持过的嘞）（话说这买20￥套餐的光福利就能回本了哈哈哈）
+  - 开户成功，成为一名光荣的A股股民
+- 1.12
+  - AI时代代码要自己敲仍然是硬道理！动手实现简单的调用大模型API的代码，学习了解可变参数及含义。
+  - 矿井搜救大创会议：这才发觉自己也要做多模态协同
+  - 看2025股市回顾，在科技AI领域感觉自己错失了很多大赚一笔的机会哈哈哈
+- 1.13
+  - [ASC26](https://www.asc-events.net/StudentChallenge/ASC26/preliminary.php)今日开赛，誓要夺回失去的一切！
+  - 看别人的博客，再次看到[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way?tab=readme-ov-file)、[别像弱智一样提问](https://github.com/tangx/Stop-Ask-Questions-The-Stupid-Ways)被提出，加上近期一些见闻，更加发觉学会提问的重要性！
+- 1.14
+  - 尝试申请Github Copilot，结果被秒拒！当代阳谋：开VPN就无法定位到学校，要提供照片证明材料；不开VPN加载半天都进不去。
+  - 今天才知道线材“xx转xx”的先后顺序是有讲究的，比如DP转HDMI，前面的DP是输出端得接电脑（笔记本），后面HDMI是输入端接显示器，我说怎么DP没信号~
+  - 经历换显示屏换线材的风波终于搞定了，2K显示器就是不一样！爽！要开始努力不能继续摆烂了！
+  - 完成三创赛商业计划书 2&&3，尝试使用word绘制时间线轴图
+- 1.15
+  - 退合同，十几年的销售果然还是太精了，差点又被说服了~
+  - 看 Datawhale的 《Hello，Agent》，第一次看源代码真的感觉大有脾益！自己在动手实现一部分，很多细节慢慢就明白了！
+- 1.16
+  - 和MCP一样最近Skills也是挺火的，lqx你怎么又是只看没动手实操！
+  - 临阵突击代码漏洞检测大创进度，论文是不太看得懂的，先配一配环境，学习一下 Scala 语法和 Joern 的使用！感觉大家都比较害羞，看来还是要以写申报书作为主线任务分工合作推进进度更快一点啊！再每次都是口头汇报没有成果产出老师大抵都要抛弃我们了！（已经拿其他组同学写完论文初稿来push我们了哈哈哈）
+  - 之前一直没写过 JAVA，时隔数月再次拾起WSL2，配 JOERN 环境真是一波三折。（前年刚入学的时候零基础学习后端，面对那一团黑乎乎的命令行窗口真是手足无措，没有UI界面、AI也不很会用、路径也看不明白，当时WSL真是给我留下很深的阴影）
+- 1.17
+  - 玩WSL2，学习Shell脚本的编写
+  - 开博客新坑《start with joern》，完成环境配置的撰写

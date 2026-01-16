@@ -11,7 +11,7 @@ description: A lightweight Python API service built with FastAPI to connect loca
 
 本文将会记录我本地部署大模型并进行 API 接口开发的全流程！
 
-[项目Repo](https://github.com/Richard110206/API-For-LLM)
+[项目Repo](https://github.com/Richard110206/LLM_API)
 
 ### Reference
 
@@ -145,6 +145,7 @@ def generate(prompt: str, x_api_key: str = Depends(verify_api_key)):
 ```
 {%note info%}
 - `load_dotenv()`从`.env`文件中加载环境变量
+
 #### 为什么要有 .env 文件？
 **1. 保护敏感信息**
 项目中常涉及数据库密码、API 密钥、Token、密钥等敏感数据。如果直接写在代码里（比如 `API_KEY = "abc123"`），一旦代码上传到 GitHub 等公开仓库，这些信息会被泄露，导致安全风险。用 `.env` 存储这些信息，再通过 `.gitignore` 忽略该文件，可避免敏感信息泄露。
@@ -227,3 +228,72 @@ messages=[
 ]
 ```
 {%endnote%}
+
+### 在代码中调用大模型API
+在老版本的`openai`库中的调用方式：
+```python
+import openai
+
+openai.api_key="YOUR_OPENAI_API_KEY"
+openai.base_url="https://api.deepseek.com/v1"
+
+response=openai.ChatCompletion.create(
+    model="deepseek-chat",
+    messages=[
+        {"role":"system","content":"你是一名经验丰富的程序员"},
+        {"role":"user","content":"如何调用大模型api接口"},
+        {"role":"assistant","content":"API的使用方法"}
+    ]
+)
+
+print(response.choices[0].message["content"])
+```
+
+在新版本中`openai`重构了 API 的调用方式：
+```python
+from openai import OpenAI
+
+client=OpenAI(
+    api_key="YOUR_OPENAI_API_KEY",
+    base_url="https://api.deepseek.com/v1"
+)
+
+response=client.chat.completions.create(
+    model="deepseek-chat",
+    messages=[
+        {"role":"system","content":"你是一名经验丰富的程序员"},
+        {"role":"user","content":"如何调用大模型api接口"},
+        {"role":"assistant","content":"API的使用方法"}
+    ]
+)
+
+print(response.choices[0].message.content)
+```
+1. `role`只有三种可选参数：
+
+|角色|	含义|	谁说的话|
+|----|----|----|
+|`"system"`	|系统设定|	程序员/开发者设定的|
+|`"user"`	|用户	|实际使用产品的用户|
+|`"assistant"`	|AI助手	|AI 自己之前的回复|
+
+2. 事实上，在`client.chat.completions.create`也有其他的可选参数，可参考上文`Modelfile`相关内容：
+
+```python
+    temperature=0.5,        # 中等创造性
+    top_p=0.9,             # 多样性采样
+    frequency_penalty=0.2,  # 轻微减少重复
+    presence_penalty=0.1,   # 轻微鼓励新话题
+    
+    # 输出控制
+    max_tokens=500,        # 限制输出长度
+    stream=False,          # 非流式
+    n=1,                   # 生成1个回答
+    
+    # 特殊功能
+    response_format={"type": "json_object"},  # 要求JSON输出
+    
+    # 其他
+    seed=42,               # 固定随机种子
+    user="user_001"        # 用户标识
+```
