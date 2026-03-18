@@ -136,21 +136,28 @@ hello world
 头文件的核心作用是声明接口，而非实现代码，否则可能导致 "多重定义" 错误。
 
 ✅ 允许的内容（声明）：
-- 函数声明（int add(int a, int b);）
-- 类 / 结构体声明（class MyClass; 或完整类定义，类内可包含函数声明）
-- 变量声明（需加extern，如 extern int global_var;）
-- 宏定义（#define MAX 100）
+- 函数声明（`int add(int a, int b);`）
+- 类 / 结构体声明（`class MyClass;` 或完整类定义，类内可包含函数声明）
+- 变量声明（需加`extern`，如 `extern int global_var`;）
+- 宏定义（`#define MAX 100`）
 - 模板声明或定义（模板必须在头文件中实现，特殊情况）
 
 ❌ 不允许的内容（定义，除非有特殊处理）：
-- 普通函数定义（除非用inline修饰）写在相应源文件中
-- 非extern变量定义（如 int global_var = 0; 会导致重复定义）
-- 可执行代码（如独立的for循环、cout语句等）
+- 普通函数定义（除非用`inline`修饰）写在相应源文件中
+- 非extern变量定义（如 `int global_var = 0`; 会导致重复定义）
+- 可执行代码（如独立的`for`循环、`cout`语句等）
+
+#### 3. 好处
+- 编译速度
+如果把实现都写在 `.h` 文件，任何修改这个文件，所有 `#include` 它的文件都要重新编译
+- 代码组织
+  - `.h` 文件：快速浏览类的结构和接口
+  - `.cpp` 文件：看具体实现细节
 
 #### CMake 应用
 
 编写主函数：
-```main.cpp
+```cpp
 #include <iostream>
 #include "test1.h"
 #include "test2.h"
@@ -162,8 +169,9 @@ testfunc2();
 return 0;
 }
 ```
+
 头文件：
-```test1.h
+```cpp
 #ifndef _TEST1_H
 #define _TEST1_H
 

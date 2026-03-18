@@ -459,7 +459,23 @@ usermod: no changes
   Debian            Running         2
   docker-desktop    Stopped         2
 ```
-
+如果忘记了root密码，可以在windows的powershell中这样修改：
+```bash
+(base) PS C:\Users\Legion> wsl --list --verbose
+  NAME              STATE           VERSION
+* Ubuntu            Stopped         2
+  Debian            Running         2
+  docker-desktop    Stopped         2
+(base) PS C:\Users\Legion> wsl -d Debian --user root
+root@LAPTOP-THUPDMQ0:/mnt/c/Users/Legion# passwd root
+New password:
+Retype new password:
+passwd: password updated successfully
+root@LAPTOP-THUPDMQ0:/mnt/c/Users/Legion# passwd richard
+New password:
+Retype new password:
+passwd: password updated successfully
+```
 ## Scripts
 [30分钟Shell光速入门教程](https://www.bilibili.com/video/BV17m411U7cC/?spm_id_from=333.337.search-card.all.click&vd_source=54c2981c1a7a8e0433b7d23096150b7a)
 ```bash
@@ -555,4 +571,9 @@ y
 恭喜您猜对了！是否继续？（y/n）：
 n
 游戏结束，再见！
+```
+
+- 远程传输文件
+```bash
+scp -P 31985 ASC1598@36.151.243.90:/home/ASC1598/"Instruction Manual of Remote Login Platform.pdf" C:\Users\Legion\Desktop\
 ```

@@ -192,11 +192,11 @@ def verify_api_key(x_api_key: str = Header(None)):
 ```
 - `verify_api_key`：这是一个 FastAPI 的依赖项（dependency）函数，无需显式，框架就会帮你自动调用这个依赖函数。
 - `x_api_key: str = Header(None)`:
-   
+  
    - `x_api_key: str`：这里是 Python 的类型注解，用来声明变量 `x_api_key` 的类型是 str   
    - `Header(None)`：这是 FastAPI 的参数获取方式，指定 `x_api_key` 的值需要从请求头（Header） 中获取
 - `raise HTTPException(status_code, detail)`：这是 FastAPI 中用于主动抛出错误响应。
-   
+  
    - `status_code=401`：这是 HTTP 状态码，用于表示未授权（Unauthorized）错误。
    - `detail="Invalid API Key, or no credits"`：这是错误详情，当 API 密钥无效或无可用额度时，会返回这个错误信息。
 
@@ -272,7 +272,7 @@ print(response.choices[0].message.content)
 1. `role`只有三种可选参数：
 
 |角色|	含义|	谁说的话|
-|----|----|----|
+|:--:|:--:|:--:|
 |`"system"`	|系统设定|	程序员/开发者设定的|
 |`"user"`	|用户	|实际使用产品的用户|
 |`"assistant"`	|AI助手	|AI 自己之前的回复|
@@ -297,3 +297,32 @@ print(response.choices[0].message.content)
     seed=42,               # 固定随机种子
     user="user_001"        # 用户标识
 ```
+
+- 进行流式调用：
+
+```python
+from openai import OpenAI
+
+client=OpenAI(
+    api_key="YOUR_OPENAI_API_KEY",
+    base_url="https://api.deepseek.com/v1"
+)
+
+response=client.chat.completions.create(
+    model="deepseek-chat",
+    messages=[
+        {"role":"system","content":"你是一名经验丰富的程序员"},
+        {"role":"user","content":"如何调用大模型api接口"},
+        {"role":"assistant","content":"API的使用方法"}
+    ],
+    stream=True
+)
+
+for chunk in response:
+    print(chunk.choices[0].delta.content,
+          end="",
+          flush=True
+          )
+# print(response.choices[0].message.content)
+```
+

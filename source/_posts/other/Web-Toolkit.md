@@ -145,10 +145,3 @@ description: A collection of useful websites for learning, algorithmic problem-s
 | [董宗磊的博客-靡不有初，鲜克有终](https://dongzl.github.io) | 个人技术博客，通常分享开发实践、技术框架使用、编程经验等内容。 |
 | [Xiyuan Yang's Blog](https://xiyuanyang-code.github.io) | 技术类个人博客，通常分享编程、算法、开发相关的实践与学习内容。 |
 | [Adam Harley - Academic Profile](https://adamharley.com) | 学术类个人主页，展示作者的学术相关内容。 |
-
-
--  `Cmd+Shift+F`（Mac），调出全局搜索面板。
-- wps顽固的空白页：鼠标点击空白页，右键段落将行间距修改`固定值`为`1`
-- wps中照片显示不完全：`ctrl`+`1`
-- 切换源代码和可显示的模式：`ctrl`+`/`
-- mac显示无法安全下载：按住control键右键打开点击保留
