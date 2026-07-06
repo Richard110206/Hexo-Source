@@ -19,3 +19,18 @@ archive: true
 4. [在小火箭配置中填入购买的URL](https://help.huacloud.dev/shadowrocket)，就能正常访问Tiktok了
 5. 注册一个Google账号，当注册gmail邮箱提示输入手机号时点击跳过，[【如何在注册Google账号时跳过手机验证码这个步骤，从而成功注册Google账号】](https://www.bilibili.com/video/BV1ugjizgEbX/?share_source=copy_web&vd_source=1858c9cc373046257df65828948ed553)  
 6. 用前面没有中国手机号注册的gmail邮箱登录就能正常访问Tiktok了。注意在主页将语言改为English或者你想要看得的地方的语言，并且注意刷到中文的视频及时跳过，否则系统的偏好设置会不停给你推中文视频，导致你的Tiktok变得和国区抖音一毛一样。
+
+
+mac 上切换 GLM 模型
+```bash
+vim ~/.claude/settings.json
+```
+```json
+{
+  "env": {
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5-turbo",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.1"
+  }
+}
+```

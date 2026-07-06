@@ -1,8 +1,9 @@
 ---
 title: Python Web Scraping
 date: 2025-10-12 17:04:53
+description: A practical guide to Python web scraping with requests and BeautifulSoup, featuring real-world examples.
 tags: [updating]
-archive: true
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/Web%20Scraping.png?raw=true
 category: Python
 category_bar: true
 ---

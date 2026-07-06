@@ -4,7 +4,7 @@ date: 2025-08-25 10:56:48
 tags: [CPP, syntax,updating]
 category: CPP
 category_bar: true
-index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/CPPmemo.png?raw=true
+index_img: https://github.com/Richard110206/Blog-image/blob/main/cover/CPP%20Syntax%20Bits%20and%20Bobs.png?raw=true
 description: The article serves as a memo for the C++ syntax that I have forgotten, which mainly includes the new features of C++14 and C++17.
 ---
 

@@ -30,7 +30,7 @@ Initialized project `ragproductionapp` at `/Users/richard/CUMT-ChatBot/RAGProduc
 **什么是 uv？**
 uv 是一个高性能的 Python 项目管理工具，主要用于依赖管理、虚拟环境管理以及项目构建。
 
-- 项目初始化后自动生成相关文件，结构如下
+- 项目初始化`uv init <my_project>`（生成文件夹`<my_project>`）后自动生成相关文件，结构如下：
 ```bash
 (base) richard@RicharddeMacBook-Air uv-learning % tree
 .
@@ -41,6 +41,7 @@ uv 是一个高性能的 Python 项目管理工具，主要用于依赖管理、
 └── README.md
 ```
 我们逐个拆解一下每个文件的作用：
+- `.gitignore`中贴心的包含了原本需要我们自己写的项目
 - `pyproject.toml`：
   - 声明项目核心信息，包括名称、版本、描述等
   - 规定项目依赖的 Python 版本和第三方包，用于包管理工具（如 uv、pip）识别依赖
@@ -75,6 +76,9 @@ dependencies = [
 ]
 ```
 uv 也提供创建虚拟环境的方式：
+```bash
+uv sync
+```
 ```bash
 uv venv       # 创建 .venv 虚拟环境
 source .venv/bin/activate  # 激活 Linux/Mac
